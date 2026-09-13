@@ -1,117 +1,806 @@
-<script>
-    // =========================================================================
-    // 1. حماية وتجميد اختصارات أدوات الفحص (DevTools) والنقر الأيمن
-    // =========================================================================
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة أفق | لشهادات أبل المدفوعة والمجانية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #fbf9f5;
+            --card-bg: #ffffff;
+            --card-subtle: #f4efe6;
+            --walnut-dark: #322217;
+            --walnut-mid: #5a4130;
+            --straw-accent: #d8c3a3;
+            --straw-light: #ece3d2;
+            --border-color: #e6dcce;
+            --radius-large: 24px;
+            --radius-medium: 16px;
+            --shadow-soft: 0 12px 32px rgba(50, 34, 23, 0.05);
+            --shadow-hover: 0 20px 40px rgba(50, 34, 23, 0.12);
+            --error-color: #d9534f;
+            --success-color: #27ae60;
+        }
 
-    // منع زر الفأرة الأيمن (Context Menu)
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-    });
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    // منع اختصارات لوحة المفاتيح المتعلقة بالفحص
-    document.addEventListener('keydown', function(e) {
-        // F12
-        if (e.key === "F12" || e.keyCode === 123) {
+        body {
+            background-color: var(--bg-base);
+            color: var(--walnut-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Header & Menu Button */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(251, 249, 245, 0.9);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 24px;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--walnut-dark);
+        }
+
+        .header-logo img {
+            height: 38px;
+            width: auto;
+        }
+
+        .menu-icon {
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--walnut-dark);
+            background: none;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .menu-icon:hover {
+            background-color: var(--straw-light);
+        }
+
+        /* Sidebar Navigation */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(50, 34, 23, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 300px;
+            height: 100%;
+            background-color: var(--card-bg);
+            z-index: 1000;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+            padding: 30px 24px;
+            display: flex;
+            flex-direction: column;
+            transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .close-sidebar {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--walnut-mid);
+            cursor: pointer;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--walnut-dark);
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 12px 16px;
+            border-radius: var(--radius-medium);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: var(--straw-light);
+            color: var(--walnut-dark);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        .page-section {
+            display: none;
+        }
+        .page-section.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 40px 20px 20px;
+            margin-bottom: 20px;
+        }
+
+        .hero-logo {
+            max-width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background-color: var(--straw-light);
+            color: var(--walnut-mid);
+            font-size: 0.9rem;
+            font-weight: 700;
+            padding: 6px 18px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .hero-title {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--walnut-dark);
+            margin-bottom: 16px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--walnut-mid);
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: var(--walnut-dark);
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 50px;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-large);
+            padding: 30px 24px;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .feature-card-special {
+            background-color: #ffffff;
+            border: 2px solid var(--straw-accent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card-special::before {
+            content: "متاح الآن";
+            position: absolute;
+            top: 15px;
+            left: -30px;
+            background: var(--straw-accent);
+            color: var(--walnut-dark);
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 4px 35px;
+            transform: rotate(-45deg);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background-color: var(--straw-light);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 18px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--walnut-dark);
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: var(--walnut-mid);
+            margin-bottom: 15px;
+        }
+
+        .card-action-btn {
+            width: 100%;
+            padding: 12px 18px;
+            background-color: var(--walnut-dark);
+            color: #ffffff;
+            font-weight: 700;
+            border: none;
+            border-radius: var(--radius-medium);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .card-action-btn:hover {
+            background-color: var(--walnut-mid);
+        }
+
+        .transparency-section {
+            background-color: var(--card-subtle);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-large);
+            padding: 36px 28px;
+            margin-bottom: 50px;
+        }
+
+        .notice-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .notice-item {
+            background: #ffffff;
+            border-radius: var(--radius-medium);
+            padding: 18px 20px;
+            border-right: 4px solid var(--straw-accent);
+        }
+
+        .guarantee-card {
+            background: linear-gradient(135deg, var(--walnut-dark), #23160e);
+            color: #ffffff;
+            border-radius: var(--radius-large);
+            padding: 44px 30px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .guarantee-card h2 {
+            color: var(--straw-accent);
+            margin-bottom: 14px;
+        }
+
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--straw-accent);
+            color: var(--walnut-dark);
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 15px;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+
+        .app-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-large);
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .app-icon {
+            width: 75px;
+            height: 75px;
+            border-radius: 18px;
+            background-color: var(--straw-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--walnut-dark);
+            margin-bottom: 16px;
+        }
+
+        .select-app-btn {
+            width: 100%;
+            padding: 12px 18px;
+            background-color: var(--walnut-dark);
+            color: #ffffff;
+            font-weight: 700;
+            border: none;
+            border-radius: var(--radius-medium);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 15px;
+        }
+
+        .select-app-btn:hover {
+            background-color: var(--walnut-mid);
+        }
+
+        /* Modal Pop-up */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(50, 34, 23, 0.6);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-large);
+            padding: 36px 28px;
+            width: 100%;
+            max-width: 440px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 16px; left: 16px;
+            background: none; border: none;
+            font-size: 1.5rem;
+            color: var(--walnut-mid);
+            cursor: pointer;
+        }
+
+        .code-input {
+            width: 100%;
+            padding: 14px 18px;
+            font-size: 1.1rem;
+            text-align: center;
+            letter-spacing: 2px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-medium);
+            background-color: var(--bg-base);
+            color: var(--walnut-dark);
+            font-weight: 700;
+            margin: 20px 0 12px;
+            outline: none;
+        }
+
+        .verify-btn {
+            width: 100%;
+            padding: 14px 20px;
+            background-color: var(--walnut-dark);
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: var(--radius-medium);
+            cursor: pointer;
+        }
+
+        .alert-msg {
+            margin-top: 14px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            display: none;
+        }
+        .alert-msg.error { color: var(--error-color); display: block; }
+        .alert-msg.success { color: var(--success-color); display: block; }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--walnut-mid);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="header-logo" onclick="showSection('homeSection')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="شعار أبل">
+                <span style="font-weight: 800; font-size: 1.1rem;">منصة أفق</span>
+            </a>
+            <button class="menu-icon" onclick="toggleSidebar()">☰</button>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <span style="font-weight: 800; font-size: 1.2rem;">القائمة الرئيسية</span>
+            <button class="close-sidebar" onclick="toggleSidebar()">&times;</button>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" id="navHome" class="active" onclick="showSection('homeSection')">🏠 الواجهة الرئيسية</a></li>
+            <li><a href="#" id="navAbout" onclick="showSection('aboutSection')">ℹ️ التعرف على الشهادات</a></li>
+            <li><a href="#" id="navDownload" onclick="showSection('downloadSection')">📲 تحميل الشهادات المدفوعة</a></li>
+            <li><a href="https://t.me/Ufuq_storee" target="_blank">✈️ التواصل معنا (تليجرام)</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+
+        <!-- ================= PAGE 1: الصفحة الرئيسية ================= -->
+        <div id="homeSection" class="page-section active">
+            <section class="hero">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="شعار أبل" class="hero-logo">
+                <div><span class="hero-tag">شهادات أبل المدفوعة والمجانية</span></div>
+                <h1 class="hero-title">منصة أفق لشهادات أبل</h1>
+                <p class="hero-subtitle">
+                    نقدم لمستخدمينا شهادات مدفوعة ومجانية بأعلى مستويات الاستقرار، مع صلاحيات ممتدة وضمان تعويض كامل احتراماً لثقتكم.
+                </p>
+            </section>
+
+            <section style="margin-top: 40px;">
+                <h2 class="section-title">إيجابيات ومميزات منصة أفق</h2>
+                <div class="grid-cards">
+                    
+                    <div class="feature-card feature-card-special">
+                        <div>
+                            <div class="icon-box">🎁</div>
+                            <h3>شهادة مجانية</h3>
+                            <p>يمكنك الآن الوصول للشهادة المجانية وتجربة التثبيت الفوري لكافة التطبيقات مباشرة.</p>
+                        </div>
+                        <button class="card-action-btn" onclick="showSection('downloadSection')">الانتقال للتحميل المباشر</button>
+                    </div>
+
+                    <div class="feature-card">
+                        <div>
+                            <div class="icon-box">📱</div>
+                            <h3>مكتبة تطبيقات ضخمة</h3>
+                            <p>تشكيلة واسعة وشاملة من تطبيقات البلس، برامج التواصل الاجتماعي المعدلة، أدوات التصميم والألعاب.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div>
+                            <div class="icon-box">⏱️</div>
+                            <h3>شفافية الصلاحيات</h3>
+                            <p>شهادات بمدة توثيق تبدأ من 6 أشهر وحتى 3 سنوات مع إمكانية معرفة صلاحية شهادتك بوضوح.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div>
+                            <div class="icon-box">🛡️</div>
+                            <h3>ضمان التعويض المباشر</h3>
+                            <p>نلتزم بتعويضك فوراً في حال حدوث أي إغلاق أمني للشهادة حتى لو كان متبقياً يوم واحد على الانتهاء.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= PAGE 2: التعرف على الشهادات ================= -->
+        <div id="aboutSection" class="page-section">
+            <h2 class="section-title">🔍 التعرف على الشهادات والتنبيهات</h2>
+            
+            <section class="transparency-section">
+                <h3>توضيحات وإرشادات الاستخدام:</h3>
+                <div class="notice-list">
+                    <div class="notice-item">
+                        <h4>1. تشغيل الـ VPN أثناء استخدام الشهادة</h4>
+                        <p>يُنصح بعدم تشغيل برامج الـ VPN لتجنب حدوث أي تعارض أمني. وفي حال توقفت الشهادة بسببه، فإن كادرنا متواجد فوراً لمساعدتك وتعويضك.</p>
+                    </div>
+                    <div class="notice-item">
+                        <h4>2. التحديثات وحظر شركة أبل</h4>
+                        <p>قد تتعرض الشهادات للحظر المفاجئ بسبب تحديثات الحماية من أبل. نحن في أفق تميزنا بتقديم تعويض كامل ومباشر لك طوال فترة اشتراكك.</p>
+                    </div>
+                    <div class="notice-item">
+                        <h4>3. التطبيقات المستبعدة (مثل DL و SAT)</h4>
+                        <p>بعض التطبيقات غير مدرجة لدينا؛ كونها تتطلب تراخيص خاصة وتحمل سلبيات أكثر من الإيجابيات، ونستعيض عنها بمكتبة ضخمة وآمنة.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="guarantee-card">
+                <h2>فلسفتنا في التعامل</h2>
+                <p>
+                    "بالنسبة لنا، المستخدم ليس مجرد صفقة تجارية، بل هو شخصية نقدرها ونحترم رأيها. نلتزم بالنزاهة التامة ونضمن لك حقك كاملاً، ونتحمل المسؤولية عن أي خلل تقني."
+                </p>
+                <a href="https://t.me/Ufuq_storee" target="_blank" class="telegram-btn">التواصل مع الدعم الفني</a>
+            </section>
+        </div>
+
+        <!-- ================= PAGE 3: تحميل الشهادات المدفوعة ================= -->
+        <div id="downloadSection" class="page-section">
+            <h2 class="section-title">📲 اختر تطبيق التوقيع للتحميل</h2>
+            <p style="text-align: center; color: var(--walnut-mid); margin-bottom: 20px;">حدد التطبيق المطلوب ثم أدخل كود الشهادة الخاص بك للبدء في التحميل.</p>
+            
+            <div class="apps-grid">
+                <!-- 1. E-Sign -->
+                <div class="app-card">
+                    <div class="app-icon">E</div>
+                    <h3>E-Sign</h3>
+                    <p style="font-size:0.85rem; color:var(--walnut-mid);">التطبيق الأشهر والأفضل لتوقيع وتعديل التطبيقات.</p>
+                    <button class="select-app-btn" onclick="openCodeModal('E-Sign')">تحميل E-Sign</button>
+                </div>
+
+                <!-- 2. KSign -->
+                <div class="app-card">
+                    <div class="app-icon">K</div>
+                    <h3>K-Sign</h3>
+                    <p style="font-size:0.85rem; color:var(--walnut-mid);">أداة سريعة وخفيفة لتثبيت ملفات الـ IPA.</p>
+                    <button class="select-app-btn" onclick="openCodeModal('K-Sign')">تحميل K-Sign</button>
+                </div>
+
+                <!-- 3. Scarlet -->
+                <div class="app-card">
+                    <div class="app-icon">S</div>
+                    <h3>Scarlet</h3>
+                    <p style="font-size:0.85rem; color:var(--walnut-mid);">واجهة عصرية لتثبيت وتحديث التطبيقات المعدلة.</p>
+                    <button class="select-app-btn" onclick="openCodeModal('Scarlet')">تحميل Scarlet</button>
+                </div>
+
+                <!-- 4. Reesha -->
+                <div class="app-card">
+                    <div class="app-icon">R</div>
+                    <h3>Reesha</h3>
+                    <p style="font-size:0.85rem; color:var(--walnut-mid);">متجر ريشة المميز بتجربة مستخدم بسيطة.</p>
+                    <button class="select-app-btn" onclick="openCodeModal('Reesha')">تحميل Reesha</button>
+                </div>
+
+                <!-- 5. Z-Sign -->
+                <div class="app-card">
+                    <div class="app-icon">Z</div>
+                    <h3>Z-Sign</h3>
+                    <p style="font-size:0.85rem; color:var(--walnut-mid);">أداة احترافية لإدارة الشهادات والتوقيع.</p>
+                    <button class="select-app-btn" onclick="openCodeModal('Z-Sign')">تحميل Z-Sign</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- النافذة المنبثقة لإدخال الكود (Modal) -->
+    <div class="modal-overlay" id="codeModal">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeCodeModal()">&times;</button>
+            <h3 id="modalAppName" style="color:var(--walnut-dark);">تثبيت التطبيق</h3>
+            <p style="font-size: 0.9rem; color: var(--walnut-mid);">أدخل كود الشهادة المخصص لك للمتابعة:</p>
+            
+            <input type="text" id="certCodeInput" class="code-input" placeholder="أدخل الكود هنا" autocomplete="off">
+            <button class="verify-btn" onclick="validateAndDownload()">تأكيد الكود والتحميل</button>
+            
+            <div id="alertMsg" class="alert-msg"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © منصة أفق لشهادات أبل</p>
+    </footer>
+
+    <!-- JavaScript Script -->
+    <script>
+        // =========================================================================
+        // 1. حماية وتعطيل أدوات الفحص والنقر الأيمن
+        // =========================================================================
+
+        // منع القائمة المنبثقة للزر الأيمن
+        document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
-            return false;
+        });
+
+        // منع اختصارات لوحة المفاتيح
+        document.addEventListener('keydown', function(e) {
+            // F12
+            if (e.key === "F12" || e.keyCode === 123) {
+                e.preventDefault();
+                return false;
+            }
+
+            // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
+                e.preventDefault();
+                return false;
+            }
+
+            // Ctrl+U (عرض سورس الصفحة)
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // =========================================================================
+        // 2. إدارة أجزاء الصفحة والنافذة المنبثقة
+        // =========================================================================
+        let currentSelectedApp = "";
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('sidebarOverlay').classList.toggle('active');
         }
 
-        // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, Ctrl+U
-        if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
-            e.preventDefault();
-            return false;
+        function showSection(sectionId) {
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            if (sectionId === 'homeSection') document.getElementById('navHome').classList.add('active');
+            if (sectionId === 'aboutSection') document.getElementById('navAbout').classList.add('active');
+            if (sectionId === 'downloadSection') document.getElementById('navDownload').classList.add('active');
+
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('sidebarOverlay').classList.remove('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Ctrl+U (عرض سورس الصفحة)
-        if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
-            e.preventDefault();
-            return false;
-        }
-    });
-
-    // =========================================================================
-    // 2. إدارة الواجهات والنافذة المنبثقة
-    // =========================================================================
-    let currentSelectedApp = "";
-
-    function toggleSidebar() {
-        document.getElementById('sidebar').classList.toggle('active');
-        document.getElementById('sidebarOverlay').classList.toggle('active');
-    }
-
-    function showSection(sectionId) {
-        document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
-        document.getElementById(sectionId).classList.add('active');
-
-        document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-        if (sectionId === 'homeSection') document.getElementById('navHome').classList.add('active');
-        if (sectionId === 'aboutSection') document.getElementById('navAbout').classList.add('active');
-        if (sectionId === 'downloadSection') document.getElementById('navDownload').classList.add('active');
-
-        document.getElementById('sidebar').classList.remove('active');
-        document.getElementById('sidebarOverlay').classList.remove('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function openCodeModal(appName) {
-        currentSelectedApp = appName;
-        document.getElementById('modalAppName').innerText = "تحميل " + appName;
-        document.getElementById('codeModal').classList.add('active');
-        document.getElementById('certCodeInput').value = "";
-        document.getElementById('alertMsg').className = "alert-msg";
-        document.getElementById('alertMsg').innerText = "";
-    }
-
-    function closeCodeModal() {
-        document.getElementById('codeModal').classList.remove('active');
-    }
-
-    // =========================================================================
-    // 3. التحقق من الكود عبر خادم Cloudflare Worker الخاص بك
-    // =========================================================================
-    async function validateAndDownload() {
-        const inputVal = document.getElementById('certCodeInput').value.trim().toUpperCase();
-        const alertMsg = document.getElementById('alertMsg');
-
-        if (!inputVal) {
-            alertMsg.innerText = "يرجى إدخال الكود أولاً!";
-            alertMsg.className = "alert-msg error";
-            return;
+        function openCodeModal(appName) {
+            currentSelectedApp = appName;
+            document.getElementById('modalAppName').innerText = "تحميل " + appName;
+            document.getElementById('codeModal').classList.add('active');
+            document.getElementById('certCodeInput').value = "";
+            document.getElementById('alertMsg').className = "alert-msg";
+            document.getElementById('alertMsg').innerText = "";
         }
 
-        alertMsg.innerText = "جاري التحقق من الكود...";
-        alertMsg.className = "alert-msg";
+        function closeCodeModal() {
+            document.getElementById('codeModal').classList.remove('active');
+        }
 
-        try {
-            // رابط خادم Cloudflare الخاص بك
-            const WORKER_URL = "https://ufuq.followorfollow1.workers.dev/";
+        // =========================================================================
+        // 3. الاتصال برابط Cloudflare Worker لفحص الكود دون كشفه
+        // =========================================================================
+        async function validateAndDownload() {
+            const inputVal = document.getElementById('certCodeInput').value.trim().toUpperCase();
+            const alertMsg = document.getElementById('alertMsg');
 
-            const response = await fetch(WORKER_URL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    app: currentSelectedApp,
-                    code: inputVal
-                })
-            });
+            if (!inputVal) {
+                alertMsg.innerText = "يرجى إدخال الكود أولاً!";
+                alertMsg.className = "alert-msg error";
+                return;
+            }
 
-            const data = await response.json();
+            alertMsg.innerText = "جاري التحقق من الكود...";
+            alertMsg.className = "alert-msg";
 
-            if (data.success) {
-                alertMsg.innerText = "تم التحقق بنجاح! جاري التوجيه للتحميل...";
-                alertMsg.className = "alert-msg success";
+            try {
+                // رابط Cloudflare Worker الخاص بك
+                const WORKER_URL = "https://ufuq.followorfollow1.workers.dev/";
 
-                setTimeout(() => {
-                    window.location.href = data.link;
-                    closeCodeModal();
-                }, 1000);
-            } else {
-                alertMsg.innerText = "عذراً، كود الشهادة غير صحيح أو غير مفعّل!";
+                const response = await fetch(WORKER_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        app: currentSelectedApp,
+                        code: inputVal
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    alertMsg.innerText = "تم التحقق بنجاح! جاري التوجيه للتحميل...";
+                    alertMsg.className = "alert-msg success";
+
+                    setTimeout(() => {
+                        window.location.href = data.link;
+                        closeCodeModal();
+                    }, 1000);
+                } else {
+                    alertMsg.innerText = "عذراً، كود الشهادة غير صحيح أو غير مفعّل!";
+                    alertMsg.className = "alert-msg error";
+                }
+            } catch (error) {
+                alertMsg.innerText = "حدث خطأ أثناء الاتصال بخادم التحقق!";
                 alertMsg.className = "alert-msg error";
             }
-        } catch (error) {
-            alertMsg.innerText = "حدث خطأ أثناء الاتصال بخادم التحقق!";
-            alertMsg.className = "alert-msg error";
         }
-    }
-</script>
+    </script>
+</body>
+</html>
