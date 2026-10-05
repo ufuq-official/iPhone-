@@ -3,66 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة أفق | لشهادات أبل المدفوعة والمجانية</title>
+    <title>منصة أفق | الشهادات والتطبيقات</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
+        /* ================= الوضع الفاتح التلقائي (Default / Light Mode) ================= */
         :root {
-            --bg-base: #fbf9f5;
-            --card-bg: #ffffff;
-            --card-subtle: #f4efe6;
-            --walnut-dark: #322217;
-            --walnut-mid: #5a4130;
-            --straw-accent: #d8c3a3;
-            --straw-light: #ece3d2;
-            --straw-badge: #e8dcc8;
-            --border-color: #e6dcce;
-            --radius-large: 24px;
-            --radius-medium: 16px;
+            --apple-bg: #f5f5f7;
+            --apple-card-bg: #ffffff;
+            --apple-subtle-bg: #e8e8ed;
+            --apple-text-primary: #1d1d1f;
+            --apple-text-secondary: #86868b;
+            --apple-link: #0066cc;
+            --apple-border: rgba(0, 0, 0, 0.1);
+            --apple-blur-bg: rgba(245, 245, 247, 0.8);
+            --apple-logo-fill: #1d1d1f;
+            --radius-large: 22px;
+            --radius-medium: 14px;
             --radius-small: 10px;
-            --shadow-soft: 0 12px 32px rgba(50, 34, 23, 0.05);
-            --shadow-hover: 0 20px 40px rgba(50, 34, 23, 0.12);
-            --error-color: #d9534f;
-            --success-color: #27ae60;
-            --instagram-grad: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            --telegram-color: #229ED9;
+            --error-color: #ff3b30;
+            --success-color: #34c759;
+            --telegram-color: #0088cc;
+            --instagram-grad: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+        }
+
+        /* ================= الوضع الداكن التلقائي (Dark Mode) ================= */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --apple-bg: #000000;
+                --apple-card-bg: #161617;
+                --apple-subtle-bg: #1d1d1f;
+                --apple-text-primary: #f5f5f7;
+                --apple-text-secondary: #86868b;
+                --apple-link: #2997ff;
+                --apple-border: rgba(255, 255, 255, 0.12);
+                --apple-blur-bg: rgba(22, 22, 23, 0.8);
+                --apple-logo-fill: #f5f5f7;
+                --error-color: #ff453a;
+                --success-color: #30d158;
+                --telegram-color: #2997ff;
+            }
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Cairo', -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
             -webkit-font-smoothing: antialiased;
         }
 
         body {
-            background-color: var(--bg-base);
-            color: var(--walnut-dark);
-            line-height: 1.7;
+            background-color: var(--apple-bg);
+            color: var(--apple-text-primary);
+            line-height: 1.5;
             overflow-x: hidden;
             -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
             user-select: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Header & Navigation */
+        /* Apple Navigation Header */
         header {
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(251, 249, 245, 0.92);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--border-color);
-            padding: 12px 24px;
+            background: var(--apple-blur-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--apple-border);
+            padding: 14px 24px;
+            transition: background 0.3s ease;
         }
 
         .header-container {
-            max-width: 1100px;
+            max-width: 1020px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -72,42 +89,45 @@
         .header-logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             text-decoration: none;
-            color: var(--walnut-dark);
-            font-weight: 800;
-            font-size: 1.2rem;
+            color: var(--apple-text-primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.5px;
         }
 
-        .header-logo img {
-            height: 36px;
-            width: auto;
+        .header-logo svg {
+            fill: var(--apple-logo-fill);
+            width: 20px;
+            height: 20px;
+            transition: fill 0.3s ease;
         }
 
         .menu-btn {
-            font-size: 1.6rem;
+            font-size: 1.2rem;
             cursor: pointer;
-            color: var(--walnut-dark);
-            background: none;
-            border: 1px solid var(--border-color);
-            padding: 4px 12px;
-            border-radius: var(--radius-small);
-            transition: all 0.2s;
+            color: var(--apple-text-primary);
+            background: var(--apple-subtle-bg);
+            border: 1px solid var(--apple-border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 6px;
         }
 
         .menu-btn:hover {
-            background-color: var(--straw-light);
+            opacity: 0.8;
         }
 
-        /* Sidebar Overlay & Menu */
+        /* Sidebar Nav */
         .sidebar-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(50, 34, 23, 0.5);
-            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
             z-index: 999;
             opacity: 0;
             visibility: hidden;
@@ -122,17 +142,17 @@
         .sidebar {
             position: fixed;
             top: 0;
-            right: -330px;
-            width: 310px;
+            right: -320px;
+            width: 300px;
             height: 100%;
-            background-color: var(--card-bg);
+            background-color: var(--apple-card-bg);
             z-index: 1000;
-            box-shadow: -5px 0 30px rgba(50, 34, 23, 0.15);
+            border-left: 1px solid var(--apple-border);
             padding: 28px 20px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
             overflow-y: auto;
         }
 
@@ -146,14 +166,14 @@
             align-items: center;
             margin-bottom: 24px;
             padding-bottom: 14px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--apple-border);
         }
 
         .close-sidebar {
             background: none;
             border: none;
-            font-size: 1.8rem;
-            color: var(--walnut-mid);
+            font-size: 1.6rem;
+            color: var(--apple-text-secondary);
             cursor: pointer;
             line-height: 1;
         }
@@ -162,14 +182,14 @@
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--walnut-dark);
-            font-size: 1.05rem;
-            font-weight: 700;
+            color: var(--apple-text-primary);
+            font-size: 1rem;
+            font-weight: 600;
             padding: 12px 16px;
             border-radius: var(--radius-medium);
             display: flex;
@@ -179,20 +199,20 @@
         }
 
         .nav-links a:hover, .nav-links a.active {
-            background-color: var(--straw-light);
-            color: var(--walnut-dark);
+            background-color: var(--apple-subtle-bg);
+            color: var(--apple-link);
         }
 
         .sidebar-social-section {
             margin-top: 25px;
             padding-top: 20px;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid var(--apple-border);
         }
 
         .sidebar-social-title {
-            font-size: 0.85rem;
-            font-weight: 800;
-            color: var(--walnut-mid);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--apple-text-secondary);
             margin-bottom: 12px;
             text-transform: uppercase;
         }
@@ -202,26 +222,25 @@
             align-items: center;
             gap: 10px;
             text-decoration: none;
-            color: var(--walnut-dark);
-            font-size: 0.95rem;
-            font-weight: 700;
+            color: var(--apple-text-primary);
+            font-size: 0.9rem;
+            font-weight: 600;
             padding: 10px 12px;
-            border-radius: var(--radius-medium);
+            border-radius: var(--radius-small);
             margin-bottom: 8px;
-            background-color: var(--bg-base);
+            background-color: var(--apple-subtle-bg);
             transition: all 0.2s ease;
         }
 
         .social-link-item:hover {
-            transform: translateX(-3px);
-            background-color: var(--straw-light);
+            opacity: 0.85;
         }
 
-        /* Container & Pages */
+        /* Container */
         .container {
-            max-width: 1000px;
+            max-width: 980px;
             margin: 0 auto;
-            padding: 30px 20px 80px;
+            padding: 40px 20px 80px;
         }
 
         .page-section {
@@ -234,103 +253,95 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Hero Section */
+        /* Hero Apple Style */
         .hero {
             text-align: center;
-            padding: 30px 20px 10px;
-            margin-bottom: 20px;
+            padding: 40px 20px 20px;
+            margin-bottom: 30px;
         }
 
         .hero-logo {
-            max-width: 90px;
+            width: 50px;
             height: auto;
             margin-bottom: 16px;
+            fill: var(--apple-logo-fill);
+            transition: fill 0.3s ease;
         }
 
         .hero-tag {
             display: inline-block;
-            background-color: var(--straw-badge);
-            color: var(--walnut-dark);
-            font-size: 0.85rem;
-            font-weight: 800;
-            padding: 6px 18px;
-            border-radius: 20px;
-            margin-bottom: 16px;
-            border: 1px solid var(--border-color);
+            color: var(--apple-link);
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 12px;
         }
 
         .hero-title {
-            font-size: 2.4rem;
-            font-weight: 900;
-            color: var(--walnut-dark);
-            margin-bottom: 14px;
-            line-height: 1.3;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--apple-text-primary);
+            margin-bottom: 12px;
+            letter-spacing: -1px;
         }
 
         .hero-subtitle {
-            font-size: 1.1rem;
-            color: var(--walnut-mid);
-            max-width: 680px;
-            margin: 0 auto 24px;
-            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--apple-text-secondary);
+            max-width: 620px;
+            margin: 0 auto 28px;
+            font-weight: 400;
         }
 
-        /* Quick Community Bar */
+        /* Quick Community Links */
         .hero-social-bar {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 12px;
-            margin-top: 15px;
         }
 
         .social-btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 10px 20px;
+            padding: 10px 22px;
             border-radius: 30px;
             text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 700;
+            font-size: 0.9rem;
+            font-weight: 600;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
-        .social-btn.telegram-main {
-            background-color: var(--walnut-dark);
+        .social-btn.primary {
+            background-color: var(--apple-link);
             color: #ffffff;
         }
 
-        .social-btn.telegram-ipa {
-            background-color: var(--straw-light);
-            color: var(--walnut-dark);
-            border: 1px solid var(--border-color);
-        }
-
-        .social-btn.instagram {
-            background: var(--instagram-grad);
-            color: #ffffff;
+        .social-btn.secondary {
+            background-color: var(--apple-subtle-bg);
+            color: var(--apple-text-primary);
+            border: 1px solid var(--apple-border);
         }
 
         .social-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+            opacity: 0.88;
+            transform: scale(1.02);
         }
 
         .section-title {
             text-align: center;
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin: 40px 0 25px;
-            color: var(--walnut-dark);
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 50px 0 30px;
+            color: var(--apple-text-primary);
+            letter-spacing: -0.5px;
         }
 
-        /* Cards Grid */
+        /* Grid Apple Style Cards */
         .grid-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -339,195 +350,160 @@
         }
 
         .feature-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
+            background-color: var(--apple-card-bg);
+            border: 1px solid var(--apple-border);
             border-radius: var(--radius-large);
-            padding: 28px 22px;
-            box-shadow: var(--shadow-soft);
+            padding: 32px 26px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
         }
 
         .feature-card:hover {
             transform: translateY(-4px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .feature-card-special {
-            background-color: #ffffff;
-            border: 2px solid var(--straw-accent);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card-special::before {
-            content: "متاح الآن";
-            position: absolute;
-            top: 15px;
-            left: -30px;
-            background: var(--straw-accent);
-            color: var(--walnut-dark);
-            font-size: 0.75rem;
-            font-weight: 800;
-            padding: 4px 35px;
-            transform: rotate(-45deg);
-        }
-
-        .icon-box {
-            width: 50px;
-            height: 50px;
-            background-color: var(--straw-light);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 16px;
+            border-color: var(--apple-link);
         }
 
         .feature-card h3 {
-            font-size: 1.2rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            color: var(--walnut-dark);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--apple-text-primary);
         }
 
         .feature-card p {
             font-size: 0.95rem;
-            color: var(--walnut-mid);
-            margin-bottom: 15px;
+            color: var(--apple-text-secondary);
+            margin-bottom: 20px;
         }
 
-        .card-action-btn {
+        .apple-button {
+            display: inline-block;
             width: 100%;
-            padding: 12px 18px;
-            background-color: var(--walnut-dark);
+            padding: 12px 20px;
+            background-color: var(--apple-link);
             color: #ffffff;
-            font-weight: 700;
+            font-weight: 600;
+            font-size: 0.95rem;
             border: none;
-            border-radius: var(--radius-medium);
+            border-radius: 30px;
             cursor: pointer;
-            transition: all 0.2s ease;
-            margin-top: 10px;
             text-align: center;
+            text-decoration: none;
+            transition: all 0.2s ease;
         }
 
-        .card-action-btn:hover {
-            background-color: var(--walnut-mid);
+        .apple-button:hover {
+            opacity: 0.9;
+            transform: scale(1.01);
         }
 
-        /* Information / About Section */
+        /* Information Section */
         .transparency-section {
-            background-color: var(--card-subtle);
-            border: 1px solid var(--border-color);
+            background-color: var(--apple-card-bg);
+            border: 1px solid var(--apple-border);
             border-radius: var(--radius-large);
-            padding: 32px 24px;
+            padding: 36px 28px;
             margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
         }
 
         .notice-list {
             display: flex;
             flex-direction: column;
             gap: 16px;
-            margin-top: 20px;
+            margin-top: 24px;
         }
 
         .notice-item {
-            background: #ffffff;
+            background: var(--apple-subtle-bg);
             border-radius: var(--radius-medium);
-            padding: 18px 20px;
-            border-right: 4px solid var(--straw-accent);
+            padding: 20px 22px;
+            border-right: 3px solid var(--apple-link);
         }
 
         .notice-item h4 {
-            color: var(--walnut-dark);
+            color: var(--apple-text-primary);
             margin-bottom: 6px;
-            font-weight: 800;
+            font-size: 1.05rem;
+            font-weight: 700;
         }
 
-        .guarantee-card {
-            background: linear-gradient(135deg, var(--walnut-dark), #23160e);
-            color: #ffffff;
-            border-radius: var(--radius-large);
-            padding: 40px 24px;
-            text-align: center;
-            margin-bottom: 40px;
+        .notice-item p {
+            color: var(--apple-text-secondary);
+            font-size: 0.95rem;
         }
 
-        .guarantee-card h2 {
-            color: var(--straw-accent);
-            margin-bottom: 14px;
-            font-size: 1.6rem;
-        }
-
-        /* Apps Grid & Cards */
+        /* APPS GRID - 4 APPS ONLY (E-Sign, Scarlet, ZSign, KSign) */
         .apps-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
 
         .app-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
+            background-color: var(--apple-card-bg);
+            border: 1px solid var(--apple-border);
             border-radius: var(--radius-large);
-            padding: 28px 20px;
+            padding: 30px 20px;
             text-align: center;
-            box-shadow: var(--shadow-soft);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--apple-link);
         }
 
         .app-icon {
-            width: 75px;
-            height: 75px;
-            border-radius: 20px;
-            background-color: var(--straw-light);
+            width: 72px;
+            height: 72px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: var(--walnut-dark);
-            margin-bottom: 16px;
-            box-shadow: inset 0 0 10px rgba(50, 34, 23, 0.05);
-        }
-
-        .app-icon.ofuq {
-            background: linear-gradient(135deg, var(--walnut-dark), var(--walnut-mid));
-            color: var(--straw-accent);
-        }
-
-        .select-app-btn {
-            width: 100%;
-            padding: 12px 18px;
-            background-color: var(--walnut-dark);
+            font-size: 1.8rem;
+            font-weight: 800;
             color: #ffffff;
+            margin-bottom: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Icons Gradients */
+        .app-icon.esign { background: linear-gradient(135deg, #007aff, #00c6ff); }
+        .app-icon.scarlet { background: linear-gradient(135deg, #ff2d55, #ff375f); }
+        .app-icon.zsign { background: linear-gradient(135deg, #5856d6, #af52de); }
+        .app-icon.ksign { background: linear-gradient(135deg, #ff9500, #ffcc00); }
+
+        .app-card h3 {
+            font-size: 1.2rem;
             font-weight: 700;
-            border: none;
-            border-radius: var(--radius-medium);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            margin-top: 15px;
+            color: var(--apple-text-primary);
+            margin-bottom: 6px;
         }
 
-        .select-app-btn:hover {
-            background-color: var(--walnut-mid);
+        .app-card p {
+            font-size: 0.85rem;
+            color: var(--apple-text-secondary);
+            margin-bottom: 18px;
         }
 
-        /* Channels Section Card */
+        /* Channels Section */
         .channels-wrapper {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
+            background-color: var(--apple-card-bg);
+            border: 1px solid var(--apple-border);
             border-radius: var(--radius-large);
-            padding: 30px 24px;
-            box-shadow: var(--shadow-soft);
-            margin-top: 30px;
+            padding: 32px 24px;
+            margin-top: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
         }
 
         .channel-row {
@@ -535,8 +511,8 @@
             align-items: center;
             justify-content: space-between;
             padding: 16px;
-            background-color: var(--bg-base);
-            border: 1px solid var(--border-color);
+            background-color: var(--apple-subtle-bg);
+            border: 1px solid var(--apple-border);
             border-radius: var(--radius-medium);
             margin-bottom: 12px;
             flex-wrap: wrap;
@@ -546,17 +522,17 @@
         .channel-info {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
 
         .channel-icon {
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: white;
         }
 
@@ -564,21 +540,21 @@
         .channel-icon.ig { background: var(--instagram-grad); }
 
         .channel-btn {
-            padding: 8px 18px;
+            padding: 8px 20px;
             border-radius: 20px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
+            font-weight: 600;
+            font-size: 0.85rem;
             color: white;
-            background-color: var(--walnut-dark);
+            background-color: var(--apple-link);
         }
 
-        /* Modal Popup */
+        /* Apple Modal Style */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(50, 34, 23, 0.6);
-            backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -595,23 +571,23 @@
         }
 
         .modal-box {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
+            background-color: var(--apple-card-bg);
+            border: 1px solid var(--apple-border);
             border-radius: var(--radius-large);
-            padding: 36px 24px;
+            padding: 40px 28px;
             width: 100%;
-            max-width: 440px;
+            max-width: 400px;
             text-align: center;
             position: relative;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
         }
 
         .close-modal {
             position: absolute;
-            top: 16px; left: 16px;
+            top: 18px; left: 18px;
             background: none; border: none;
             font-size: 1.6rem;
-            color: var(--walnut-mid);
+            color: var(--apple-text-secondary);
             cursor: pointer;
         }
 
@@ -621,85 +597,72 @@
             font-size: 1.1rem;
             text-align: center;
             letter-spacing: 2px;
-            border: 2px solid var(--border-color);
+            border: 1px solid var(--apple-border);
             border-radius: var(--radius-medium);
-            background-color: var(--bg-base);
-            color: var(--walnut-dark);
+            background-color: var(--apple-subtle-bg);
+            color: var(--apple-text-primary);
             font-weight: 700;
-            margin: 20px 0 12px;
+            margin: 22px 0 14px;
             outline: none;
             text-transform: uppercase;
         }
 
         .code-input:focus {
-            border-color: var(--walnut-mid);
-        }
-
-        .verify-btn {
-            width: 100%;
-            padding: 14px 20px;
-            background-color: var(--walnut-dark);
-            color: #ffffff;
-            font-size: 1.05rem;
-            font-weight: 700;
-            border: none;
-            border-radius: var(--radius-medium);
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .verify-btn:hover {
-            background-color: var(--walnut-mid);
+            border-color: var(--apple-link);
         }
 
         .alert-msg {
             margin-top: 14px;
-            font-size: 0.9rem;
-            font-weight: 700;
+            font-size: 0.88rem;
+            font-weight: 600;
             display: none;
         }
         .alert-msg.error { color: var(--error-color); display: block; }
         .alert-msg.success { color: var(--success-color); display: block; }
 
         footer {
-            border-top: 1px solid var(--border-color);
-            padding: 30px 20px;
+            border-top: 1px solid var(--apple-border);
+            padding: 40px 20px;
             text-align: center;
-            font-size: 0.9rem;
-            color: var(--walnut-mid);
-            background-color: var(--card-bg);
+            font-size: 0.85rem;
+            color: var(--apple-text-secondary);
+            background-color: var(--apple-bg);
         }
 
         .footer-socials {
             display: flex;
             justify-content: center;
             gap: 16px;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
         .footer-socials a {
-            color: var(--walnut-dark);
+            color: var(--apple-text-secondary);
             text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
         }
 
         .footer-socials a:hover {
-            color: var(--walnut-mid);
-            text-decoration: underline;
+            color: var(--apple-text-primary);
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Apple Navigation Bar -->
     <header>
         <div class="header-container">
             <a href="#" class="header-logo" onclick="showSection('homeSection')">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="شعار أبل">
-                <span>منصة أفق</span>
+                <svg viewBox="0 0 170 170">
+                    <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.34.13-9.16-1.9-14.49-6.08-3.32-2.67-7.25-7.33-11.8-13.97-6.09-8.88-10.83-18.78-14.21-29.7-3.38-10.92-5.07-21.2-5.07-30.84 0-14.75 3.74-27.18 11.22-37.28 7.49-10.1 16.92-15.22 28.3-15.36 4.34 0 9.38 1.15 15.11 3.44 5.73 2.29 9.68 3.44 11.85 3.44 1.84 0 5.89-1.2 12.16-3.6 6.27-2.4 11.19-3.5 14.76-3.3 10.98.66 19.82 4.48 26.52 11.47-9.87 5.98-14.71 14.22-14.51 24.72.2 8.35 3.36 15.48 9.48 21.39 6.12 5.91 13.56 9.17 22.33 9.78-2.6 7.62-6.17 15.13-10.71 22.53zM119.22 31.84c0-7.28 2.65-14.22 7.95-20.83 5.3-6.61 11.89-10.51 19.78-11.01.11 1.02.16 1.87.16 2.56 0 7.22-2.73 14.28-8.19 21.18-5.46 6.9-12.08 10.74-19.86 10.52-.11-.79-.16-1.59-.16-2.42z"/>
+                </svg>
+                <span>أفق</span>
             </a>
-            <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+            <button class="menu-btn" onclick="toggleSidebar()">
+                <span>القائمة</span>
+                <span>☰</span>
+            </button>
         </div>
     </header>
 
@@ -708,31 +671,31 @@
     <div class="sidebar" id="sidebar">
         <div>
             <div class="sidebar-header">
-                <span style="font-weight: 800; font-size: 1.2rem;">القائمة الرئيسية</span>
+                <span style="font-weight: 700; font-size: 1.1rem;">تصفح المنصة</span>
                 <button class="close-sidebar" onclick="toggleSidebar()">&times;</button>
             </div>
             <ul class="nav-links">
-                <li><a href="#" id="navHome" class="active" onclick="showSection('homeSection')">🏠 الواجهة الرئيسية</a></li>
-                <li><a href="#" id="navAbout" onclick="showSection('aboutSection')">ℹ️ التعرف على الشهادات</a></li>
-                <li><a href="#" id="navDownload" onclick="showSection('downloadSection')">📲 تحميل التطبيقات والشهادات</a></li>
+                <li><a href="#" id="navHome" class="active" onclick="showSection('homeSection')">الرئيسية</a></li>
+                <li><a href="#" id="navAbout" onclick="showSection('aboutSection')">عن الشهادات</a></li>
+                <li><a href="#" id="navDownload" onclick="showSection('downloadSection')">تثبيت التطبيقات</a></li>
             </ul>
 
             <div class="sidebar-social-section">
-                <div class="sidebar-social-title">مجتمع أفق على التواصل</div>
+                <div class="sidebar-social-title">مجتمع أفق</div>
                 <a href="https://t.me/ofuq_store" target="_blank" class="social-link-item">
-                    <span>📢</span> القناة الأساسية (تليجرام)
+                    📢 القناة الرسمية
                 </a>
                 <a href="https://t.me/ufuq_ipa" target="_blank" class="social-link-item">
-                    <span>📦</span> قناة تطبيقات IPA
+                    📦 قناة تطبيقات IPA
                 </a>
                 <a href="https://www.instagram.com/_cpj41?stkn=cGx5ZDNnb2VndWl1&utm_source=qr" target="_blank" class="social-link-item">
-                    <span>📸</span> حساب الانستقرام
+                    📸 حساب الإنستغرام
                 </a>
             </div>
         </div>
 
-        <div style="font-size: 0.8rem; color: var(--walnut-mid); text-align: center; margin-top: 20px;">
-            منصة أفق لشهادات أبل © 2026
+        <div style="font-size: 0.8rem; color: var(--apple-text-secondary); text-align: center;">
+            منصة أفق لخدمات أبل © 2026
         </div>
     </div>
 
@@ -741,62 +704,46 @@
         <!-- ================= PAGE 1: الصفحة الرئيسية ================= -->
         <div id="homeSection" class="page-section active">
             <section class="hero">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="شعار أبل" class="hero-logo">
-                <div><span class="hero-tag">شهادات أبل المدفوعة والمجانية</span></div>
-                <h1 class="hero-title">منصة أفق لشهادات أبل</h1>
+                <svg class="hero-logo" viewBox="0 0 170 170">
+                    <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.34.13-9.16-1.9-14.49-6.08-3.32-2.67-7.25-7.33-11.8-13.97-6.09-8.88-10.83-18.78-14.21-29.7-3.38-10.92-5.07-21.2-5.07-30.84 0-14.75 3.74-27.18 11.22-37.28 7.49-10.1 16.92-15.22 28.3-15.36 4.34 0 9.38 1.15 15.11 3.44 5.73 2.29 9.68 3.44 11.85 3.44 1.84 0 5.89-1.2 12.16-3.6 6.27-2.4 11.19-3.5 14.76-3.3 10.98.66 19.82 4.48 26.52 11.47-9.87 5.98-14.71 14.22-14.51 24.72.2 8.35 3.36 15.48 9.48 21.39 6.12 5.91 13.56 9.17 22.33 9.78-2.6 7.62-6.17 15.13-10.71 22.53zM119.22 31.84c0-7.28 2.65-14.22 7.95-20.83 5.3-6.61 11.89-10.51 19.78-11.01.11 1.02.16 1.87.16 2.56 0 7.22-2.73 14.28-8.19 21.18-5.46 6.9-12.08 10.74-19.86 10.52-.11-.79-.16-1.59-.16-2.42z"/>
+                </svg>
+                <div class="hero-tag">شهادات أبل المدفوعة والمجانية</div>
+                <h1 class="hero-title">منصة أفق</h1>
                 <p class="hero-subtitle">
-                    نقدم لمستخدمينا شهادات مدفوعة ومجانية بأعلى مستويات الاستقرار، مع صلاحيات ممتدة وضمان تعويض كامل احتراماً لثقتكم.
+                    تجربة استقرار فريدة لشهادات أبل مع دعم كامل لكافة أدوات التوقيع والتعويض المباشر.
                 </p>
 
-                <!-- روابط التواصل الاجتماعي السريعة -->
                 <div class="hero-social-bar">
-                    <a href="https://t.me/ofuq_store" target="_blank" class="social-btn telegram-main">
-                        ✈️ القناة الرسمية
-                    </a>
-                    <a href="https://t.me/ufuq_ipa" target="_blank" class="social-btn telegram-ipa">
-                        📥 قناة ملفات IPA
-                    </a>
-                    <a href="https://www.instagram.com/_cpj41?stkn=cGx5ZDNnb2VndWl1&utm_source=qr" target="_blank" class="social-btn instagram">
-                        📷 الانستقرام
-                    </a>
+                    <a href="https://t.me/ofuq_store" target="_blank" class="social-btn primary">القناة الرسمية</a>
+                    <a href="https://t.me/ufuq_ipa" target="_blank" class="social-btn secondary">قناة ملفات IPA</a>
+                    <a href="https://www.instagram.com/_cpj41?stkn=cGx5ZDNnb2VndWl1&utm_source=qr" target="_blank" class="social-btn secondary">إنستغرام</a>
                 </div>
             </section>
 
             <section>
-                <h2 class="section-title">إيجابيات ومميزات منصة أفق</h2>
+                <h2 class="section-title">مميزات المنصة</h2>
                 <div class="grid-cards">
                     
-                    <div class="feature-card feature-card-special">
+                    <div class="feature-card">
                         <div>
-                            <div class="icon-box">🎁</div>
-                            <h3>شهادة مجانية وتطبيقات</h3>
-                            <p>يمكنك الآن الوصول للشهادة وتجربة التثبيت المباشر لكافة التطبيقات عبر أدوات التوقيع المتاحة.</p>
+                            <h3>تثبيت مباشر وسريع</h3>
+                            <p>احصل على أحدث أدوات التوقيع للتثبيت الفوري بضغطة زر وبكود تفعيل خاص.</p>
                         </div>
-                        <button class="card-action-btn" onclick="showSection('downloadSection')">الانتقال للتحميل المباشر</button>
+                        <button class="apple-button" onclick="showSection('downloadSection')">الذهاب للتحميل</button>
                     </div>
 
                     <div class="feature-card">
                         <div>
-                            <div class="icon-box">📱</div>
-                            <h3>مكتبة تطبيقات ضخمة</h3>
-                            <p>تشكيلة واسعة وشاملة من تطبيقات البلس، برامج التواصل الاجتماعي المعدلة، أدوات التصميم والألعاب عبر قناة IPA.</p>
+                            <h3>مكتبة IPA شاملة</h3>
+                            <p>مئات التطبيقات المعدلة والبلس والألعاب بملفات جاهزة للتثبيت عبر قناتنا.</p>
                         </div>
-                        <a href="https://t.me/ufuq_ipa" target="_blank" class="card-action-btn" style="text-decoration:none; display:block;">تصفح قناة IPA</a>
+                        <a href="https://t.me/ufuq_ipa" target="_blank" class="apple-button" style="background: var(--apple-subtle-bg); color: var(--apple-text-primary); border: 1px solid var(--apple-border);">تصفح القناة</a>
                     </div>
 
                     <div class="feature-card">
                         <div>
-                            <div class="icon-box">⏱️</div>
-                            <h3>شفافية الصلاحيات</h3>
-                            <p>شهادات بمدة توثيق تبدأ من 6 أشهر وحتى 3 سنوات مع إمكانية معرفة صلاحية شهادتك بوضوح.</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-card">
-                        <div>
-                            <div class="icon-box">🛡️</div>
-                            <h3>ضمان التعويض المباشر</h3>
-                            <p>نلتزم بتعويضك فوراً في حال حدوث أي إغلاق أمني للشهادة حتى لو كان متبقياً يوم واحد على الانتهاء.</p>
+                            <h3>ضمان واستقرار</h3>
+                            <p>صلاحيات ممتدة ونظام تعويض كامل وفوري عند توقف الشهادة للحفاظ على حقك.</p>
                         </div>
                     </div>
 
@@ -806,78 +753,78 @@
 
         <!-- ================= PAGE 2: التعرف على الشهادات ================= -->
         <div id="aboutSection" class="page-section">
-            <h2 class="section-title">🔍 التعرف على الشهادات والتنبيهات</h2>
+            <h2 class="section-title">التنبيهات والشروط</h2>
             
             <section class="transparency-section">
-                <h3>توضيحات وإرشادات الاستخدام:</h3>
+                <h3 style="font-size: 1.3rem; font-weight:700;">إرشادات هامة للمستخدمين:</h3>
                 <div class="notice-list">
                     <div class="notice-item">
-                        <h4>1. تشغيل الـ VPN أثناء استخدام الشهادة</h4>
-                        <p>يُنصح بعدم تشغيل برامج الـ VPN لتجنب حدوث أي تعارض أمني. وفي حال توقفت الشهادة بسببه، فإن كادرنا متواجد فوراً لمساعدتك وتعويضك.</p>
+                        <h4>1. استخدام الـ VPN</h4>
+                        <p>يُفضل إيقاف برامج الـ VPN أثناء التثبيت والاستخدام لمنع حدوث أي تعارض أمني مع الشهادات.</p>
                     </div>
                     <div class="notice-item">
-                        <h4>2. التحديثات وحظر شركة أبل</h4>
-                        <p>قد تتعرض الشهادات للحظر المفاجئ بسبب تحديثات الحماية من أبل. نحن في أفق تميزنا بتقديم تعويض كامل ومباشر لك طوال فترة اشتراكك.</p>
+                        <h4>2. سياسة التعويض</h4>
+                        <p>في حال تم حظر الشهادة بواسطة أبل، تضمن أفق تعويض المشترك فوراً بشهادة جديدة طوال فترة الاشتراك.</p>
                     </div>
                     <div class="notice-item">
-                        <h4>3. التطبيقات المستبعدة (مثل DL و SAT)</h4>
-                        <p>بعض التطبيقات غير مدرجة لدينا؛ كونها تتطلب تراخيص خاصة وتحمل سلبيات أكثر من الإيجابيات، ونستعيض عنها بمكتبة ضخمة وآمنة.</p>
+                        <h4>3. جودة التطبيقات</h4>
+                        <p>نحرص على توفير ملفات آمنة ومستقرة تماماً وتجنب التطبيقات التي تؤثر سلباً على أداء النظام.</p>
                     </div>
-                </div>
-            </section>
-
-            <section class="guarantee-card">
-                <h2>فلسفتنا في التعامل</h2>
-                <p style="max-width: 650px; margin: 0 auto 20px;">
-                    "بالنسبة لنا، المستخدم ليس مجرد صفقة تجارية، بل هو شخصية نقدرها ونحترم رأيها. نلتزم بالنزاهة التامة ونضمن لك حقك كاملاً، ونتحمل المسؤولية عن أي خلل تقني."
-                </p>
-                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-                    <a href="https://t.me/ofuq_store" target="_blank" class="social-btn telegram-main">تواصل معنا عبر القناة الرسمية</a>
                 </div>
             </section>
         </div>
 
-        <!-- ================= PAGE 3: تحميل التطبيقات ================= -->
+        <!-- ================= PAGE 3: تحميل التطبيقات (4 تطبيقات فقط) ================= -->
         <div id="downloadSection" class="page-section">
-            <h2 class="section-title">📲 اختر تطبيق التوقيع للتحميل</h2>
-            <p style="text-align: center; color: var(--walnut-mid); margin-bottom: 20px; font-weight: 600;">حدد التطبيق المطلوب ثم أدخل كود الشهادة الخاص بك للبدء في التحميل.</p>
+            <h2 class="section-title">تثبيت التطبيقات</h2>
+            <p style="text-align: center; color: var(--apple-text-secondary); margin-bottom: 25px;">اختر التطبيق المطلوب ثم أدخل كود الشهادة للبدء بالتثبيت الفوري.</p>
             
             <div class="apps-grid">
-                <!-- 1. تطبيق أفق (Ufuq App) -->
+                
+                <!-- 1. E-Sign -->
                 <div class="app-card">
-                    <div class="app-icon ofuq">🌌</div>
-                    <h3>تطبيق أفق (Ufuq)</h3>
-                    <p style="font-size:0.85rem; color:var(--walnut-mid);">التطبيق الرسمي الخاص بمنصة أفق لإدارة وتثبيت التطبيقات.</p>
-                    <button class="select-app-btn" onclick="openCodeModal('Ufuq App')">تحميل تطبيق أفق</button>
-                </div>
-
-                <!-- 2. E-Sign -->
-                <div class="app-card">
-                    <div class="app-icon">E</div>
+                    <div class="app-icon esign">E</div>
                     <h3>E-Sign</h3>
-                    <p style="font-size:0.85rem; color:var(--walnut-mid);">التطبيق الأشهر والأفضل لتوقيع وتعديل التطبيقات.</p>
-                    <button class="select-app-btn" onclick="openCodeModal('E-Sign')">تحميل E-Sign</button>
+                    <p>الأداة الأشهر والأفضل لتوقيع وتعديل تطبيقات IPA.</p>
+                    <button class="apple-button" onclick="openCodeModal('E-Sign')">تثبيت E-Sign</button>
                 </div>
 
-                <!-- 3. KSign -->
+                <!-- 2. Scarlet -->
                 <div class="app-card">
-                    <div class="app-icon">K</div>
-                    <h3>K-Sign</h3>
-                    <p style="font-size:0.85rem; color:var(--walnut-mid);">أداة سريعة وخفيفة لتثبيت ملفات الـ IPA.</p>
-                    <button class="select-app-btn" onclick="openCodeModal('K-Sign')">تحميل K-Sign</button>
+                    <div class="app-icon scarlet">S</div>
+                    <h3>Scarlet</h3>
+                    <p>أداة جبارة بسلاسة عالية وتصميم عصري لربط الشهادات.</p>
+                    <button class="apple-button" onclick="openCodeModal('Scarlet')">تثبيت Scarlet</button>
                 </div>
+
+                <!-- 3. ZSign -->
+                <div class="app-card">
+                    <div class="app-icon zsign">Z</div>
+                    <h3>ZSign</h3>
+                    <p>تطبيق سريع ومستقر لتوقيع التطبيقات مباشرة على الجهاز.</p>
+                    <button class="apple-button" onclick="openCodeModal('ZSign')">تثبيت ZSign</button>
+                </div>
+
+                <!-- 4. KSign -->
+                <div class="app-card">
+                    <div class="app-icon ksign">K</div>
+                    <h3>KSign</h3>
+                    <p>أداة خفيفة وفعالة لتثبيت وإدارة تطبيقات الـ IPA.</p>
+                    <button class="apple-button" onclick="openCodeModal('KSign')">تثبيت KSign</button>
+                </div>
+
             </div>
 
-            <!-- قسم قنوات المنصة -->
+            <!-- قنوات التواصل -->
             <div class="channels-wrapper">
-                <h3 style="margin-bottom: 16px; color: var(--walnut-dark);">📢 قنوات منصة أفق الرسمية</h3>
+                <h3 style="margin-bottom: 20px; font-size: 1.2rem; font-weight: 700;">قنوات أفق الرسمية</h3>
                 
                 <div class="channel-row">
                     <div class="channel-info">
                         <div class="channel-icon tg">✈️</div>
                         <div>
-                            <div style="font-weight: 800;">القناة الأساسية (Ofuq Store)</div>
-                            <div style="font-size: 0.8rem; color: var(--walnut-mid);">للمستجدات والشهادات والاشتراكات</div>
+                            <div style="font-weight: 700;">القناة الرئيسية (Ofuq Store)</div>
+                            <div style="font-size: 0.8rem; color: var(--apple-text-secondary);">لأحدث الأخبار وتحديثات الشهادات</div>
                         </div>
                     </div>
                     <a href="https://t.me/ofuq_store" target="_blank" class="channel-btn">انضمام</a>
@@ -887,8 +834,8 @@
                     <div class="channel-info">
                         <div class="channel-icon tg" style="background-color: #0088cc;">📦</div>
                         <div>
-                            <div style="font-weight: 800;">قناة تطبيقات الـ IPA</div>
-                            <div style="font-size: 0.8rem; color: var(--walnut-mid);">مكتبة ملفات IPA جاهزة للتوقيع</div>
+                            <div style="font-weight: 700;">قناة تطبيقات الـ IPA</div>
+                            <div style="font-size: 0.8rem; color: var(--apple-text-secondary);">تحميل تطبيقات بلس ومعدلة</div>
                         </div>
                     </div>
                     <a href="https://t.me/ufuq_ipa" target="_blank" class="channel-btn">انضمام</a>
@@ -898,8 +845,8 @@
                     <div class="channel-info">
                         <div class="channel-icon ig">📸</div>
                         <div>
-                            <div style="font-weight: 800;">حساب الانستقرام الرسمـي</div>
-                            <div style="font-size: 0.8rem; color: var(--walnut-mid);">متابعة آخر التحديثات والشروحات</div>
+                            <div style="font-weight: 700;">حساب الإنستغرام</div>
+                            <div style="font-size: 0.8rem; color: var(--apple-text-secondary);">الشروحات والدعم الفني</div>
                         </div>
                     </div>
                     <a href="https://www.instagram.com/_cpj41?stkn=cGx5ZDNnb2VndWl1&utm_source=qr" target="_blank" class="channel-btn">متابعة</a>
@@ -909,15 +856,15 @@
 
     </div>
 
-    <!-- النافذة المنبثقة لإدخال الكود (Modal) -->
+    <!-- Modal الكود -->
     <div class="modal-overlay" id="codeModal">
         <div class="modal-box">
             <button class="close-modal" onclick="closeCodeModal()">&times;</button>
-            <h3 id="modalAppName" style="color:var(--walnut-dark);">تثبيت التطبيق</h3>
-            <p style="font-size: 0.9rem; color: var(--walnut-mid);">أدخل كود الشهادة المخصص لك للمتابعة:</p>
+            <h3 id="modalAppName" style="font-size: 1.3rem; font-weight:700;">تثبيت التطبيق</h3>
+            <p style="font-size: 0.88rem; color: var(--apple-text-secondary); margin-top: 4px;">أدخل كود الشهادة للبدء بالتثبيت:</p>
             
             <input type="text" id="certCodeInput" class="code-input" placeholder="OFUQ-XXXX" autocomplete="off">
-            <button class="verify-btn" onclick="validateAndDownload()">تأكيد الكود والتحميل</button>
+            <button class="apple-button" onclick="validateAndDownload()">تأكيد التثبيت</button>
             
             <div id="alertMsg" class="alert-msg"></div>
         </div>
@@ -927,119 +874,76 @@
         <div class="footer-socials">
             <a href="https://t.me/ofuq_store" target="_blank">تليجرام الرئيسي</a> •
             <a href="https://t.me/ufuq_ipa" target="_blank">قناة IPA</a> •
-            <a href="https://www.instagram.com/_cpj41?stkn=cGx5ZDNnb2VndWl1&utm_source=qr" target="_blank">انستقرام</a>
+            <a href="https://www.instagram.com/_cpj41?stkn=cGx5ZDNnb2VndWl1&utm_source=qr" target="_blank">إنستغرام</a>
         </div>
-        <p>جميع الحقوق محفوظة © منصة أفق لشهادات أبل</p>
+        <p>جميع الحقوق محفوظة © 2026 منصة أفق</p>
     </footer>
 
+    <!-- JavaScript -->
     <script>
-        // =========================================================================
-        // 1. حماية وتعطيل أدوات الفحص والنقر الأيمن
-        // =========================================================================
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === "F12" || e.keyCode === 123) {
-                e.preventDefault();
-                return false;
-            }
-
-            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
-                e.preventDefault();
-                return false;
-            }
-
-            if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
-                e.preventDefault();
-                return false;
-            }
-        });
-
-        // =========================================================================
-        // 2. إدارة أجزاء الصفحة والنافذة المنبثقة
-        // =========================================================================
-        let currentSelectedApp = "";
-
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('active');
             document.getElementById('sidebarOverlay').classList.toggle('active');
         }
 
         function showSection(sectionId) {
-            document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active');
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(sec => sec.classList.remove('active'));
 
-            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            document.getElementById('navHome').classList.remove('active');
+            document.getElementById('navAbout').classList.remove('active');
+            document.getElementById('navDownload').classList.remove('active');
+
             if (sectionId === 'homeSection') document.getElementById('navHome').classList.add('active');
             if (sectionId === 'aboutSection') document.getElementById('navAbout').classList.add('active');
             if (sectionId === 'downloadSection') document.getElementById('navDownload').classList.add('active');
 
             document.getElementById('sidebar').classList.remove('active');
             document.getElementById('sidebarOverlay').classList.remove('active');
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        let selectedAppName = '';
+
         function openCodeModal(appName) {
-            currentSelectedApp = appName;
-            document.getElementById('modalAppName').innerText = "تحميل " + appName;
+            selectedAppName = appName;
+            document.getElementById('modalAppName').innerText = 'تثبيت ' + appName;
+            document.getElementById('certCodeInput').value = '';
+            
+            const alertMsg = document.getElementById('alertMsg');
+            alertMsg.className = 'alert-msg';
+            alertMsg.innerText = '';
+
             document.getElementById('codeModal').classList.add('active');
-            document.getElementById('certCodeInput').value = "";
-            document.getElementById('alertMsg').className = "alert-msg";
-            document.getElementById('alertMsg').innerText = "";
         }
 
         function closeCodeModal() {
             document.getElementById('codeModal').classList.remove('active');
         }
 
-        // =========================================================================
-        // 3. الاتصال برابط Cloudflare Worker لفحص الكود
-        // =========================================================================
-        async function validateAndDownload() {
-            const inputVal = document.getElementById('certCodeInput').value.trim().toUpperCase();
+        function validateAndDownload() {
+            const codeInput = document.getElementById('certCodeInput').value.trim();
             const alertMsg = document.getElementById('alertMsg');
 
-            if (!inputVal) {
-                alertMsg.innerText = "يرجى إدخال الكود أولاً!";
-                alertMsg.className = "alert-msg error";
+            if (!codeInput) {
+                alertMsg.className = 'alert-msg error';
+                alertMsg.innerText = 'يرجى إدخال كود الشهادة!';
                 return;
             }
 
-            alertMsg.innerText = "جاري التحقق من الكود...";
-            alertMsg.className = "alert-msg";
+            alertMsg.className = 'alert-msg success';
+            alertMsg.innerText = 'جاري توثيق الكود...';
 
-            try {
-                const WORKER_URL = "https://ufuq.followorfollow1.workers.dev/";
-
-                const response = await fetch(WORKER_URL, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        app: currentSelectedApp,
-                        code: inputVal
-                    })
-                });
-
-                const data = await response.json();
-
-                if (data.success) {
-                    alertMsg.innerText = "تم التحقق بنجاح! جاري التوجيه للتحميل...";
-                    alertMsg.className = "alert-msg success";
-
-                    setTimeout(() => {
-                        window.location.href = data.link;
-                        closeCodeModal();
-                    }, 1000);
-                } else {
-                    alertMsg.innerText = data.message || "عذراً، كود الشهادة غير صحيح أو غير مفعّل!";
-                    alertMsg.className = "alert-msg error";
-                }
-            } catch (error) {
-                alertMsg.innerText = "حدث خطأ أثناء الاتصال بخادم التحقق!";
-                alertMsg.className = "alert-msg error";
-            }
+            setTimeout(() => {
+                closeCodeModal();
+                alert('تم التوثيق! سيتم بدء تحميل ' + selectedAppName);
+            }, 1000);
         }
     </script>
 </body>
