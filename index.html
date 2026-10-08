@@ -6,10 +6,10 @@
     <title>منصة أفق | الشهادات والتطبيقات</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* ================= الوضع الفاتح التلقائي (Default / Light Mode) ================= */
+        /* ================= الوضع الفاتح التلقائي (Light Mode) ================= */
         :root {
             --apple-bg: #f5f5f7;
             --apple-card-bg: #ffffff;
@@ -51,7 +51,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Cairo', -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+            font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -75,7 +75,6 @@
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--apple-border);
             padding: 14px 24px;
-            transition: background 0.3s ease;
         }
 
         .header-container {
@@ -92,41 +91,35 @@
             gap: 10px;
             text-decoration: none;
             color: var(--apple-text-primary);
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: -0.5px;
+            font-weight: 800;
+            font-size: 1.2rem;
         }
 
         .header-logo svg {
             fill: var(--apple-logo-fill);
-            width: 20px;
-            height: 20px;
-            transition: fill 0.3s ease;
+            width: 22px;
+            height: 22px;
         }
 
         .menu-btn {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             cursor: pointer;
             color: var(--apple-text-primary);
             background: var(--apple-subtle-bg);
             border: 1px solid var(--apple-border);
-            padding: 6px 14px;
+            padding: 6px 16px;
             border-radius: 20px;
-            transition: all 0.2s ease;
             display: flex;
             align-items: center;
             gap: 6px;
-        }
-
-        .menu-btn:hover {
-            opacity: 0.8;
+            font-weight: 700;
         }
 
         /* Sidebar Nav */
         .sidebar-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(8px);
             z-index: 999;
             opacity: 0;
@@ -152,7 +145,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+            transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             overflow-y: auto;
         }
 
@@ -175,7 +168,6 @@
             font-size: 1.6rem;
             color: var(--apple-text-secondary);
             cursor: pointer;
-            line-height: 1;
         }
 
         .nav-links {
@@ -189,7 +181,7 @@
             text-decoration: none;
             color: var(--apple-text-primary);
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 700;
             padding: 12px 16px;
             border-radius: var(--radius-medium);
             display: flex;
@@ -211,7 +203,7 @@
 
         .sidebar-social-title {
             font-size: 0.8rem;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--apple-text-secondary);
             margin-bottom: 12px;
             text-transform: uppercase;
@@ -224,16 +216,11 @@
             text-decoration: none;
             color: var(--apple-text-primary);
             font-size: 0.9rem;
-            font-weight: 600;
+            font-weight: 700;
             padding: 10px 12px;
             border-radius: var(--radius-small);
             margin-bottom: 8px;
             background-color: var(--apple-subtle-bg);
-            transition: all 0.2s ease;
-        }
-
-        .social-link-item:hover {
-            opacity: 0.85;
         }
 
         /* Container */
@@ -260,43 +247,41 @@
         /* Hero Apple Style */
         .hero {
             text-align: center;
-            padding: 40px 20px 20px;
+            padding: 30px 20px 20px;
             margin-bottom: 30px;
         }
 
         .hero-logo {
-            width: 50px;
+            width: 55px;
             height: auto;
             margin-bottom: 16px;
             fill: var(--apple-logo-fill);
-            transition: fill 0.3s ease;
         }
 
         .hero-tag {
             display: inline-block;
             color: var(--apple-link);
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 12px;
+            font-size: 0.95rem;
+            font-weight: 800;
+            margin-bottom: 10px;
         }
 
         .hero-title {
-            font-size: 3rem;
-            font-weight: 800;
+            font-size: 2.8rem;
+            font-weight: 900;
             color: var(--apple-text-primary);
             margin-bottom: 12px;
             letter-spacing: -1px;
         }
 
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: var(--apple-text-secondary);
             max-width: 620px;
             margin: 0 auto 28px;
-            font-weight: 400;
+            font-weight: 600;
         }
 
-        /* Quick Community Links */
         .hero-social-bar {
             display: flex;
             flex-wrap: wrap;
@@ -312,7 +297,7 @@
             border-radius: 30px;
             text-decoration: none;
             font-size: 0.9rem;
-            font-weight: 600;
+            font-weight: 700;
             transition: all 0.2s ease;
         }
 
@@ -327,18 +312,12 @@
             border: 1px solid var(--apple-border);
         }
 
-        .social-btn:hover {
-            opacity: 0.88;
-            transform: scale(1.02);
-        }
-
         .section-title {
             text-align: center;
-            font-size: 2rem;
-            font-weight: 700;
-            margin: 50px 0 30px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 40px 0 25px;
             color: var(--apple-text-primary);
-            letter-spacing: -0.5px;
         }
 
         /* Grid Apple Style Cards */
@@ -357,18 +336,12 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
             box-shadow: 0 4px 20px rgba(0,0,0,0.03);
         }
 
-        .feature-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--apple-link);
-        }
-
         .feature-card h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-size: 1.25rem;
+            font-weight: 800;
             margin-bottom: 8px;
             color: var(--apple-text-primary);
         }
@@ -385,7 +358,7 @@
             padding: 12px 20px;
             background-color: var(--apple-link);
             color: #ffffff;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.95rem;
             border: none;
             border-radius: 30px;
@@ -397,7 +370,6 @@
 
         .apple-button:hover {
             opacity: 0.9;
-            transform: scale(1.01);
         }
 
         /* Information Section */
@@ -407,7 +379,6 @@
             border-radius: var(--radius-large);
             padding: 36px 28px;
             margin-bottom: 40px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
         }
 
         .notice-list {
@@ -421,14 +392,14 @@
             background: var(--apple-subtle-bg);
             border-radius: var(--radius-medium);
             padding: 20px 22px;
-            border-right: 3px solid var(--apple-link);
+            border-right: 4px solid var(--apple-link);
         }
 
         .notice-item h4 {
             color: var(--apple-text-primary);
             margin-bottom: 6px;
             font-size: 1.05rem;
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .notice-item p {
@@ -436,10 +407,10 @@
             font-size: 0.95rem;
         }
 
-        /* APPS GRID - 4 APPS ONLY (E-Sign, Scarlet, ZSign, KSign) */
+        /* APPS GRID - 4 APPS (E-Sign, Scarlet, ZSign, KSign) */
         .apps-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
@@ -454,30 +425,28 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease;
         }
 
         .app-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--apple-link);
+            transform: translateY(-4px);
         }
 
         .app-icon {
-            width: 72px;
-            height: 72px;
+            width: 70px;
+            height: 70px;
             border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
-            font-weight: 800;
+            font-weight: 900;
             color: #ffffff;
             margin-bottom: 16px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
-        /* Icons Gradients */
+        /* ألوان أيقونات التطبيقات 4 */
         .app-icon.esign { background: linear-gradient(135deg, #007aff, #00c6ff); }
         .app-icon.scarlet { background: linear-gradient(135deg, #ff2d55, #ff375f); }
         .app-icon.zsign { background: linear-gradient(135deg, #5856d6, #af52de); }
@@ -485,7 +454,7 @@
 
         .app-card h3 {
             font-size: 1.2rem;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--apple-text-primary);
             margin-bottom: 6px;
         }
@@ -503,7 +472,6 @@
             border-radius: var(--radius-large);
             padding: 32px 24px;
             margin-top: 40px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
         }
 
         .channel-row {
@@ -543,17 +511,17 @@
             padding: 8px 20px;
             border-radius: 20px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.85rem;
             color: white;
             background-color: var(--apple-link);
         }
 
-        /* Apple Modal Style */
+        /* Modal Style */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(12px);
             display: flex;
             align-items: center;
@@ -579,7 +547,7 @@
             max-width: 400px;
             text-align: center;
             position: relative;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.25);
         }
 
         .close-modal {
@@ -613,8 +581,8 @@
 
         .alert-msg {
             margin-top: 14px;
-            font-size: 0.88rem;
-            font-weight: 600;
+            font-size: 0.9rem;
+            font-weight: 700;
             display: none;
         }
         .alert-msg.error { color: var(--error-color); display: block; }
@@ -624,7 +592,7 @@
             border-top: 1px solid var(--apple-border);
             padding: 40px 20px;
             text-align: center;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             color: var(--apple-text-secondary);
             background-color: var(--apple-bg);
         }
@@ -639,12 +607,7 @@
         .footer-socials a {
             color: var(--apple-text-secondary);
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .footer-socials a:hover {
-            color: var(--apple-text-primary);
+            font-weight: 600;
         }
     </style>
 </head>
@@ -657,7 +620,7 @@
                 <svg viewBox="0 0 170 170">
                     <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.34.13-9.16-1.9-14.49-6.08-3.32-2.67-7.25-7.33-11.8-13.97-6.09-8.88-10.83-18.78-14.21-29.7-3.38-10.92-5.07-21.2-5.07-30.84 0-14.75 3.74-27.18 11.22-37.28 7.49-10.1 16.92-15.22 28.3-15.36 4.34 0 9.38 1.15 15.11 3.44 5.73 2.29 9.68 3.44 11.85 3.44 1.84 0 5.89-1.2 12.16-3.6 6.27-2.4 11.19-3.5 14.76-3.3 10.98.66 19.82 4.48 26.52 11.47-9.87 5.98-14.71 14.22-14.51 24.72.2 8.35 3.36 15.48 9.48 21.39 6.12 5.91 13.56 9.17 22.33 9.78-2.6 7.62-6.17 15.13-10.71 22.53zM119.22 31.84c0-7.28 2.65-14.22 7.95-20.83 5.3-6.61 11.89-10.51 19.78-11.01.11 1.02.16 1.87.16 2.56 0 7.22-2.73 14.28-8.19 21.18-5.46 6.9-12.08 10.74-19.86 10.52-.11-.79-.16-1.59-.16-2.42z"/>
                 </svg>
-                <span>أفق</span>
+                <span>منصة أفق</span>
             </a>
             <button class="menu-btn" onclick="toggleSidebar()">
                 <span>القائمة</span>
@@ -671,7 +634,7 @@
     <div class="sidebar" id="sidebar">
         <div>
             <div class="sidebar-header">
-                <span style="font-weight: 700; font-size: 1.1rem;">تصفح المنصة</span>
+                <span style="font-weight: 800; font-size: 1.1rem;">تصفح المنصة</span>
                 <button class="close-sidebar" onclick="toggleSidebar()">&times;</button>
             </div>
             <ul class="nav-links">
@@ -756,7 +719,7 @@
             <h2 class="section-title">التنبيهات والشروط</h2>
             
             <section class="transparency-section">
-                <h3 style="font-size: 1.3rem; font-weight:700;">إرشادات هامة للمستخدمين:</h3>
+                <h3 style="font-size: 1.3rem; font-weight:800;">إرشادات هامة للمستخدمين:</h3>
                 <div class="notice-list">
                     <div class="notice-item">
                         <h4>1. استخدام الـ VPN</h4>
@@ -774,7 +737,7 @@
             </section>
         </div>
 
-        <!-- ================= PAGE 3: تحميل التطبيقات (4 تطبيقات فقط) ================= -->
+        <!-- ================= PAGE 3: تحميل التطبيقات ================= -->
         <div id="downloadSection" class="page-section">
             <h2 class="section-title">تثبيت التطبيقات</h2>
             <p style="text-align: center; color: var(--apple-text-secondary); margin-bottom: 25px;">اختر التطبيق المطلوب ثم أدخل كود الشهادة للبدء بالتثبيت الفوري.</p>
@@ -805,25 +768,25 @@
                     <button class="apple-button" onclick="openCodeModal('ZSign')">تثبيت ZSign</button>
                 </div>
 
-                <!-- 4. KSign -->
+                <!-- 4. K-Sign -->
                 <div class="app-card">
                     <div class="app-icon ksign">K</div>
-                    <h3>KSign</h3>
+                    <h3>K-Sign</h3>
                     <p>أداة خفيفة وفعالة لتثبيت وإدارة تطبيقات الـ IPA.</p>
-                    <button class="apple-button" onclick="openCodeModal('KSign')">تثبيت KSign</button>
+                    <button class="apple-button" onclick="openCodeModal('K-Sign')">تثبيت K-Sign</button>
                 </div>
 
             </div>
 
             <!-- قنوات التواصل -->
             <div class="channels-wrapper">
-                <h3 style="margin-bottom: 20px; font-size: 1.2rem; font-weight: 700;">قنوات أفق الرسمية</h3>
+                <h3 style="margin-bottom: 20px; font-size: 1.2rem; font-weight: 800;">قنوات أفق الرسمية</h3>
                 
                 <div class="channel-row">
                     <div class="channel-info">
                         <div class="channel-icon tg">✈️</div>
                         <div>
-                            <div style="font-weight: 700;">القناة الرئيسية (Ofuq Store)</div>
+                            <div style="font-weight: 800;">القناة الرئيسية (Ofuq Store)</div>
                             <div style="font-size: 0.8rem; color: var(--apple-text-secondary);">لأحدث الأخبار وتحديثات الشهادات</div>
                         </div>
                     </div>
@@ -834,7 +797,7 @@
                     <div class="channel-info">
                         <div class="channel-icon tg" style="background-color: #0088cc;">📦</div>
                         <div>
-                            <div style="font-weight: 700;">قناة تطبيقات الـ IPA</div>
+                            <div style="font-weight: 800;">قناة تطبيقات الـ IPA</div>
                             <div style="font-size: 0.8rem; color: var(--apple-text-secondary);">تحميل تطبيقات بلس ومعدلة</div>
                         </div>
                     </div>
@@ -845,7 +808,7 @@
                     <div class="channel-info">
                         <div class="channel-icon ig">📸</div>
                         <div>
-                            <div style="font-weight: 700;">حساب الإنستغرام</div>
+                            <div style="font-weight: 800;">حساب الإنستغرام</div>
                             <div style="font-size: 0.8rem; color: var(--apple-text-secondary);">الشروحات والدعم الفني</div>
                         </div>
                     </div>
@@ -860,11 +823,11 @@
     <div class="modal-overlay" id="codeModal">
         <div class="modal-box">
             <button class="close-modal" onclick="closeCodeModal()">&times;</button>
-            <h3 id="modalAppName" style="font-size: 1.3rem; font-weight:700;">تثبيت التطبيق</h3>
+            <h3 id="modalAppName" style="font-size: 1.3rem; font-weight:800;">تثبيت التطبيق</h3>
             <p style="font-size: 0.88rem; color: var(--apple-text-secondary); margin-top: 4px;">أدخل كود الشهادة للبدء بالتثبيت:</p>
             
             <input type="text" id="certCodeInput" class="code-input" placeholder="OFUQ-XXXX" autocomplete="off">
-            <button class="apple-button" onclick="validateAndDownload()">تأكيد التثبيت</button>
+            <button class="apple-button" id="submitBtn" onclick="validateAndDownload()">تأكيد التثبيت</button>
             
             <div id="alertMsg" class="alert-msg"></div>
         </div>
@@ -879,8 +842,11 @@
         <p>جميع الحقوق محفوظة © 2026 منصة أفق</p>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- JavaScript التفاعلي -->
     <script>
+        // ضع رابط الـ Worker الخاص بك هنا
+        const WORKER_URL = "YOUR_WORKER_URL_HERE"; 
+
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('active');
             document.getElementById('sidebarOverlay').classList.toggle('active');
@@ -927,9 +893,10 @@
             document.getElementById('codeModal').classList.remove('active');
         }
 
-        function validateAndDownload() {
+        async function validateAndDownload() {
             const codeInput = document.getElementById('certCodeInput').value.trim();
             const alertMsg = document.getElementById('alertMsg');
+            const submitBtn = document.getElementById('submitBtn');
 
             if (!codeInput) {
                 alertMsg.className = 'alert-msg error';
@@ -937,13 +904,38 @@
                 return;
             }
 
+            submitBtn.disabled = true;
             alertMsg.className = 'alert-msg success';
-            alertMsg.innerText = 'جاري توثيق الكود...';
+            alertMsg.innerText = 'جاري التوثيق والجلب من السيرفر...';
 
-            setTimeout(() => {
-                closeCodeModal();
-                alert('تم التوثيق! سيتم بدء تحميل ' + selectedAppName);
-            }, 1000);
+            try {
+                const response = await fetch(WORKER_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ app: selectedAppName, code: codeInput })
+                });
+
+                const data = await response.json();
+
+                if (data.success && data.link) {
+                    alertMsg.className = 'alert-msg success';
+                    alertMsg.innerText = 'تم التوثيق بنجاح! جاري التوجيه لبدء التحميل...';
+
+                    setTimeout(() => {
+                        window.location.href = data.link;
+                        closeCodeModal();
+                        submitBtn.disabled = false;
+                    }, 1000);
+                } else {
+                    alertMsg.className = 'alert-msg error';
+                    alertMsg.innerText = data.message || 'الكود غير صحيح أو غير مفعّل!';
+                    submitBtn.disabled = false;
+                }
+            } catch (err) {
+                alertMsg.className = 'alert-msg error';
+                alertMsg.innerText = 'حدث خطأ في الاتصال بالخادم!';
+                submitBtn.disabled = false;
+            }
         }
     </script>
 </body>
