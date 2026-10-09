@@ -2,14 +2,13 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>منصة أفق | الشهادات والتطبيقات</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* ================= الوضع الفاتح التلقائي (Light Mode) ================= */
         :root {
             --apple-bg: #f5f5f7;
             --apple-card-bg: #ffffff;
@@ -29,7 +28,6 @@
             --instagram-grad: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
         }
 
-        /* ================= الوضع الداكن التلقائي (Dark Mode) ================= */
         @media (prefers-color-scheme: dark) {
             :root {
                 --apple-bg: #000000;
@@ -61,11 +59,12 @@
             line-height: 1.5;
             overflow-x: hidden;
             -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
             user-select: none;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Apple Navigation Header */
         header {
             position: sticky;
             top: 0;
@@ -115,7 +114,6 @@
             font-weight: 700;
         }
 
-        /* Sidebar Nav */
         .sidebar-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -149,9 +147,7 @@
             overflow-y: auto;
         }
 
-        .sidebar.active {
-            right: 0;
-        }
+        .sidebar.active { right: 0; }
 
         .sidebar-header {
             display: flex;
@@ -163,8 +159,7 @@
         }
 
         .close-sidebar {
-            background: none;
-            border: none;
+            background: none; border: none;
             font-size: 1.6rem;
             color: var(--apple-text-secondary);
             cursor: pointer;
@@ -223,7 +218,6 @@
             background-color: var(--apple-subtle-bg);
         }
 
-        /* Container */
         .container {
             max-width: 980px;
             margin: 0 auto;
@@ -235,16 +229,13 @@
             animation: fadeIn 0.4s ease-in-out;
         }
         
-        .page-section.active {
-            display: block;
-        }
+        .page-section.active { display: block; }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Hero Apple Style */
         .hero {
             text-align: center;
             padding: 30px 20px 20px;
@@ -252,8 +243,7 @@
         }
 
         .hero-logo {
-            width: 55px;
-            height: auto;
+            width: 55px; height: auto;
             margin-bottom: 16px;
             fill: var(--apple-logo-fill);
         }
@@ -301,16 +291,8 @@
             transition: all 0.2s ease;
         }
 
-        .social-btn.primary {
-            background-color: var(--apple-link);
-            color: #ffffff;
-        }
-
-        .social-btn.secondary {
-            background-color: var(--apple-subtle-bg);
-            color: var(--apple-text-primary);
-            border: 1px solid var(--apple-border);
-        }
+        .social-btn.primary { background-color: var(--apple-link); color: #ffffff; }
+        .social-btn.secondary { background-color: var(--apple-subtle-bg); color: var(--apple-text-primary); border: 1px solid var(--apple-border); }
 
         .section-title {
             text-align: center;
@@ -320,7 +302,6 @@
             color: var(--apple-text-primary);
         }
 
-        /* Grid Apple Style Cards */
         .grid-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -339,18 +320,8 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.03);
         }
 
-        .feature-card h3 {
-            font-size: 1.25rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-            color: var(--apple-text-primary);
-        }
-
-        .feature-card p {
-            font-size: 0.95rem;
-            color: var(--apple-text-secondary);
-            margin-bottom: 20px;
-        }
+        .feature-card h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 8px; }
+        .feature-card p { font-size: 0.95rem; color: var(--apple-text-secondary); margin-bottom: 20px; }
 
         .apple-button {
             display: inline-block;
@@ -368,11 +339,6 @@
             transition: all 0.2s ease;
         }
 
-        .apple-button:hover {
-            opacity: 0.9;
-        }
-
-        /* Information Section */
         .transparency-section {
             background-color: var(--apple-card-bg);
             border: 1px solid var(--apple-border);
@@ -381,33 +347,9 @@
             margin-bottom: 40px;
         }
 
-        .notice-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-top: 24px;
-        }
+        .notice-list { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
+        .notice-item { background: var(--apple-subtle-bg); border-radius: var(--radius-medium); padding: 20px 22px; border-right: 4px solid var(--apple-link); }
 
-        .notice-item {
-            background: var(--apple-subtle-bg);
-            border-radius: var(--radius-medium);
-            padding: 20px 22px;
-            border-right: 4px solid var(--apple-link);
-        }
-
-        .notice-item h4 {
-            color: var(--apple-text-primary);
-            margin-bottom: 6px;
-            font-size: 1.05rem;
-            font-weight: 800;
-        }
-
-        .notice-item p {
-            color: var(--apple-text-secondary);
-            font-size: 0.95rem;
-        }
-
-        /* APPS GRID - 4 APPS (E-Sign, Scarlet, ZSign, KSign) */
         .apps-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -428,44 +370,20 @@
             transition: transform 0.3s ease;
         }
 
-        .app-card:hover {
-            transform: translateY(-4px);
-        }
-
         .app-icon {
-            width: 70px;
-            height: 70px;
+            width: 70px; height: 70px;
             border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: #ffffff;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; font-weight: 900; color: #ffffff;
             margin-bottom: 16px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
-        /* ألوان أيقونات التطبيقات 4 */
         .app-icon.esign { background: linear-gradient(135deg, #007aff, #00c6ff); }
         .app-icon.scarlet { background: linear-gradient(135deg, #ff2d55, #ff375f); }
         .app-icon.zsign { background: linear-gradient(135deg, #5856d6, #af52de); }
         .app-icon.ksign { background: linear-gradient(135deg, #ff9500, #ffcc00); }
 
-        .app-card h3 {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--apple-text-primary);
-            margin-bottom: 6px;
-        }
-
-        .app-card p {
-            font-size: 0.85rem;
-            color: var(--apple-text-secondary);
-            margin-bottom: 18px;
-        }
-
-        /* Channels Section */
         .channels-wrapper {
             background-color: var(--apple-card-bg);
             border: 1px solid var(--apple-border);
@@ -475,145 +393,55 @@
         }
 
         .channel-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px;
-            background-color: var(--apple-subtle-bg);
-            border: 1px solid var(--apple-border);
-            border-radius: var(--radius-medium);
-            margin-bottom: 12px;
-            flex-wrap: wrap;
-            gap: 12px;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px; background-color: var(--apple-subtle-bg);
+            border: 1px solid var(--apple-border); border-radius: var(--radius-medium);
+            margin-bottom: 12px; flex-wrap: wrap; gap: 12px;
         }
 
-        .channel-info {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .channel-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            color: white;
-        }
-
+        .channel-info { display: flex; align-items: center; gap: 14px; }
+        .channel-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: white; }
         .channel-icon.tg { background-color: var(--telegram-color); }
         .channel-icon.ig { background: var(--instagram-grad); }
+        .channel-btn { padding: 8px 20px; border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.85rem; color: white; background-color: var(--apple-link); }
 
-        .channel-btn {
-            padding: 8px 20px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.85rem;
-            color: white;
-            background-color: var(--apple-link);
-        }
-
-        /* Modal Style */
         .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(12px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(12px);
+            display: flex; align-items: center; justify-content: center;
+            padding: 20px; z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease;
         }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
 
         .modal-box {
             background-color: var(--apple-card-bg);
             border: 1px solid var(--apple-border);
             border-radius: var(--radius-large);
-            padding: 40px 28px;
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-            position: relative;
+            padding: 40px 28px; width: 100%; max-width: 400px;
+            text-align: center; position: relative;
             box-shadow: 0 30px 60px rgba(0,0,0,0.25);
         }
 
-        .close-modal {
-            position: absolute;
-            top: 18px; left: 18px;
-            background: none; border: none;
-            font-size: 1.6rem;
-            color: var(--apple-text-secondary);
-            cursor: pointer;
-        }
+        .close-modal { position: absolute; top: 18px; left: 18px; background: none; border: none; font-size: 1.6rem; color: var(--apple-text-secondary); cursor: pointer; }
 
         .code-input {
-            width: 100%;
-            padding: 14px 18px;
-            font-size: 1.1rem;
-            text-align: center;
-            letter-spacing: 2px;
-            border: 1px solid var(--apple-border);
-            border-radius: var(--radius-medium);
-            background-color: var(--apple-subtle-bg);
-            color: var(--apple-text-primary);
-            font-weight: 700;
-            margin: 22px 0 14px;
-            outline: none;
-            text-transform: uppercase;
+            width: 100%; padding: 14px 18px; font-size: 1.1rem; text-align: center;
+            letter-spacing: 2px; border: 1px solid var(--apple-border);
+            border-radius: var(--radius-medium); background-color: var(--apple-subtle-bg);
+            color: var(--apple-text-primary); font-weight: 700; margin: 22px 0 14px; outline: none; text-transform: uppercase;
         }
 
-        .code-input:focus {
-            border-color: var(--apple-link);
-        }
-
-        .alert-msg {
-            margin-top: 14px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            display: none;
-        }
+        .alert-msg { margin-top: 14px; font-size: 0.9rem; font-weight: 700; display: none; }
         .alert-msg.error { color: var(--error-color); display: block; }
         .alert-msg.success { color: var(--success-color); display: block; }
 
-        footer {
-            border-top: 1px solid var(--apple-border);
-            padding: 40px 20px;
-            text-align: center;
-            font-size: 0.88rem;
-            color: var(--apple-text-secondary);
-            background-color: var(--apple-bg);
-        }
-
-        .footer-socials {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-bottom: 14px;
-        }
-
-        .footer-socials a {
-            color: var(--apple-text-secondary);
-            text-decoration: none;
-            font-weight: 600;
-        }
+        footer { border-top: 1px solid var(--apple-border); padding: 40px 20px; text-align: center; font-size: 0.88rem; color: var(--apple-text-secondary); background-color: var(--apple-bg); }
+        .footer-socials { display: flex; justify-content: center; gap: 16px; margin-bottom: 14px; }
+        .footer-socials a { color: var(--apple-text-secondary); text-decoration: none; font-weight: 600; }
     </style>
 </head>
 <body>
 
-    <!-- Apple Navigation Bar -->
     <header>
         <div class="header-container">
             <a href="#" class="header-logo" onclick="showSection('homeSection')">
@@ -629,7 +457,6 @@
         </div>
     </header>
 
-    <!-- Sidebar Navigation -->
     <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
     <div class="sidebar" id="sidebar">
         <div>
@@ -645,15 +472,9 @@
 
             <div class="sidebar-social-section">
                 <div class="sidebar-social-title">مجتمع أفق</div>
-                <a href="https://t.me/ofuq_store" target="_blank" class="social-link-item">
-                    📢 القناة الرسمية
-                </a>
-                <a href="https://t.me/ufuq_ipa" target="_blank" class="social-link-item">
-                    📦 قناة تطبيقات IPA
-                </a>
-                <a href="https://www.instagram.com/_cpj41?stkn=cGx5ZDNnb2VndWl1&utm_source=qr" target="_blank" class="social-link-item">
-                    📸 حساب الإنستغرام
-                </a>
+                <a href="https://t.me/ofuq_store" target="_blank" class="social-link-item">📢 القناة الرسمية</a>
+                <a href="https://t.me/ufuq_ipa" target="_blank" class="social-link-item">📦 قناة تطبيقات IPA</a>
+                <a href="https://www.instagram.com/_cpj41?stkn=cGx5ZDNnb2VndWl1&utm_source=qr" target="_blank" class="social-link-item">📸 حساب الإنستغرام</a>
             </div>
         </div>
 
@@ -664,7 +485,6 @@
 
     <div class="container">
 
-        <!-- ================= PAGE 1: الصفحة الرئيسية ================= -->
         <div id="homeSection" class="page-section active">
             <section class="hero">
                 <svg class="hero-logo" viewBox="0 0 170 170">
@@ -686,7 +506,6 @@
             <section>
                 <h2 class="section-title">مميزات المنصة</h2>
                 <div class="grid-cards">
-                    
                     <div class="feature-card">
                         <div>
                             <h3>تثبيت مباشر وسريع</h3>
@@ -709,15 +528,12 @@
                             <p>صلاحيات ممتدة ونظام تعويض كامل وفوري عند توقف الشهادة للحفاظ على حقك.</p>
                         </div>
                     </div>
-
                 </div>
             </section>
         </div>
 
-        <!-- ================= PAGE 2: التعرف على الشهادات ================= -->
         <div id="aboutSection" class="page-section">
             <h2 class="section-title">التنبيهات والشروط</h2>
-            
             <section class="transparency-section">
                 <h3 style="font-size: 1.3rem; font-weight:800;">إرشادات هامة للمستخدمين:</h3>
                 <div class="notice-list">
@@ -737,14 +553,11 @@
             </section>
         </div>
 
-        <!-- ================= PAGE 3: تحميل التطبيقات ================= -->
         <div id="downloadSection" class="page-section">
             <h2 class="section-title">تثبيت التطبيقات</h2>
             <p style="text-align: center; color: var(--apple-text-secondary); margin-bottom: 25px;">اختر التطبيق المطلوب ثم أدخل كود الشهادة للبدء بالتثبيت الفوري.</p>
             
             <div class="apps-grid">
-                
-                <!-- 1. E-Sign -->
                 <div class="app-card">
                     <div class="app-icon esign">E</div>
                     <h3>E-Sign</h3>
@@ -752,7 +565,6 @@
                     <button class="apple-button" onclick="openCodeModal('E-Sign')">تثبيت E-Sign</button>
                 </div>
 
-                <!-- 2. Scarlet -->
                 <div class="app-card">
                     <div class="app-icon scarlet">S</div>
                     <h3>Scarlet</h3>
@@ -760,7 +572,6 @@
                     <button class="apple-button" onclick="openCodeModal('Scarlet')">تثبيت Scarlet</button>
                 </div>
 
-                <!-- 3. ZSign -->
                 <div class="app-card">
                     <div class="app-icon zsign">Z</div>
                     <h3>ZSign</h3>
@@ -768,20 +579,16 @@
                     <button class="apple-button" onclick="openCodeModal('ZSign')">تثبيت ZSign</button>
                 </div>
 
-                <!-- 4. K-Sign -->
                 <div class="app-card">
                     <div class="app-icon ksign">K</div>
                     <h3>K-Sign</h3>
                     <p>أداة خفيفة وفعالة لتثبيت وإدارة تطبيقات الـ IPA.</p>
                     <button class="apple-button" onclick="openCodeModal('K-Sign')">تثبيت K-Sign</button>
                 </div>
-
             </div>
 
-            <!-- قنوات التواصل -->
             <div class="channels-wrapper">
                 <h3 style="margin-bottom: 20px; font-size: 1.2rem; font-weight: 800;">قنوات أفق الرسمية</h3>
-                
                 <div class="channel-row">
                     <div class="channel-info">
                         <div class="channel-icon tg">✈️</div>
@@ -819,7 +626,6 @@
 
     </div>
 
-    <!-- Modal الكود -->
     <div class="modal-overlay" id="codeModal">
         <div class="modal-box">
             <button class="close-modal" onclick="closeCodeModal()">&times;</button>
@@ -842,11 +648,37 @@
         <p>جميع الحقوق محفوظة © 2026 منصة أفق</p>
     </footer>
 
-    <!-- JavaScript التفاعلي -->
     <script>
-        // ضع رابط الـ Worker الخاص بك هنا
-        const WORKER_URL = "YOUR_WORKER_URL_HERE"; 
+        const WORKER_URL = "https://ufuq.followorfollow1.workers.dev/"; 
 
+        // ================= SECURITY & ANTI-INSPECTION PROTECTION =================
+        // 1. منع زر الفأرة الأيمن
+        document.addEventListener('contextmenu', e => e.preventDefault());
+
+        // 2. منع اختصارات كيبورد DevTools
+        document.addEventListener('keydown', e => {
+            if (
+                e.key === 'F12' ||
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+                (e.ctrlKey && e.key === 'U') ||
+                (e.metaKey && e.altKey && (e.key === 'I' || e.key === 'J' || e.key === 'C' || e.key === 'U'))
+            ) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // 3. منع التصحيح والمراقبة النشطة عبر الـ Debugger
+        setInterval(function() {
+            const startTime = performance.now();
+            (function() {}.constructor('debugger')());
+            const endTime = performance.now();
+            if (endTime - startTime > 100) {
+                window.location.reload();
+            }
+        }, 100);
+
+        // ================= NAVIGATION & APP LOGIC =================
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('active');
             document.getElementById('sidebarOverlay').classList.toggle('active');
@@ -912,7 +744,8 @@
                 const response = await fetch(WORKER_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ app: selectedAppName, code: codeInput })
+                    body: JSON.stringify({ app: selectedAppName, code: codeInput }),
+                    cache: 'no-store'
                 });
 
                 const data = await response.json();
@@ -925,7 +758,7 @@
                         window.location.href = data.link;
                         closeCodeModal();
                         submitBtn.disabled = false;
-                    }, 1000);
+                    }, 800);
                 } else {
                     alertMsg.className = 'alert-msg error';
                     alertMsg.innerText = data.message || 'الكود غير صحيح أو غير مفعّل!';
