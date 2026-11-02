@@ -12,38 +12,38 @@
     
     <style>
         :root {
-            --apple-bg: #f5f5f7;
-            --apple-card-bg: #ffffff;
-            --apple-subtle-bg: #e8e8ed;
-            --apple-text-primary: #1d1d1f;
-            --apple-text-secondary: #86868b;
-            --apple-link: #0066cc;
-            --apple-border: rgba(0, 0, 0, 0.1);
-            --apple-blur-bg: rgba(245, 245, 247, 0.8);
+            --apple-bg: #FDFBF7;         /* أوف وايت ناعم كلاسيكي */
+            --apple-card-bg: #FFFFFF;    /* أبيض ناصع للألواح */
+            --apple-subtle-bg: #F5EFEE;  /* أوف وايت دافئ خفيف */
+            --apple-text-primary: #1A1A1A;/* أسود داكن للنصوص الفاخرة */
+            --apple-text-secondary: #5C3D2E;/* بني كلاسيكي للنصوص الثانوية */
+            --apple-link: #5C3D2E;       /* بني فاخر للأزرار والعناصر الرئيسية */
+            --apple-border: #E8E2D5;    /* حدود أوف وايت داكنة متناسقة */
+            --apple-blur-bg: rgba(253, 251, 247, 0.85);
             --radius-large: 22px;
             --radius-medium: 14px;
             --radius-small: 10px;
-            --error-color: #ff3b30;
-            --success-color: #34c759;
+            --error-color: #A33333;
+            --success-color: #386641;
             --telegram-color: #0088cc;
-            --ofoq-accent: #b8860b;
+            --ofoq-accent: #8C5A3C;     /* بني دافئ للـ VIP */
             --instagram-grad: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
         }
 
         @media (prefers-color-scheme: dark) {
             :root {
-                --apple-bg: #000000;
-                --apple-card-bg: #161617;
-                --apple-subtle-bg: #1d1d1f;
-                --apple-text-primary: #f5f5f7;
-                --apple-text-secondary: #86868b;
-                --apple-link: #2997ff;
-                --apple-border: rgba(255, 255, 255, 0.12);
-                --apple-blur-bg: rgba(22, 22, 23, 0.8);
+                --apple-bg: #12100E;         /* أسود كلاسيكي دافئ */
+                --apple-card-bg: #1C1815;    /* ألواح بنية داكنة سوداء */
+                --apple-subtle-bg: #26211D;  /* خلفيات فرعية */
+                --apple-text-primary: #FDFBF7;/* أوف وايت مضيء */
+                --apple-text-secondary: #D4B2A7;/* بني فاتح هادئ */
+                --apple-link: #C5A059;       /* ذهبي كلاسيكي مدمج مع الهوية */
+                --apple-border: rgba(197, 160, 89, 0.2);
+                --apple-blur-bg: rgba(18, 16, 14, 0.85);
                 --error-color: #ff453a;
                 --success-color: #30d158;
                 --telegram-color: #2997ff;
-                --ofoq-accent: #d4af37;
+                --ofoq-accent: #C5A059;
             }
         }
 
@@ -58,7 +58,7 @@
         body {
             background-color: var(--apple-bg);
             color: var(--apple-text-primary);
-            line-height: 1.5;
+            line-height: 1.6;
             overflow-x: hidden;
             -webkit-user-select: none;
             user-select: none;
@@ -257,7 +257,7 @@
             border-radius: 18px;
             overflow: hidden;
             border: 2px solid var(--apple-border);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(92, 61, 46, 0.1);
         }
 
         .hero-logo-wrapper img {
@@ -282,7 +282,7 @@
             letter-spacing: -1px;
         }
 
-        /* --- DUAL DYNAMIC MARQUEE BANNERS WITH CUSTOM IMAGE ASSETS --- */
+        /* --- DUAL DYNAMIC MARQUEE BANNERS --- */
         .marquee-wrapper {
             display: flex;
             flex-direction: column;
@@ -298,7 +298,7 @@
             border: 1px solid var(--apple-border);
             border-radius: var(--radius-large);
             padding: 14px 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 20px rgba(92, 61, 46, 0.04);
             position: relative;
             mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
             -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
@@ -355,7 +355,6 @@
             transform: scale(1.1);
         }
 
-        /* Icon Background Styles */
         .bg-telegram { background: #24A1DE; }
         .bg-snapchat { background: #FFFC00; color: #000; }
         .bg-tiktok { background: #000000; }
@@ -364,7 +363,7 @@
         .bg-facebook { background: #1877F2; }
         .bg-discord { background: #5865F2; }
         .bg-spotify { background: #1DB954; }
-        .bg-appstore { background: linear-gradient(135deg, #007AFF, #00C6FF); }
+        .bg-appstore { background: linear-gradient(135deg, #5C3D2E, #8C5A3C); }
 
         @keyframes scrollRight {
             0% { transform: translateX(0); }
@@ -438,7 +437,7 @@
         .duration-tab.active {
             background-color: var(--apple-link);
             color: #ffffff;
-            box-shadow: 0 4px 12px rgba(0,102,204,0.3);
+            box-shadow: 0 4px 12px rgba(92, 61, 46, 0.3);
         }
 
         .packages-grid {
@@ -457,13 +456,13 @@
             flex-direction: column;
             justify-content: space-between;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            box-shadow: 0 10px 30px rgba(92, 61, 46, 0.04);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .package-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 15px 40px rgba(92, 61, 46, 0.08);
         }
 
         .package-card.vip {
@@ -480,7 +479,7 @@
             font-weight: 800;
             padding: 4px 12px;
             border-radius: 20px;
-            box-shadow: 0 4px 10px rgba(184,134,11,0.3);
+            box-shadow: 0 4px 10px rgba(140, 90, 60, 0.3);
         }
 
         .package-header h3 {
@@ -568,7 +567,7 @@
             border: 1px solid var(--apple-border);
             border-radius: var(--radius-large);
             padding: 28px 24px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 20px rgba(92, 61, 46, 0.03);
         }
 
         .info-card h3 {
@@ -626,7 +625,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 20px rgba(92, 61, 46, 0.03);
         }
 
         .feature-card h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 8px; }
@@ -651,6 +650,101 @@
         .apple-button:hover {
             opacity: 0.9;
             transform: scale(1.01);
+        }
+
+        /* --- FAQ SECTION --- */
+        .faq-section {
+            margin: 50px 0;
+        }
+
+        .faq-item {
+            background-color: var(--apple-card-bg);
+            border: 1px solid var(--apple-border);
+            border-radius: var(--radius-medium);
+            margin-bottom: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(92, 61, 46, 0.02);
+            transition: border-color 0.3s;
+        }
+
+        .faq-question {
+            padding: 18px 20px;
+            font-weight: bold;
+            color: var(--apple-text-primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            background-color: var(--apple-subtle-bg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            padding: 0 20px;
+            color: var(--apple-text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 250px;
+            padding: 15px 20px 20px;
+            border-top: 1px solid var(--apple-border);
+        }
+
+        .faq-icon {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--apple-link);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        /* --- REVIEWS SECTION --- */
+        .reviews-section {
+            margin: 60px 0;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .review-card {
+            background: var(--apple-card-bg);
+            border: 1px solid var(--apple-border);
+            border-radius: var(--radius-large);
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(92, 61, 46, 0.03);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .stars {
+            color: #C5A059;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .review-text {
+            font-style: italic;
+            color: var(--apple-text-secondary);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .reviewer-name {
+            font-weight: bold;
+            color: var(--apple-text-primary);
+            font-size: 0.9rem;
+            text-align: left;
         }
 
         .transparency-section {
@@ -693,10 +787,10 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
-        .app-icon.esign { background: linear-gradient(135deg, #007aff, #00c6ff); }
-        .app-icon.scarlet { background: linear-gradient(135deg, #ff2d55, #ff375f); }
-        .app-icon.zsign { background: linear-gradient(135deg, #5856d6, #af52de); }
-        .app-icon.ksign { background: linear-gradient(135deg, #ff9500, #ffcc00); }
+        .app-icon.esign { background: linear-gradient(135deg, #5C3D2E, #8C5A3C); }
+        .app-icon.scarlet { background: linear-gradient(135deg, #3A251B, #5C3D2E); }
+        .app-icon.zsign { background: linear-gradient(135deg, #4A3525, #6E4D37); }
+        .app-icon.ksign { background: linear-gradient(135deg, #8C5A3C, #C5A059); }
 
         .channels-wrapper {
             background-color: var(--apple-card-bg);
@@ -809,9 +903,8 @@
                 <div class="hero-tag">شهادات أبل المدفوعة والمجانية</div>
                 <h1 class="hero-title">خيارك الأفضل لتحميل التطبيقات</h1>
 
-                <!-- DUAL MOVING MARQUEE BANNERS WITH CUSTOM USER IMAGES -->
+                <!-- DUAL MOVING MARQUEE BANNERS -->
                 <div class="marquee-wrapper">
-                    <!-- الشريط الأول: يتجه لليمين (تحميل الصور المعتمدة وتطبيقات التواصل) -->
                     <div class="marquee-container">
                         <div class="marquee-track-right">
                             <div class="marquee-group">
@@ -825,7 +918,6 @@
                                 <div class="app-badge-icon bg-youtube" title="YouTube"><i class="fa-brands fa-youtube"></i></div>
                                 <div class="app-badge-icon bg-x" title="X"><i class="fa-brands fa-x-twitter"></i></div>
                             </div>
-                            <!-- تكرار المجموعة للحركة المستمرة -->
                             <div class="marquee-group" aria-hidden="true">
                                 <div class="app-badge-icon"><img src="https://f.top4top.io/p_3953sismf9.png" alt="App Icon 1"></div>
                                 <div class="app-badge-icon"><img src="https://e.top4top.io/p_39534etwo8.png" alt="App Icon 2"></div>
@@ -840,7 +932,6 @@
                         </div>
                     </div>
 
-                    <!-- الشريط الثاني: يتجه لليسار (مجموعة الصور المعتمدة الأخرى والخدمات) -->
                     <div class="marquee-container">
                         <div class="marquee-track-left">
                             <div class="marquee-group">
@@ -853,7 +944,6 @@
                                 <div class="app-badge-icon bg-discord" title="Discord"><i class="fa-brands fa-discord"></i></div>
                                 <div class="app-badge-icon bg-spotify" title="Spotify"><i class="fa-brands fa-spotify"></i></div>
                             </div>
-                            <!-- تكرار المجموعة للحركة المستمرة -->
                             <div class="marquee-group" aria-hidden="true">
                                 <div class="app-badge-icon"><img src="https://b.top4top.io/p_3953e3k685.png" alt="App Icon 5"></div>
                                 <div class="app-badge-icon"><img src="https://a.top4top.io/p_3953y81jc4.png" alt="App Icon 6"></div>
@@ -902,6 +992,65 @@
                     </div>
                 </div>
             </section>
+
+            <!-- قسم آراء وتقييمات العملاء -->
+            <section class="reviews-section">
+                <h2 class="section-title">آراء مشتركينا في أفق</h2>
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"سرعة وتجاوب ممتاز، الشهادة شغالّة وبدون أي مشاكل والتطبيقات تنزل بسلاسة عالية. أفضل خدمة جربتها."</p>
+                        <div class="reviewer-name">- أحمد ع.</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"اشتركت بالباقة الماكس، التكرار والنسخ للتطبيقات شغال 100% ودعم التليگرام محترفين جداً."</p>
+                        <div class="reviewer-name">- مصطفى الكرخي</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"تأمين ممتاز وتعويض سريع، التصميم والتعامل يرتقي لمستوى عالي من الاحترافية."</p>
+                        <div class="reviewer-name">- سجاد H.</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- قسم الأسئلة الشائعة -->
+            <section class="faq-section">
+                <h2 class="section-title">الأسئلة الشائعة</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>ما هي ميزة تكرار التطبيقات في متجر أفق؟</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        يمكنك تنزيل عدة نسخ من أي تطبيق في بالك (مثل الإنستغرام أو تطبيقات التواصل والألعاب) واستخدامها في وقت واحد على نفس جهاز الآيفون.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>ماذا يغطي ضمان الاشتراك في حال توقف الشهادة؟</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        نوفر تعويضاً فورياً طوال فترة الضمان المحددة في باقتك (سواء كانت العادية، البلس، أو الماكس) لضمان استمرار عمل تطبيقاتك دون انقطاع.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>ما هي أدوات التوقيع المدعومة في المنصة؟</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        ندعم جميع أدوات التوقيع الشهيرة بما في ذلك Esign, Ksign, Scarlet, Feather بالإضافة إلى تطبيق Ofuq الخاص.
+                    </div>
+                </div>
+            </section>
         </div>
 
         <!-- PRICING & PACKAGES SECTION -->
@@ -942,13 +1091,13 @@
                         <li><i class="fa-solid fa-circle-check"></i> تعويض فوري عند خلل الشهادة</li>
                         <li><i class="fa-solid fa-mobile-screen"></i> تتحمل جهاز واحد فقط (1 Device)</li>
                     </ul>
-                    <a id="btnNormal" href="https://t.me/cpj_4?text=%Dمرحباً،%20أرغب%20بالاشتراك%20في%20الباقة%20العادية%20(سنة)" target="_blank" class="apple-button">اشترك الآن</a>
+                    <a id="btnNormal" href="https://t.me/cpj_4?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D9%8C%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D8%B9%D8%A7%D8%AF%D9%8A%D8%A9%20(%D8%B3%D9%86%D8%A9)" target="_blank" class="apple-button">اشترك الآن</a>
                 </div>
 
                 <!-- Package 2: Plus -->
                 <div class="package-card">
                     <div class="package-header">
-                        <span class="badge-tag" style="background: rgba(0,102,204,0.1); color: var(--apple-link);">موصى به</span>
+                        <span class="badge-tag" style="background: rgba(92,61,46,0.1); color: var(--apple-link);">موصى به</span>
                         <h3>الباقة البلس</h3>
                     </div>
                     <div class="package-price-box">
@@ -970,14 +1119,14 @@
                         <li><i class="fa-solid fa-circle-check"></i> تعويض فوري عند خلل الشهادة</li>
                         <li><i class="fa-solid fa-mobile-screen-button"></i> تتحمل جهازين فقط (2 Devices)</li>
                     </ul>
-                    <a id="btnPlus" href="https://t.me/cpj_4?text=%Dمرحباً،%20أرغب%20بالاشتراك%20في%20الباقة%20البلس%20(سنة)" target="_blank" class="apple-button">اشترك الآن</a>
+                    <a id="btnPlus" href="https://t.me/cpj_4?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D9%8C%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D8%A8%D9%84%D8%B3%20(%D8%B3%D9%86%D8%A9)" target="_blank" class="apple-button">اشترك الآن</a>
                 </div>
 
                 <!-- Package 3: Max VIP -->
                 <div class="package-card vip">
                     <div class="vip-badge"><i class="fa-solid fa-crown"></i> VIP الأكثر طلباً</div>
                     <div class="package-header">
-                        <span class="badge-tag" style="background: rgba(184,134,11,0.15); color: var(--ofoq-accent);">شامل كل المميزات</span>
+                        <span class="badge-tag" style="background: rgba(140,90,60,0.15); color: var(--ofoq-accent);">شامل كل المميزات</span>
                         <h3>الباقة الماكس</h3>
                     </div>
                     <div class="package-price-box">
@@ -1000,7 +1149,7 @@
                         <li><i class="fa-solid fa-mobile-screen-button"></i> تتحمل 3 أجهزة (3 Devices)</li>
                         <li><i class="fa-solid fa-tv" style="color: var(--ofoq-accent);"></i> اشتراك IPTV طوال مدة الاشتراك مع مميزات عديدة</li>
                     </ul>
-                    <a id="btnMax" href="https://t.me/cpj_4?text=%Dمرحباً،%20أرغب%20بالاشتراك%20في%20الباقة%20الماكس%20(سنة)" target="_blank" class="apple-button" style="background: var(--ofoq-accent);">اشترك الآن VIP</a>
+                    <a id="btnMax" href="https://t.me/cpj_4?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D9%8C%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D9%85%D8%A7%D9%83%D8%B3%20VIP%20(%D8%B3%D9%86%D8%A9%20-%20%D8%B6%D9%85%D8%A7%D9%86%20100%25)" target="_blank" class="apple-button" style="background: var(--ofoq-accent);">اشترك الآن VIP</a>
                 </div>
             </div>
 
@@ -1021,18 +1170,22 @@
                     </ul>
                 </div>
 
-                <!-- Payment Methods -->
+                <!-- Payment Methods Card (UPDATED TO 4 METHODS) -->
                 <div class="info-card">
                     <h3><i class="fa-solid fa-wallet"></i> طرق الدفع المعتمدة</h3>
-                    <div style="margin-bottom: 12px; font-size: 0.85rem; font-weight: 800; color: var(--apple-text-secondary);">داخل العراق:</div>
+                    
+                    <div style="margin-bottom: 8px; font-size: 0.85rem; font-weight: 800; color: var(--apple-text-secondary);">داخل العراق:</div>
                     <ul class="info-list" style="margin-bottom: 14px;">
-                        <li><span>سوبر كي</span> <span class="badge-tag">متوفر</span></li>
+                        <li><span>سوبر كي (Super Key)</span> <span class="badge-tag">متوفر</span></li>
                         <li><span>زين العراق - آسياسيل</span> <span class="badge-tag">+2$ رسوم تحويل</span></li>
                     </ul>
-                    <div style="margin-bottom: 12px; font-size: 0.85rem; font-weight: 800; color: var(--apple-text-secondary);">خارج العراق:</div>
+
+                    <div style="margin-bottom: 8px; font-size: 0.85rem; font-weight: 800; color: var(--apple-text-secondary);">خارج العراق (4 طرق عالمية):</div>
                     <ul class="info-list">
-                        <li><span>تحويل دولي آيبان (IBAN)</span> <span class="badge-tag">دولار / يورو</span></li>
-                        <li><span>ويسترن يونيون (Western Union)</span> <span class="badge-tag">فوري</span></li>
+                        <li><span>البطاقات البنكية (Visa / Mastercard / Apple Pay)</span> <span class="badge-tag">دفع فوري +2$</span></li>
+                        <li><span>العملات الرقمية (USDT - Binance)</span> <span class="badge-tag">فوري +2$ رسوم</span></li>
+                        <li><span>تحويل بنكي دولي (IBAN)</span> <span class="badge-tag">+2$ رسوم تحويل</span></li>
+                        <li><span>ويسترن يونيون (Western Union)</span> <span class="badge-tag">فوري +2$ رسوم</span></li>
                     </ul>
                 </div>
             </div>
@@ -1199,7 +1352,6 @@
                 targetSection.classList.add('active');
             }
 
-            // Update nav active states
             ['navHome', 'navPricing', 'navDownload', 'navAbout'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.classList.remove('active');
@@ -1221,45 +1373,49 @@
             '1year': {
                 normal: { price: '$10', period: '1 سنة', guarantee: 'ضمان 3 أشهر مستمرة', text: 'مرحباً، أرغب بالاشتراك في الباقة العادية (سنة - 10$)' },
                 plus: { price: '$15', period: '1 سنة', guarantee: 'ضمان 6 أشهر مستمرة', text: 'مرحباً، أرغب بالاشتراك في الباقة البلس (سنة - 15$)' },
-                max: { price: '$22', period: '1 سنة', guarantee: 'ضمان المدة كاملة 100%', text: 'مرحباً، أرغب بالاشتراك في الباقة الماكس VIP (سنة - 22$)' }
+                max: { price: '$22', period: '1 سنة', guarantee: 'ضمان المدة كاملة 100%', text: 'مرحباً، أرغب بالاشتراك في الباقة الماكس VIP (سنة - 22$ - ضمان 100%)' }
             },
             '6months': {
                 normal: { price: '$7', period: '6 أشهر', guarantee: 'ضمان شهرين (2)', text: 'مرحباً، أرغب بالاشتراك في الباقة العادية (6 أشهر - 7$)' },
                 plus: { price: '$8', period: '6 أشهر', guarantee: 'ضمان 4 أشهر', text: 'مرحباً، أرغب بالاشتراك في الباقة البلس (6 أشهر - 8$)' },
-                max: { price: '$14', period: '6 أشهر', guarantee: 'ضمان المدة كاملة 100%', text: 'مرحباً، أرغب بالاشتراك في الباقة الماكس VIP (6 أشهر - 14$)' }
+                max: { price: '$14', period: '6 أشهر', guarantee: 'ضمان المدة كاملة 100%', text: 'مرحباً، أرغب بالاشتراك في الباقة الماكس VIP (6 أشهر - 14$ - ضمان 100%)' }
             },
             '3months': {
                 normal: { price: '$5', period: '3 أشهر', guarantee: 'ضمان شهر واحد (1)', text: 'مرحباً، أرغب بالاشتراك في الباقة العادية (3 أشهر - 5$)' },
                 plus: { price: '$6', period: '3 أشهر', guarantee: 'ضمان شهرين (2)', text: 'مرحباً، أرغب بالاشتراك في الباقة البلس (3 أشهر - 6$)' },
-                max: { price: '$7', period: '3 أشهر', guarantee: 'ضمان المدة كاملة 100%', text: 'مرحباً، أرغب بالاشتراك في الباقة الماكس VIP (3 أشهر - 7$)' }
+                max: { price: '$7', period: '3 أشهر', guarantee: 'ضمان المدة كاملة 100%', text: 'مرحباً، أرغب بالاشتراك في الباقة الماكس VIP (3 أشهر - 7$ - ضمان 100%)' }
             }
         };
 
         function setPricingDuration(durationKey) {
-            // Update tabs UI
             document.querySelectorAll('.duration-tab').forEach(tab => tab.classList.remove('active'));
             event.target.classList.add('active');
 
             const data = pricingDatabase[durationKey];
 
-            // Update Normal
             document.getElementById('priceNormal').innerText = data.normal.price;
             document.getElementById('periodNormal').innerText = data.normal.period;
             document.getElementById('guaranteeNormal').innerText = data.normal.guarantee;
             document.getElementById('btnNormal').href = `https://t.me/cpj_4?text=${encodeURIComponent(data.normal.text)}`;
 
-            // Update Plus
             document.getElementById('pricePlus').innerText = data.plus.price;
             document.getElementById('periodPlus').innerText = data.plus.period;
             document.getElementById('guaranteePlus').innerText = data.plus.guarantee;
             document.getElementById('btnPlus').href = `https://t.me/cpj_4?text=${encodeURIComponent(data.plus.text)}`;
 
-            // Update Max
             document.getElementById('priceMax').innerText = data.max.price;
             document.getElementById('periodMax').innerText = data.max.period;
             document.getElementById('guaranteeMax').innerText = data.max.guarantee;
             document.getElementById('btnMax').href = `https://t.me/cpj_4?text=${encodeURIComponent(data.max.text)}`;
         }
+
+        // ================= FAQ ACCORDION INTERACTIVITY =================
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
 
         // ================= MODAL & WORKER DOWNLOAD LOGIC =================
         let selectedAppName = '';
