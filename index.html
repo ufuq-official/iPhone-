@@ -4,12 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>منصة أفق | الشهادات والتطبيقات والباقات</title>
+    <meta name="description" content="منصة أفق لشهادات أبل: باقات اشتراك بضمان وتعويض فوري، وتثبيت مباشر لأدوات التوقيع Esign وScarlet وKsign بكود تفعيل.">
+    <meta name="theme-color" content="#FDFBF7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#12100E" media="(prefers-color-scheme: dark)">
+
+    <!-- معاينة الرابط عند مشاركته في تيليجرام وواتساب وإنستغرام وX -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="منصة أفق">
+    <meta property="og:locale" content="ar_IQ">
+    <meta property="og:title" content="منصة أفق | الشهادات والتطبيقات والباقات">
+    <meta property="og:description" content="شهادات أبل بضمان وتعويض فوري، وباقات تبدأ من 5$ مع تثبيت مباشر للتطبيقات.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:image:alt" content="شعار منصة أفق">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="منصة أفق | الشهادات والتطبيقات والباقات">
+    <meta name="twitter:description" content="شهادات أبل بضمان وتعويض فوري، وباقات تبدأ من 5$ مع تثبيت مباشر للتطبيقات.">
+    <meta name="twitter:image" content="logo.png">
+
+    <!-- أيقونة الموقع في المتصفح وعند إضافته لشاشة الآيفون الرئيسية -->
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <meta name="apple-mobile-web-app-title" content="أفق">
+    <script>
+        // تفعيل حركات الظهور عند التمرير فقط إذا كان المتصفح يدعمها
+        if ('IntersectionObserver' in window) document.documentElement.classList.add('js-reveal');
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         :root {
             --apple-bg: #FDFBF7;         /* أوف وايت ناعم كلاسيكي */
@@ -28,6 +53,7 @@
             --telegram-color: #0088cc;
             --ofoq-accent: #8C5A3C;     /* بني دافئ للـ VIP */
             --instagram-grad: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+            --on-accent: #FFFFFF;        /* لون النص فوق الأزرار البنية */
         }
 
         @media (prefers-color-scheme: dark) {
@@ -44,6 +70,7 @@
                 --success-color: #30d158;
                 --telegram-color: #2997ff;
                 --ofoq-accent: #C5A059;
+                --on-accent: #12100E;        /* نص داكن فوق الأزرار الذهبية ليكون واضحاً */
             }
         }
 
@@ -236,7 +263,7 @@
             display: none;
             animation: fadeIn 0.4s ease-in-out;
         }
-        
+
         .page-section.active { display: block; }
 
         @keyframes fadeIn {
@@ -395,7 +422,7 @@
             transition: all 0.2s ease;
         }
 
-        .social-btn.primary { background-color: var(--apple-link); color: #ffffff; }
+        .social-btn.primary { background-color: var(--apple-link); color: var(--on-accent); }
         .social-btn.secondary { background-color: var(--apple-subtle-bg); color: var(--apple-text-primary); border: 1px solid var(--apple-border); }
 
         .section-title {
@@ -436,7 +463,7 @@
 
         .duration-tab.active {
             background-color: var(--apple-link);
-            color: #ffffff;
+            color: var(--on-accent);
             box-shadow: 0 4px 12px rgba(92, 61, 46, 0.3);
         }
 
@@ -474,7 +501,7 @@
             top: -14px;
             left: 24px;
             background: var(--ofoq-accent);
-            color: #fff;
+            color: var(--on-accent);
             font-size: 0.75rem;
             font-weight: 800;
             padding: 4px 12px;
@@ -636,7 +663,7 @@
             width: 100%;
             padding: 12px 20px;
             background-color: var(--apple-link);
-            color: #ffffff;
+            color: var(--on-accent);
             font-weight: 700;
             font-size: 0.95rem;
             border: none;
@@ -705,48 +732,6 @@
             transform: rotate(45deg);
         }
 
-        /* --- REVIEWS SECTION --- */
-        .reviews-section {
-            margin: 60px 0;
-        }
-
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .review-card {
-            background: var(--apple-card-bg);
-            border: 1px solid var(--apple-border);
-            border-radius: var(--radius-large);
-            padding: 25px;
-            box-shadow: 0 4px 15px rgba(92, 61, 46, 0.03);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .stars {
-            color: #C5A059;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-        }
-
-        .review-text {
-            font-style: italic;
-            color: var(--apple-text-secondary);
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-        }
-
-        .reviewer-name {
-            font-weight: bold;
-            color: var(--apple-text-primary);
-            font-size: 0.9rem;
-            text-align: left;
-        }
-
         .transparency-section {
             background-color: var(--apple-card-bg);
             border: 1px solid var(--apple-border);
@@ -811,7 +796,7 @@
         .channel-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: white; }
         .channel-icon.tg { background-color: var(--telegram-color); }
         .channel-icon.ig { background: var(--instagram-grad); }
-        .channel-btn { padding: 8px 20px; border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.85rem; color: white; background-color: var(--apple-link); }
+        .channel-btn { padding: 8px 20px; border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.85rem; color: var(--on-accent); background-color: var(--apple-link); }
 
         .modal-overlay {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0;
@@ -846,6 +831,463 @@
         footer { border-top: 1px solid var(--apple-border); padding: 40px 20px; text-align: center; font-size: 0.88rem; color: var(--apple-text-secondary); background-color: var(--apple-bg); }
         .footer-socials { display: flex; justify-content: center; gap: 16px; margin-bottom: 14px; }
         .footer-socials a { color: var(--apple-text-secondary); text-decoration: none; font-weight: 600; }
+
+        /* ================= إضافات أفق ================= */
+
+        /* إصلاح احتياطي: السماح بالكتابة داخل الحقول على الآيفون رغم منع التحديد في الصفحة */
+        input, textarea {
+            -webkit-user-select: text;
+            user-select: text;
+        }
+
+        /* --- اختيار الدولة والعملة --- */
+        .currency-picker {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            max-width: 360px;
+            margin: 0 auto 22px;
+        }
+
+        .currency-picker label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--apple-text-secondary);
+        }
+
+        .currency-select-wrap {
+            position: relative;
+            width: 100%;
+        }
+
+        .currency-select {
+            width: 100%;
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: var(--apple-card-bg);
+            border: 1px solid var(--apple-border);
+            border-radius: 30px;
+            padding: 12px 20px 12px 46px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--apple-text-primary);
+            cursor: pointer;
+            outline: none;
+            box-shadow: 0 4px 14px rgba(92, 61, 46, 0.05);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .currency-select option {
+            background-color: var(--apple-card-bg);
+            color: var(--apple-text-primary);
+        }
+
+        .currency-select:focus {
+            border-color: var(--apple-link);
+            box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.25);
+        }
+
+        .currency-select-wrap::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.75rem;
+            color: var(--apple-text-secondary);
+            pointer-events: none;
+        }
+
+        .currency-note {
+            min-height: 1.3em;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--apple-text-secondary);
+            text-align: center;
+        }
+
+        .package-price.long { font-size: 1.8rem; }
+
+        .package-price-usd {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--apple-text-secondary);
+        }
+
+        .package-price-usd:empty { display: none; }
+
+        .price-pop { animation: pricePop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+        @keyframes pricePop {
+            from { opacity: 0; transform: translateY(8px) scale(0.92); }
+            to { opacity: 1; transform: none; }
+        }
+
+        /* --- اللوحات الإعلانية --- */
+        .promo-banner {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 26px 28px;
+            margin: 30px 0;
+            border-radius: var(--radius-large);
+            background: linear-gradient(135deg, #3A251B 0%, #5C3D2E 55%, #8C5A3C 100%);
+            color: #FDFBF7;
+            box-shadow: 0 18px 40px rgba(58, 37, 27, 0.22);
+        }
+
+        /* هالة ذهبية متحركة */
+        .promo-banner::before {
+            content: '';
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            left: -70px;
+            top: -110px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(197, 160, 89, 0.5), transparent 70%);
+            z-index: -1;
+            animation: glowDrift 8s ease-in-out infinite alternate;
+        }
+
+        /* لمعة تمر على اللوحة */
+        .promo-banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 35%;
+            background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.13), transparent);
+            transform: translateX(-120%) skewX(-20deg);
+            animation: promoShine 6s ease-in-out infinite;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @keyframes promoShine {
+            0%, 55% { transform: translateX(-120%) skewX(-20deg); }
+            100% { transform: translateX(330%) skewX(-20deg); }
+        }
+
+        @keyframes glowDrift {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(40px, 30px) scale(1.15); }
+        }
+
+        .promo-icon {
+            flex-shrink: 0;
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            color: #3A251B;
+            background: linear-gradient(135deg, #EED9A4, #C5A059);
+            box-shadow: 0 10px 24px rgba(197, 160, 89, 0.35);
+            animation: floatY 3.6s ease-in-out infinite;
+        }
+
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .promo-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .promo-kicker {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: #EED9A4;
+            background: rgba(238, 217, 164, 0.12);
+            border: 1px solid rgba(238, 217, 164, 0.3);
+            padding: 2px 12px;
+            border-radius: 20px;
+            margin-bottom: 6px;
+        }
+
+        .promo-content h3 {
+            font-size: 1.3rem;
+            font-weight: 900;
+            line-height: 1.4;
+            color: #FDFBF7;
+            margin-bottom: 4px;
+        }
+
+        .promo-content p {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: rgba(253, 251, 247, 0.85);
+        }
+
+        .promo-cta {
+            flex-shrink: 0;
+            display: inline-block;
+            padding: 11px 24px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #EED9A4, #C5A059);
+            color: #2A1A12;
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-decoration: none;
+            white-space: nowrap;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(197, 160, 89, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .promo-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 26px rgba(197, 160, 89, 0.45);
+        }
+
+        /* نسخة زرقاء للوحات تيليجرام والدعم */
+        .promo-banner.tg {
+            background: linear-gradient(135deg, #0A3D62 0%, #0B5E8E 55%, #0077B6 100%);
+            box-shadow: 0 18px 40px rgba(10, 61, 98, 0.22);
+        }
+
+        .promo-banner.tg::before { background: radial-gradient(circle, rgba(41, 182, 246, 0.45), transparent 70%); }
+        .promo-banner.tg .promo-icon { background: linear-gradient(135deg, #FFFFFF, #D6EEFB); color: #0077B6; box-shadow: 0 10px 24px rgba(0, 119, 182, 0.35); }
+        .promo-banner.tg .promo-kicker { color: #CFEFFF; background: rgba(207, 239, 255, 0.12); border-color: rgba(207, 239, 255, 0.3); }
+        .promo-banner.tg .promo-cta { background: #FFFFFF; color: #0A3D62; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18); }
+
+        /* --- شريط الإعلانات المتحرك في الرئيسية --- */
+        .promo-carousel-wrap { margin: 10px 0 30px; }
+
+        .promo-carousel {
+            overflow: hidden;
+            border-radius: var(--radius-large);
+            box-shadow: 0 18px 40px rgba(58, 37, 27, 0.22);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+
+        .carousel-track .promo-slide {
+            flex: 0 0 100%;
+            margin: 0;
+            border-radius: 0;
+            box-shadow: none;
+            min-height: 150px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .carousel-dot {
+            position: relative;
+            width: 8px;
+            height: 8px;
+            padding: 0;
+            border: none;
+            border-radius: 8px;
+            background-color: var(--apple-text-secondary);
+            opacity: 0.3;
+            cursor: pointer;
+            transition: width 0.35s ease, opacity 0.35s ease, background-color 0.35s ease;
+        }
+
+        /* مساحة لمس أكبر للنقاط على الهاتف */
+        .carousel-dot::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            bottom: -10px;
+            left: -5px;
+            right: -5px;
+        }
+
+        .carousel-dot.active {
+            width: 28px;
+            opacity: 1;
+            background-color: var(--apple-link);
+        }
+
+        @media (max-width: 640px) {
+            .promo-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 28px 22px;
+            }
+
+            .promo-cta {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* --- حركات احترافية --- */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: none; }
+        }
+
+        .hero-logo-wrapper {
+            animation: logoPop 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) both, logoFloat 4s ease-in-out 1s infinite;
+        }
+
+        @keyframes logoPop {
+            from { opacity: 0; transform: scale(0.6) rotate(-8deg); }
+            to { opacity: 1; transform: none; }
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .hero-tag { animation: fadeUp 0.7s ease 0.15s both; }
+
+        /* لمعة ذهبية تمر على العنوان الرئيسي */
+        .hero-title {
+            background: linear-gradient(90deg, var(--apple-text-primary) 0%, var(--apple-text-primary) 40%, var(--apple-link) 50%, var(--apple-text-primary) 60%, var(--apple-text-primary) 100%);
+            background-size: 250% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeUp 0.7s ease 0.3s both, titleShine 7s ease-in-out 1.2s infinite;
+        }
+
+        @keyframes titleShine {
+            0% { background-position: 0% 0; }
+            45%, 100% { background-position: 100% 0; }
+        }
+
+        .marquee-wrapper { animation: fadeUp 0.8s ease 0.45s both; }
+        .hero-social-bar { animation: fadeUp 0.8s ease 0.6s both; }
+
+        .social-btn.primary { animation: ctaGlow 2.8s ease-in-out infinite; }
+
+        @keyframes ctaGlow {
+            0%, 100% { box-shadow: 0 6px 16px rgba(92, 61, 46, 0.22); }
+            50% { box-shadow: 0 6px 28px rgba(197, 160, 89, 0.55); }
+        }
+
+        /* لمعة على الأزرار عند المرور */
+        .apple-button {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .apple-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 45%;
+            background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+            transform: translateX(-130%) skewX(-20deg);
+            pointer-events: none;
+        }
+
+        .apple-button:hover::after {
+            transform: translateX(300%) skewX(-20deg);
+            transition: transform 0.75s ease;
+        }
+
+        /* توهج ذهبي حول باقة VIP */
+        .package-card.vip::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            bottom: -2px;
+            left: -2px;
+            border-radius: inherit;
+            pointer-events: none;
+            animation: vipGlow 3.2s ease-in-out infinite;
+        }
+
+        @keyframes vipGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0); }
+            50% { box-shadow: 0 0 0 6px rgba(197, 160, 89, 0.18), 0 0 28px rgba(197, 160, 89, 0.25); }
+        }
+
+        /* ظهور عناصر القائمة الجانبية بالتتابع */
+        .sidebar.active .nav-links li { animation: navIn 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+        .sidebar.active .nav-links li:nth-child(2) { animation-delay: 0.06s; }
+        .sidebar.active .nav-links li:nth-child(3) { animation-delay: 0.12s; }
+        .sidebar.active .nav-links li:nth-child(4) { animation-delay: 0.18s; }
+
+        @keyframes navIn {
+            from { opacity: 0; transform: translateX(24px); }
+            to { opacity: 1; transform: none; }
+        }
+
+        /* نافذة الكود: دخول ناعم واهتزاز عند الخطأ */
+        .modal-box {
+            transform: translateY(16px) scale(0.96);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .modal-overlay.active .modal-box { transform: none; }
+
+        .modal-box.shake { animation: shake 0.45s ease; }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+
+        /* ظهور العناصر بنعومة عند التمرير */
+        .js-reveal .section-title:not(.is-visible),
+        .js-reveal .feature-card:not(.is-visible),
+        .js-reveal .faq-item:not(.is-visible),
+        .js-reveal .package-card:not(.is-visible),
+        .js-reveal .info-card:not(.is-visible),
+        .js-reveal .app-card:not(.is-visible),
+        .js-reveal .notice-item:not(.is-visible),
+        .js-reveal .channel-row:not(.is-visible),
+        .js-reveal .promo-banner:not(.promo-slide):not(.is-visible),
+        .js-reveal .promo-carousel-wrap:not(.is-visible),
+        .js-reveal .currency-picker:not(.is-visible) {
+            opacity: 0;
+        }
+
+        .js-reveal .is-visible {
+            animation: revealUp 0.75s cubic-bezier(0.22, 0.61, 0.36, 1) backwards;
+            animation-delay: var(--reveal-delay, 0ms);
+        }
+
+        @keyframes revealUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to { opacity: 1; transform: none; }
+        }
+
+        /* احترام إعداد (تقليل الحركة) في جهاز الزائر */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -854,7 +1296,7 @@
         <div class="header-container">
             <a href="#" class="header-logo" onclick="showSection('homeSection')">
                 <div class="logo-img-wrapper">
-                    <img src="https://c.top4top.io/p_3951ztuum1.png" alt="شعار أفق">
+                    <img src="logo.png" alt="شعار أفق">
                 </div>
                 <span>منصة أفق</span>
             </a>
@@ -898,7 +1340,7 @@
         <div id="homeSection" class="page-section active">
             <section class="hero">
                 <div class="hero-logo-wrapper">
-                    <img src="https://c.top4top.io/p_3951ztuum1.png" alt="شعار أفق">
+                    <img src="logo.png" alt="شعار أفق">
                 </div>
                 <div class="hero-tag">شهادات أبل المدفوعة والمجانية</div>
                 <h1 class="hero-title">خيارك الأفضل لتحميل التطبيقات</h1>
@@ -964,6 +1406,54 @@
                 </div>
             </section>
 
+            <!-- لوحات إعلانية متحركة: يمكنك تعديل نص أي إعلان من هنا -->
+            <div class="promo-carousel-wrap">
+                <div class="promo-carousel">
+                    <div class="carousel-track" id="promoTrack">
+                        <div class="promo-banner promo-slide">
+                            <div class="promo-icon"><i class="fa-solid fa-crown"></i></div>
+                            <div class="promo-content">
+                                <span class="promo-kicker">الأكثر طلباً</span>
+                                <h3>الباقة الماكس VIP</h3>
+                                <p>3 أجهزة + اشتراك IPTV + ضمان المدة كاملة 100%، وتبدأ من 7$ فقط.</p>
+                            </div>
+                            <button class="promo-cta" onclick="showSection('pricingSection')">تصفح الباقات</button>
+                        </div>
+
+                        <div class="promo-banner promo-slide">
+                            <div class="promo-icon"><i class="fa-solid fa-user-group"></i></div>
+                            <div class="promo-content">
+                                <span class="promo-kicker">ادعُ صديقك</span>
+                                <h3>3 أشهر مجاناً بالباقة العادية</h3>
+                                <p>ادعُ صديقاً جديداً للاشتراك في أفق واحصل على 3 أشهر مجانية.</p>
+                            </div>
+                            <a class="promo-cta" href="https://t.me/cpj_4" data-tg-text="مرحباً، أرغب بالاستفادة من عرض دعوة صديق" target="_blank">تواصل معنا</a>
+                        </div>
+
+                        <div class="promo-banner promo-slide">
+                            <div class="promo-icon"><i class="fa-solid fa-rotate"></i></div>
+                            <div class="promo-content">
+                                <span class="promo-kicker">لمشتركينا</span>
+                                <h3>خصم 20% على التجديد الثاني</h3>
+                                <p>جدّد اشتراكك للمرة الثانية واحصل على تخفيض 20% مباشرة.</p>
+                            </div>
+                            <a class="promo-cta" href="https://t.me/cpj_4" data-tg-text="مرحباً، أرغب بتجديد اشتراكي مع خصم التجديد 20%" target="_blank">جدّد الآن</a>
+                        </div>
+
+                        <div class="promo-banner promo-slide tg">
+                            <div class="promo-icon"><i class="fa-brands fa-telegram"></i></div>
+                            <div class="promo-content">
+                                <span class="promo-kicker">قنوات أفق</span>
+                                <h3>تابع قناة تطبيقات الـ IPA</h3>
+                                <p>كل جديد التطبيقات والتحديثات على قناتنا في تيليجرام.</p>
+                            </div>
+                            <a class="promo-cta" href="https://t.me/ufuq_ipa" target="_blank">انضم للقناة</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-dots" id="promoDots"></div>
+            </div>
+
             <section>
                 <h2 class="section-title">مميزات المنصة</h2>
                 <div class="grid-cards">
@@ -993,34 +1483,10 @@
                 </div>
             </section>
 
-            <!-- قسم آراء وتقييمات العملاء -->
-            <section class="reviews-section">
-                <h2 class="section-title">آراء مشتركينا في أفق</h2>
-                <div class="reviews-grid">
-                    <div class="review-card">
-                        <div class="stars">★★★★★</div>
-                        <p class="review-text">"سرعة وتجاوب ممتاز، الشهادة شغالّة وبدون أي مشاكل والتطبيقات تنزل بسلاسة عالية. أفضل خدمة جربتها."</p>
-                        <div class="reviewer-name">- أحمد ع.</div>
-                    </div>
-
-                    <div class="review-card">
-                        <div class="stars">★★★★★</div>
-                        <p class="review-text">"اشتركت بالباقة الماكس، التكرار والنسخ للتطبيقات شغال 100% ودعم التليگرام محترفين جداً."</p>
-                        <div class="reviewer-name">- مصطفى الكرخي</div>
-                    </div>
-
-                    <div class="review-card">
-                        <div class="stars">★★★★★</div>
-                        <p class="review-text">"تأمين ممتاز وتعويض سريع، التصميم والتعامل يرتقي لمستوى عالي من الاحترافية."</p>
-                        <div class="reviewer-name">- سجاد H.</div>
-                    </div>
-                </div>
-            </section>
-
             <!-- قسم الأسئلة الشائعة -->
             <section class="faq-section">
                 <h2 class="section-title">الأسئلة الشائعة</h2>
-                
+
                 <div class="faq-item">
                     <div class="faq-question">
                         <span>ما هي ميزة تكرار التطبيقات في متجر أفق؟</span>
@@ -1058,11 +1524,20 @@
             <h2 class="section-title">باقات اشتراك شهادة Apple</h2>
             <p style="text-align: center; color: var(--apple-text-secondary); margin-bottom: 25px; font-weight: 600;">اختر المدة المناسبة لعرض الأسعار والضمانات الخاصة بكل باقة:</p>
 
+            <!-- اختيار الدولة لعرض الأسعار بعملتها (تُختار تلقائياً حسب موقع الزائر) -->
+            <div class="currency-picker">
+                <label for="countrySelect"><i class="fa-solid fa-globe"></i> اعرض الأسعار بعملة دولتك</label>
+                <div class="currency-select-wrap">
+                    <select id="countrySelect" class="currency-select" onchange="setCountry(this.value, true)"></select>
+                </div>
+                <div id="currencyNote" class="currency-note"></div>
+            </div>
+
             <!-- Duration Switcher Tabs -->
             <div class="duration-switcher">
-                <button class="duration-tab active" onclick="setPricingDuration('1year')">سنة كاملة</button>
-                <button class="duration-tab" onclick="setPricingDuration('6months')">6 أشهر</button>
-                <button class="duration-tab" onclick="setPricingDuration('3months')">3 أشهر</button>
+                <button class="duration-tab active" onclick="setPricingDuration('1year', this)">سنة كاملة</button>
+                <button class="duration-tab" onclick="setPricingDuration('6months', this)">6 أشهر</button>
+                <button class="duration-tab" onclick="setPricingDuration('3months', this)">3 أشهر</button>
             </div>
 
             <div class="packages-grid">
@@ -1074,6 +1549,7 @@
                     </div>
                     <div class="package-price-box">
                         <div id="priceNormal" class="package-price">$10</div>
+                        <div id="priceUsdNormal" class="package-price-usd"></div>
                         <div id="periodNormal" class="package-period">1 سنة</div>
                         <div id="guaranteeNormal" class="package-guarantee">ضمان 3 أشهر مستمرة</div>
                     </div>
@@ -1102,6 +1578,7 @@
                     </div>
                     <div class="package-price-box">
                         <div id="pricePlus" class="package-price">$15</div>
+                        <div id="priceUsdPlus" class="package-price-usd"></div>
                         <div id="periodPlus" class="package-period">1 سنة</div>
                         <div id="guaranteePlus" class="package-guarantee">ضمان 6 أشهر مستمرة</div>
                     </div>
@@ -1131,6 +1608,7 @@
                     </div>
                     <div class="package-price-box">
                         <div id="priceMax" class="package-price" style="color: var(--ofoq-accent);">$22</div>
+                        <div id="priceUsdMax" class="package-price-usd"></div>
                         <div id="periodMax" class="package-period">1 سنة</div>
                         <div id="guaranteeMax" class="package-guarantee">ضمان المدة كاملة 100%</div>
                     </div>
@@ -1153,6 +1631,17 @@
                 </div>
             </div>
 
+            <!-- لوحة إعلانية: الاشتراك السنوي -->
+            <div class="promo-banner">
+                <div class="promo-icon"><i class="fa-solid fa-piggy-bank"></i></div>
+                <div class="promo-content">
+                    <span class="promo-kicker">نصيحة أفق</span>
+                    <h3>وفّر حتى 50% مع الاشتراك السنوي</h3>
+                    <p>سعر السنة الكاملة أقل من تجديد الباقة كل 3 أشهر، ومعه ضمان أطول.</p>
+                </div>
+                <button class="promo-cta" onclick="chooseYearly()">اختر سنة كاملة</button>
+            </div>
+
             <!-- Offers and Payment Info Grid -->
             <div class="info-grid">
                 <!-- Special Offers -->
@@ -1173,19 +1662,21 @@
                 <!-- Payment Methods Card (UPDATED TO 4 METHODS) -->
                 <div class="info-card">
                     <h3><i class="fa-solid fa-wallet"></i> طرق الدفع المعتمدة</h3>
-                    
+
                     <div style="margin-bottom: 8px; font-size: 0.85rem; font-weight: 800; color: var(--apple-text-secondary);">داخل العراق:</div>
                     <ul class="info-list" style="margin-bottom: 14px;">
                         <li><span>سوبر كي (Super Key)</span> <span class="badge-tag">متوفر</span></li>
-                        <li><span>زين العراق - آسياسيل</span> <span class="badge-tag">+2$ رسوم تحويل</span></li>
+                        <li><span>ماستر كارد (Mastercard)</span> <span class="badge-tag">متوفر</span></li>
+                        <li><span>زين العراق</span> <span class="badge-tag">+2$ رسوم تحويل</span></li>
+                        <li><span>زين كاش (Zain Cash)</span> <span class="badge-tag">متوفر</span></li>
                     </ul>
 
                     <div style="margin-bottom: 8px; font-size: 0.85rem; font-weight: 800; color: var(--apple-text-secondary);">خارج العراق (4 طرق عالمية):</div>
                     <ul class="info-list">
                         <li><span>البطاقات البنكية (Visa / Mastercard / Apple Pay)</span> <span class="badge-tag">دفع فوري +2$</span></li>
                         <li><span>العملات الرقمية (USDT - Binance)</span> <span class="badge-tag">فوري +2$ رسوم</span></li>
-                        <li><span>تحويل بنكي دولي (IBAN)</span> <span class="badge-tag">+2$ رسوم تحويل</span></li>
                         <li><span>ويسترن يونيون (Western Union)</span> <span class="badge-tag">فوري +2$ رسوم</span></li>
+                        <li><span>زين كاش (Zain Cash)</span> <span class="badge-tag">متوفر</span></li>
                     </ul>
                 </div>
             </div>
@@ -1211,13 +1702,24 @@
                     </div>
                 </div>
             </section>
+
+            <!-- لوحة إعلانية: الدعم الفني -->
+            <div class="promo-banner tg">
+                <div class="promo-icon"><i class="fa-solid fa-headset"></i></div>
+                <div class="promo-content">
+                    <span class="promo-kicker">الدعم الفني</span>
+                    <h3>توقفت الشهادة عندك؟</h3>
+                    <p>راسلنا على تيليجرام ونعوّضك فوراً بشهادة جديدة حسب ضمان باقتك.</p>
+                </div>
+                <a class="promo-cta" href="https://t.me/cpj_4" data-tg-text="مرحباً، توقفت الشهادة عندي وأحتاج إلى تعويض" target="_blank">تواصل مع الدعم</a>
+            </div>
         </div>
 
         <!-- DOWNLOAD SECTION -->
         <div id="downloadSection" class="page-section">
             <h2 class="section-title">تثبيت التطبيقات</h2>
             <p style="text-align: center; color: var(--apple-text-secondary); margin-bottom: 25px;">اختر التطبيق المطلوب ثم أدخل كود الشهادة الخاص باشتراكك للبدء بالتثبيت الفوري.</p>
-            
+
             <div class="apps-grid">
                 <div class="app-card">
                     <div class="app-icon esign">E</div>
@@ -1246,6 +1748,17 @@
                     <p>أداة خفيفة وفعالة لتثبيت وإدارة تطبيقات الـ IPA.</p>
                     <button class="apple-button" onclick="openCodeModal('K-Sign')">تثبيت K-Sign</button>
                 </div>
+            </div>
+
+            <!-- لوحة إعلانية: الحصول على كود التفعيل -->
+            <div class="promo-banner">
+                <div class="promo-icon"><i class="fa-solid fa-key"></i></div>
+                <div class="promo-content">
+                    <span class="promo-kicker">ما عندك كود؟</span>
+                    <h3>احصل على كود التفعيل الخاص بك</h3>
+                    <p>اشترك بإحدى باقات أفق واستلم كود الشهادة لتثبيت التطبيقات مباشرة على جهازك.</p>
+                </div>
+                <button class="promo-cta" onclick="showSection('pricingSection')">اشترك الآن</button>
             </div>
 
             <div class="channels-wrapper">
@@ -1293,10 +1806,10 @@
             <button class="close-modal" onclick="closeCodeModal()">&times;</button>
             <h3 id="modalAppName" style="font-size: 1.3rem; font-weight:800;">تثبيت التطبيق</h3>
             <p style="font-size: 0.88rem; color: var(--apple-text-secondary); margin-top: 4px;">أدخل كود الشهادة للبدء بالتثبيت:</p>
-            
-            <input type="text" id="certCodeInput" class="code-input" placeholder="OFUQ-XXXX" autocomplete="off">
+
+            <input type="text" id="certCodeInput" class="code-input" placeholder="OFUQ-XXXX" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" enterkeyhint="go">
             <button class="apple-button" id="submitBtn" onclick="validateAndDownload()">تأكيد التثبيت</button>
-            
+
             <div id="alertMsg" class="alert-msg"></div>
         </div>
     </div>
@@ -1311,7 +1824,7 @@
     </footer>
 
     <script>
-        const WORKER_URL = "https://ufuq.followorfollow1.workers.dev/"; 
+        const WORKER_URL = "https://ufuq.followorfollow1.workers.dev/";
 
         // ================= SECURITY & ANTI-INSPECTION PROTECTION =================
         document.addEventListener('contextmenu', e => e.preventDefault());
@@ -1327,15 +1840,6 @@
                 return false;
             }
         });
-
-        setInterval(function() {
-            const startTime = performance.now();
-            (function() {}.constructor('debugger')());
-            const endTime = performance.now();
-            if (endTime - startTime > 100) {
-                window.location.reload();
-            }
-        }, 100);
 
         // ================= NAVIGATION & APP LOGIC =================
         function toggleSidebar() {
@@ -1387,27 +1891,195 @@
             }
         };
 
-        function setPricingDuration(durationKey) {
-            document.querySelectorAll('.duration-tab').forEach(tab => tab.classList.remove('active'));
-            event.target.classList.add('active');
+        // ================= COUNTRY & CURRENCY PRICING =================
+        // سعر صرف الدينار العراقي يحدده صاحب الموقع (لا يتحدّث تلقائياً)
+        const IQD_RATE = 1520;
+        // تقريب أسعار الدينار للأعلى لأقرب 250 دينار (اجعلها 1 لعرض السعر بدون تقريب)
+        const IQD_ROUND_TO = 250;
 
-            const data = pricingDatabase[durationKey];
+        // rate: سعر 1 دولار بعملة الدولة (احتياطي، ويتحدّث يومياً من الإنترنت إلا إذا كان fixed)
+        // step: تقريب السعر للأعلى لأقرب رقم مناسب لكل عملة
+        // الدول التي عملتها USD نعرض لها السعر بالدولار لأنه الأكثر استخداماً للدفع الإلكتروني هناك
+        const COUNTRIES = [
+            { id: 'IQ', name: 'العراق', flag: '🇮🇶', currency: 'IQD', currencyName: 'دينار عراقي', symbol: 'د.ع', rate: IQD_RATE, step: IQD_ROUND_TO, fixed: true, tz: ['Asia/Baghdad'] },
+            { id: 'SA', name: 'السعودية', flag: '🇸🇦', currency: 'SAR', currencyName: 'ريال سعودي', symbol: 'ر.س', rate: 3.75, step: 1, fixed: true, tz: ['Asia/Riyadh'] },
+            { id: 'AE', name: 'الإمارات', flag: '🇦🇪', currency: 'AED', currencyName: 'درهم إماراتي', symbol: 'د.إ', rate: 3.6725, step: 1, fixed: true, tz: ['Asia/Dubai'] },
+            { id: 'KW', name: 'الكويت', flag: '🇰🇼', currency: 'KWD', currencyName: 'دينار كويتي', symbol: 'د.ك', rate: 0.307, step: 0.05, tz: ['Asia/Kuwait'] },
+            { id: 'QA', name: 'قطر', flag: '🇶🇦', currency: 'QAR', currencyName: 'ريال قطري', symbol: 'ر.ق', rate: 3.64, step: 1, fixed: true, tz: ['Asia/Qatar'] },
+            { id: 'BH', name: 'البحرين', flag: '🇧🇭', currency: 'BHD', currencyName: 'دينار بحريني', symbol: 'د.ب', rate: 0.376, step: 0.05, fixed: true, tz: ['Asia/Bahrain'] },
+            { id: 'OM', name: 'عُمان', flag: '🇴🇲', currency: 'OMR', currencyName: 'ريال عماني', symbol: 'ر.ع', rate: 0.3845, step: 0.05, fixed: true, tz: ['Asia/Muscat'] },
+            { id: 'JO', name: 'الأردن', flag: '🇯🇴', currency: 'JOD', currencyName: 'دينار أردني', symbol: 'د.أ', rate: 0.709, step: 0.05, fixed: true, tz: ['Asia/Amman'] },
+            { id: 'LB', name: 'لبنان', flag: '🇱🇧', currency: 'LBP', currencyName: 'ليرة لبنانية', symbol: 'ل.ل', rate: 89500, step: 5000, tz: ['Asia/Beirut'] },
+            { id: 'SY', name: 'سوريا', flag: '🇸🇾', currency: 'USD', currencyName: 'دولار أمريكي', symbol: '$', rate: 1, step: 1, tz: ['Asia/Damascus'] },
+            { id: 'PS', name: 'فلسطين', flag: '🇵🇸', currency: 'ILS', currencyName: 'شيكل', symbol: '₪', rate: 3.6, step: 1, tz: ['Asia/Gaza', 'Asia/Hebron'] },
+            { id: 'EG', name: 'مصر', flag: '🇪🇬', currency: 'EGP', currencyName: 'جنيه مصري', symbol: 'ج.م', rate: 49, step: 5, tz: ['Africa/Cairo'] },
+            { id: 'LY', name: 'ليبيا', flag: '🇱🇾', currency: 'LYD', currencyName: 'دينار ليبي', symbol: 'د.ل', rate: 5.4, step: 1, tz: ['Africa/Tripoli'] },
+            { id: 'TN', name: 'تونس', flag: '🇹🇳', currency: 'TND', currencyName: 'دينار تونسي', symbol: 'د.ت', rate: 2.95, step: 0.5, tz: ['Africa/Tunis'] },
+            { id: 'DZ', name: 'الجزائر', flag: '🇩🇿', currency: 'DZD', currencyName: 'دينار جزائري', symbol: 'د.ج', rate: 130, step: 10, tz: ['Africa/Algiers'] },
+            { id: 'MA', name: 'المغرب', flag: '🇲🇦', currency: 'MAD', currencyName: 'درهم مغربي', symbol: 'د.م', rate: 9.2, step: 1, tz: ['Africa/Casablanca'] },
+            { id: 'MR', name: 'موريتانيا', flag: '🇲🇷', currency: 'MRU', currencyName: 'أوقية موريتانية', symbol: 'أ.م', rate: 40, step: 5, tz: ['Africa/Nouakchott'] },
+            { id: 'SD', name: 'السودان', flag: '🇸🇩', currency: 'USD', currencyName: 'دولار أمريكي', symbol: '$', rate: 1, step: 1, tz: ['Africa/Khartoum'] },
+            { id: 'YE', name: 'اليمن', flag: '🇾🇪', currency: 'USD', currencyName: 'دولار أمريكي', symbol: '$', rate: 1, step: 1, tz: ['Asia/Aden'] },
+            { id: 'SO', name: 'الصومال', flag: '🇸🇴', currency: 'USD', currencyName: 'دولار أمريكي', symbol: '$', rate: 1, step: 1, tz: ['Africa/Mogadishu'] },
+            { id: 'DJ', name: 'جيبوتي', flag: '🇩🇯', currency: 'DJF', currencyName: 'فرنك جيبوتي', symbol: 'ف.ج', rate: 177.72, step: 50, fixed: true, tz: ['Africa/Djibouti'] },
+            { id: 'KM', name: 'جزر القمر', flag: '🇰🇲', currency: 'KMF', currencyName: 'فرنك قمري', symbol: 'ف.ق', rate: 425, step: 100, tz: ['Indian/Comoro'] },
+            { id: 'OTHER', name: 'دولة أخرى', flag: '🌍', currency: 'USD', currencyName: 'دولار أمريكي', symbol: '$', rate: 1, step: 1, tz: [] }
+        ];
+        COUNTRIES.forEach(c => { c.fallbackRate = c.rate; });
 
-            document.getElementById('priceNormal').innerText = data.normal.price;
-            document.getElementById('periodNormal').innerText = data.normal.period;
-            document.getElementById('guaranteeNormal').innerText = data.normal.guarantee;
-            document.getElementById('btnNormal').href = `https://t.me/cpj_4?text=${encodeURIComponent(data.normal.text)}`;
+        let currentDuration = '1year';
+        let currentCountry = COUNTRIES[COUNTRIES.length - 1];
+        let countryAutoDetected = false;
 
-            document.getElementById('pricePlus').innerText = data.plus.price;
-            document.getElementById('periodPlus').innerText = data.plus.period;
-            document.getElementById('guaranteePlus').innerText = data.plus.guarantee;
-            document.getElementById('btnPlus').href = `https://t.me/cpj_4?text=${encodeURIComponent(data.plus.text)}`;
-
-            document.getElementById('priceMax').innerText = data.max.price;
-            document.getElementById('periodMax').innerText = data.max.period;
-            document.getElementById('guaranteeMax').innerText = data.max.guarantee;
-            document.getElementById('btnMax').href = `https://t.me/cpj_4?text=${encodeURIComponent(data.max.text)}`;
+        function formatLocalPrice(usdAmount, country) {
+            if (country.currency === 'USD') return '$' + usdAmount;
+            const step = country.step || 1;
+            const rounded = Math.ceil((usdAmount * country.rate) / step - 1e-9) * step;
+            return rounded.toLocaleString('en-US', { maximumFractionDigits: 2 }) + ' ' + country.symbol;
         }
+
+        function popAnimation(el) {
+            el.classList.remove('price-pop');
+            void el.offsetWidth;
+            el.classList.add('price-pop');
+        }
+
+        function renderPrices() {
+            const data = pricingDatabase[currentDuration];
+            const isUsd = currentCountry.currency === 'USD';
+
+            [['normal', 'Normal'], ['plus', 'Plus'], ['max', 'Max']].forEach(([key, suffix]) => {
+                const item = data[key];
+                const usdAmount = Number(item.price.replace(/[^0-9.]/g, ''));
+                const localPrice = formatLocalPrice(usdAmount, currentCountry);
+
+                const priceEl = document.getElementById('price' + suffix);
+                priceEl.innerText = localPrice;
+                priceEl.classList.toggle('long', localPrice.length > 11);
+                popAnimation(priceEl);
+
+                // ⁦ و ⁩ يحافظان على ترتيب ($10) داخل النص العربي
+                document.getElementById('priceUsd' + suffix).innerText = isUsd ? '' : 'يعادل ⁦' + item.price + '⁩';
+                document.getElementById('period' + suffix).innerText = item.period;
+                document.getElementById('guarantee' + suffix).innerText = item.guarantee;
+
+                // رسالة تيليجرام تحمل الباقة والسعر ودولة المشترك
+                const message = isUsd ? item.text : `${item.text} — ${currentCountry.name}: ${localPrice}`;
+                document.getElementById('btn' + suffix).href = `https://t.me/cpj_4?text=${encodeURIComponent(message)}`;
+            });
+        }
+
+        function setPricingDuration(durationKey, clickedTab) {
+            document.querySelectorAll('.duration-tab').forEach(tab => tab.classList.remove('active'));
+            if (clickedTab) clickedTab.classList.add('active');
+            currentDuration = durationKey;
+            renderPrices();
+        }
+
+        function chooseYearly() {
+            setPricingDuration('1year', document.querySelector('.duration-tab'));
+            document.querySelector('.duration-switcher').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function updateCurrencyNote() {
+            let text = 'العملة: ' + currentCountry.currencyName;
+            if (!currentCountry.fixed && currentCountry.currency !== 'USD') text += ' · سعر تقريبي حسب صرف اليوم';
+            if (countryAutoDetected) text = 'تم اختيار دولتك تلقائياً · ' + text;
+            document.getElementById('currencyNote').innerText = text;
+        }
+
+        function setCountry(countryId, chosenByUser) {
+            currentCountry = COUNTRIES.find(c => c.id === countryId) || COUNTRIES[COUNTRIES.length - 1];
+            if (chosenByUser) {
+                countryAutoDetected = false;
+                try { localStorage.setItem('ofuq_country', currentCountry.id); } catch (e) {}
+            }
+            document.getElementById('countrySelect').value = currentCountry.id;
+            updateCurrencyNote();
+            renderPrices();
+        }
+
+        // معرفة دولة الزائر من المنطقة الزمنية لجهازه (بدون أي خدمة خارجية)، ثم من لغة الجهاز
+        function detectCountry() {
+            try {
+                const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+                const byTimeZone = COUNTRIES.find(c => c.tz.includes(timeZone));
+                if (byTimeZone) return byTimeZone.id;
+            } catch (e) {}
+            try {
+                const languages = navigator.languages || [navigator.language];
+                for (const lang of languages) {
+                    const region = (String(lang).split('-')[1] || '').toUpperCase();
+                    if (COUNTRIES.some(c => c.id === region)) return region;
+                }
+            } catch (e) {}
+            return 'OTHER';
+        }
+
+        // أسعار الصرف اليومية (مجانية وبدون مفتاح)، مع حفظها في المتصفح 12 ساعة
+        const RATES_CACHE_KEY = 'ofuq_rates_v1';
+        const RATES_URLS = [
+            'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.min.json',
+            'https://latest.currency-api.pages.dev/v1/currencies/usd.min.json'
+        ];
+
+        function applyLiveRates(rates) {
+            COUNTRIES.forEach(c => {
+                if (c.fixed || c.currency === 'USD') return;
+                const live = Number(rates[c.currency.toLowerCase()]);
+                // تجاهل أي قيمة غير منطقية مقارنة بالسعر الاحتياطي
+                if (live > c.fallbackRate / 3 && live < c.fallbackRate * 3) c.rate = live;
+            });
+        }
+
+        async function loadLiveRates() {
+            try {
+                const cached = JSON.parse(localStorage.getItem(RATES_CACHE_KEY) || 'null');
+                if (cached && cached.rates && Date.now() - cached.time < 12 * 60 * 60 * 1000) {
+                    applyLiveRates(cached.rates);
+                    renderPrices();
+                    return;
+                }
+            } catch (e) {}
+
+            for (const url of RATES_URLS) {
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) continue;
+                    const json = await response.json();
+                    if (!json || !json.usd) continue;
+
+                    const rates = {};
+                    COUNTRIES.forEach(c => {
+                        const key = c.currency.toLowerCase();
+                        if (json.usd[key]) rates[key] = json.usd[key];
+                    });
+                    applyLiveRates(rates);
+                    try { localStorage.setItem(RATES_CACHE_KEY, JSON.stringify({ time: Date.now(), rates })); } catch (e) {}
+                    renderPrices();
+                    return;
+                } catch (e) {}
+            }
+        }
+
+        function initCountryPicker() {
+            const select = document.getElementById('countrySelect');
+            select.innerHTML = COUNTRIES.map(c => `<option value="${c.id}">${c.flag} ${c.name} — ${c.currencyName}</option>`).join('');
+
+            let saved = null;
+            try { saved = localStorage.getItem('ofuq_country'); } catch (e) {}
+
+            if (saved && COUNTRIES.some(c => c.id === saved)) {
+                countryAutoDetected = false;
+                setCountry(saved);
+            } else {
+                countryAutoDetected = true;
+                setCountry(detectCountry());
+            }
+            loadLiveRates();
+        }
+
+        initCountryPicker();
 
         // ================= FAQ ACCORDION INTERACTIVITY =================
         document.querySelectorAll('.faq-question').forEach(question => {
@@ -1424,7 +2096,7 @@
             selectedAppName = appName;
             document.getElementById('modalAppName').innerText = 'تثبيت ' + appName;
             document.getElementById('certCodeInput').value = '';
-            
+
             const alertMsg = document.getElementById('alertMsg');
             alertMsg.className = 'alert-msg';
             alertMsg.innerText = '';
@@ -1441,9 +2113,12 @@
             const alertMsg = document.getElementById('alertMsg');
             const submitBtn = document.getElementById('submitBtn');
 
+            if (submitBtn.disabled) return; // منع الإرسال المكرر أثناء انتظار السيرفر
+
             if (!codeInput) {
                 alertMsg.className = 'alert-msg error';
                 alertMsg.innerText = 'يرجى إدخال كود الشهادة!';
+                shakeModal();
                 return;
             }
 
@@ -1460,27 +2135,160 @@
                 });
 
                 const data = await response.json();
+                const link = typeof data.link === 'string' ? data.link.trim() : '';
 
-                if (data.success && data.link) {
+                if (data.success && link && link !== '#') {
                     alertMsg.className = 'alert-msg success';
                     alertMsg.innerText = 'تم التوثيق بنجاح! جاري التوجيه لبدء التحميل...';
 
                     setTimeout(() => {
-                        window.location.href = data.link;
+                        window.location.href = link;
                         closeCodeModal();
                         submitBtn.disabled = false;
                     }, 800);
+                } else if (data.success) {
+                    // الكود صحيح لكن رابط هذا التطبيق غير مضاف بعد في السيرفر
+                    alertMsg.className = 'alert-msg error';
+                    alertMsg.innerText = 'الكود صحيح، لكن رابط تثبيت هذا التطبيق غير جاهز حالياً. تواصل مع الإدارة (@cpj_4).';
+                    shakeModal();
+                    submitBtn.disabled = false;
                 } else {
                     alertMsg.className = 'alert-msg error';
                     alertMsg.innerText = data.message || 'الكود غير صالح أو منتهي الصلاحية!';
+                    shakeModal();
                     submitBtn.disabled = false;
                 }
             } catch (err) {
                 alertMsg.className = 'alert-msg error';
                 alertMsg.innerText = 'حدث خطأ في الاتصال بالسيرفر. حاول مرة أخرى.';
+                shakeModal();
                 submitBtn.disabled = false;
             }
         }
+
+        function shakeModal() {
+            const box = document.querySelector('.modal-box');
+            box.classList.remove('shake');
+            void box.offsetWidth;
+            box.classList.add('shake');
+        }
+
+        // إغلاق النافذة بالضغط خارجها أو بزر Esc، والتأكيد بزر Enter
+        document.getElementById('codeModal').addEventListener('click', e => {
+            if (e.target.id === 'codeModal') closeCodeModal();
+        });
+
+        document.addEventListener('keydown', e => {
+            if (e.key !== 'Escape') return;
+            closeCodeModal();
+            if (document.getElementById('sidebar').classList.contains('active')) toggleSidebar();
+        });
+
+        document.getElementById('certCodeInput').addEventListener('keydown', e => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                validateAndDownload();
+            }
+        });
+
+        // ================= TELEGRAM PREFILLED LINKS (PROMO BANNERS) =================
+        // أي رابط فيه data-tg-text يفتح محادثة @cpj_4 مع رسالة جاهزة
+        document.querySelectorAll('[data-tg-text]').forEach(link => {
+            link.href = 'https://t.me/cpj_4?text=' + encodeURIComponent(link.dataset.tgText);
+        });
+
+        // ================= PROMO CAROUSEL =================
+        (function initPromoCarousel() {
+            const track = document.getElementById('promoTrack');
+            const dotsWrap = document.getElementById('promoDots');
+            if (!track || !dotsWrap) return;
+
+            const slides = Array.from(track.children);
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            let index = 0;
+            let timer = null;
+
+            slides.forEach((slide, i) => {
+                const dot = document.createElement('button');
+                dot.type = 'button';
+                dot.className = 'carousel-dot';
+                dot.setAttribute('aria-label', 'الإعلان ' + (i + 1));
+                dot.addEventListener('click', () => { goTo(i); restart(); });
+                dotsWrap.appendChild(dot);
+            });
+
+            function goTo(i) {
+                index = (i + slides.length) % slides.length;
+                // الصفحة من اليمين لليسار، فالإعلان التالي يأتي من جهة اليسار
+                track.style.transform = `translateX(${index * 100}%)`;
+                Array.from(dotsWrap.children).forEach((dot, n) => dot.classList.toggle('active', n === index));
+            }
+
+            function stop() {
+                clearInterval(timer);
+                timer = null;
+            }
+
+            function restart() {
+                stop();
+                if (!reduceMotion && !document.hidden) timer = setInterval(() => goTo(index + 1), 5000);
+            }
+
+            // السحب بالإصبع على الهاتف
+            let startX = null;
+            track.addEventListener('touchstart', e => {
+                startX = e.touches[0].clientX;
+                stop();
+            }, { passive: true });
+
+            track.addEventListener('touchend', e => {
+                if (startX === null) return;
+                const deltaX = e.changedTouches[0].clientX - startX;
+                if (Math.abs(deltaX) > 40) goTo(deltaX > 0 ? index + 1 : index - 1);
+                startX = null;
+                restart();
+            }, { passive: true });
+
+            // إيقاف مؤقت عند وضع الماوس على الإعلان (للكمبيوتر فقط)
+            if (window.matchMedia('(hover: hover)').matches) {
+                track.parentElement.addEventListener('mouseenter', stop);
+                track.parentElement.addEventListener('mouseleave', restart);
+            }
+
+            document.addEventListener('visibilitychange', restart);
+
+            goTo(0);
+            restart();
+        })();
+
+        // ================= SCROLL REVEAL ANIMATIONS =================
+        (function initReveal() {
+            if (!('IntersectionObserver' in window)) return;
+
+            const selector = '.section-title, .feature-card, .faq-item, .package-card, .info-card, .app-card, .notice-item, .channel-row, .promo-banner:not(.promo-slide), .promo-carousel-wrap, .currency-picker';
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+
+            document.querySelectorAll(selector).forEach(item => {
+                // تأخير بسيط متتابع للعناصر المتجاورة
+                const siblings = Array.from(item.parentElement.children).filter(el => el.matches(selector));
+                item.style.setProperty('--reveal-delay', (siblings.indexOf(item) % 4) * 90 + 'ms');
+                observer.observe(item);
+            });
+        })();
+
+        // ================= HIDE BROKEN MARQUEE ICONS =================
+        // إذا تعطّل تحميل صورة أيقونة في الشريط المتحرك نخفيها بدل ظهور صورة مكسورة
+        document.querySelectorAll('.app-badge-icon img').forEach(img => {
+            const hideBadge = () => { img.parentElement.style.display = 'none'; };
+            if (img.complete && img.naturalWidth === 0) hideBadge();
+            else img.addEventListener('error', hideBadge);
+        });
     </script>
 </body>
 </html>
