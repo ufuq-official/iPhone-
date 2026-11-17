@@ -25,10 +25,7 @@
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
     <meta name="apple-mobile-web-app-title" content="أفق">
-    <script>
-        // تفعيل حركات الظهور عند التمرير فقط إذا كان المتصفح يدعمها
-        if ('IntersectionObserver' in window) document.documentElement.classList.add('js-reveal');
-    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -37,13 +34,13 @@
 
     <style>
         :root {
-            --apple-bg: #FDFBF7;         /* أوف وايت ناعم كلاسيكي */
-            --apple-card-bg: #FFFFFF;    /* أبيض ناصع للألواح */
-            --apple-subtle-bg: #F5EFEE;  /* أوف وايت دافئ خفيف */
-            --apple-text-primary: #1A1A1A;/* أسود داكن للنصوص الفاخرة */
-            --apple-text-secondary: #5C3D2E;/* بني كلاسيكي للنصوص الثانوية */
-            --apple-link: #5C3D2E;       /* بني فاخر للأزرار والعناصر الرئيسية */
-            --apple-border: #E8E2D5;    /* حدود أوف وايت داكنة متناسقة */
+            --apple-bg: #FDFBF7;
+            --apple-card-bg: #FFFFFF;
+            --apple-subtle-bg: #F5EFEE;
+            --apple-text-primary: #1A1A1A;
+            --apple-text-secondary: #5C3D2E;
+            --apple-link: #5C3D2E;
+            --apple-border: #E8E2D5;
             --apple-blur-bg: rgba(253, 251, 247, 0.85);
             --radius-large: 22px;
             --radius-medium: 14px;
@@ -51,26 +48,26 @@
             --error-color: #A33333;
             --success-color: #386641;
             --telegram-color: #0088cc;
-            --ofoq-accent: #8C5A3C;     /* بني دافئ للـ VIP */
+            --ofoq-accent: #8C5A3C;
             --instagram-grad: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
-            --on-accent: #FFFFFF;        /* لون النص فوق الأزرار البنية */
+            --on-accent: #FFFFFF;
         }
 
         @media (prefers-color-scheme: dark) {
             :root {
-                --apple-bg: #12100E;         /* أسود كلاسيكي دافئ */
-                --apple-card-bg: #1C1815;    /* ألواح بنية داكنة سوداء */
-                --apple-subtle-bg: #26211D;  /* خلفيات فرعية */
-                --apple-text-primary: #FDFBF7;/* أوف وايت مضيء */
-                --apple-text-secondary: #D4B2A7;/* بني فاتح هادئ */
-                --apple-link: #C5A059;       /* ذهبي كلاسيكي مدمج مع الهوية */
+                --apple-bg: #12100E;
+                --apple-card-bg: #1C1815;
+                --apple-subtle-bg: #26211D;
+                --apple-text-primary: #FDFBF7;
+                --apple-text-secondary: #D4B2A7;
+                --apple-link: #C5A059;
                 --apple-border: rgba(197, 160, 89, 0.2);
                 --apple-blur-bg: rgba(18, 16, 14, 0.85);
                 --error-color: #ff453a;
                 --success-color: #30d158;
                 --telegram-color: #2997ff;
                 --ofoq-accent: #C5A059;
-                --on-accent: #12100E;        /* نص داكن فوق الأزرار الذهبية ليكون واضحاً */
+                --on-accent: #12100E;
             }
         }
 
@@ -127,6 +124,13 @@
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid var(--apple-border);
+            background: linear-gradient(135deg, #5C3D2E, #8C5A3C);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FDFBF7;
+            font-weight: 900;
+            font-size: 0.9rem;
         }
 
         .logo-img-wrapper img {
@@ -261,13 +265,15 @@
 
         .page-section {
             display: none;
-            animation: fadeIn 0.4s ease-in-out;
         }
 
-        .page-section.active { display: block; }
+        .page-section.active {
+            display: block;
+            animation: fadeIn 0.35s ease-out;
+        }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0.2; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -278,19 +284,32 @@
         }
 
         .hero-logo-wrapper {
-            width: 70px;
-            height: 70px;
+            width: 74px;
+            height: 74px;
             margin: 0 auto 16px;
             border-radius: 18px;
             overflow: hidden;
             border: 2px solid var(--apple-border);
-            box-shadow: 0 10px 25px rgba(92, 61, 46, 0.1);
+            box-shadow: 0 10px 25px rgba(92, 61, 46, 0.12);
+            background: linear-gradient(135deg, #5C3D2E, #8C5A3C);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FDFBF7;
+            font-weight: 900;
+            font-size: 1.5rem;
+            animation: logoFloat 4s ease-in-out infinite;
         }
 
         .hero-logo-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
         }
 
         .hero-tag {
@@ -302,11 +321,11 @@
         }
 
         .hero-title {
-            font-size: 2.6rem;
+            font-size: 2.5rem;
             font-weight: 900;
             color: var(--apple-text-primary);
             margin-bottom: 25px;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
         }
 
         /* --- DUAL DYNAMIC MARQUEE BANNERS --- */
@@ -414,16 +433,31 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 10px 22px;
+            padding: 12px 24px;
             border-radius: 30px;
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 700;
+            font-size: 0.95rem;
+            font-weight: 800;
+            cursor: pointer;
             transition: all 0.2s ease;
         }
 
-        .social-btn.primary { background-color: var(--apple-link); color: var(--on-accent); }
-        .social-btn.secondary { background-color: var(--apple-subtle-bg); color: var(--apple-text-primary); border: 1px solid var(--apple-border); }
+        .social-btn.primary {
+            background-color: var(--apple-link);
+            color: var(--on-accent);
+            animation: ctaGlow 2.8s ease-in-out infinite;
+        }
+
+        .social-btn.secondary {
+            background-color: var(--apple-subtle-bg);
+            color: var(--apple-text-primary);
+            border: 1px solid var(--apple-border);
+        }
+
+        @keyframes ctaGlow {
+            0%, 100% { box-shadow: 0 6px 16px rgba(92, 61, 46, 0.22); }
+            50% { box-shadow: 0 6px 28px rgba(197, 160, 89, 0.55); }
+        }
 
         .section-title {
             text-align: center;
@@ -443,7 +477,7 @@
             padding: 6px;
             border-radius: 30px;
             border: 1px solid var(--apple-border);
-            max-width: 360px;
+            max-width: 340px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -454,7 +488,7 @@
             border: none;
             background: transparent;
             font-weight: 800;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             color: var(--apple-text-secondary);
             border-radius: 24px;
             cursor: pointer;
@@ -469,9 +503,15 @@
 
         .packages-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
             margin-bottom: 50px;
+        }
+
+        .packages-grid.single-card {
+            max-width: 440px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .package-card {
@@ -510,13 +550,14 @@
         }
 
         .package-header h3 {
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             font-weight: 900;
+            margin-top: 6px;
             margin-bottom: 4px;
         }
 
         .package-price-box {
-            margin: 20px 0;
+            margin: 18px 0;
             padding: 16px;
             background: var(--apple-subtle-bg);
             border-radius: var(--radius-medium);
@@ -524,7 +565,7 @@
         }
 
         .package-price {
-            font-size: 2.2rem;
+            font-size: 2.1rem;
             font-weight: 900;
             color: var(--apple-link);
         }
@@ -536,7 +577,7 @@
         }
 
         .package-guarantee {
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             font-weight: 800;
             color: var(--success-color);
             margin-top: 4px;
@@ -568,7 +609,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-            margin: 12px 0;
+            margin: 10px 0;
         }
 
         .app-pill {
@@ -634,7 +675,9 @@
             padding: 3px 10px;
             border-radius: 12px;
             font-size: 0.75rem;
+            font-weight: 700;
             color: var(--apple-text-secondary);
+            display: inline-block;
         }
 
         .grid-cards {
@@ -672,10 +715,12 @@
             text-align: center;
             text-decoration: none;
             transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .apple-button:hover {
-            opacity: 0.9;
+            opacity: 0.92;
             transform: scale(1.01);
         }
 
@@ -798,6 +843,7 @@
         .channel-icon.ig { background: var(--instagram-grad); }
         .channel-btn { padding: 8px 20px; border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.85rem; color: var(--on-accent); background-color: var(--apple-link); }
 
+        /* --- Modals (Code & Payment Selection) --- */
         .modal-overlay {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(12px);
@@ -810,12 +856,18 @@
             background-color: var(--apple-card-bg);
             border: 1px solid var(--apple-border);
             border-radius: var(--radius-large);
-            padding: 40px 28px; width: 100%; max-width: 400px;
+            padding: 36px 24px; width: 100%; max-width: 440px;
             text-align: center; position: relative;
             box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(16px) scale(0.96);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .close-modal { position: absolute; top: 18px; left: 18px; background: none; border: none; font-size: 1.6rem; color: var(--apple-text-secondary); cursor: pointer; }
+        .modal-overlay.active .modal-box { transform: none; }
+
+        .close-modal { position: absolute; top: 16px; left: 18px; background: none; border: none; font-size: 1.6rem; color: var(--apple-text-secondary); cursor: pointer; }
 
         .code-input {
             width: 100%; padding: 14px 18px; font-size: 1.1rem; text-align: center;
@@ -828,13 +880,90 @@
         .alert-msg.error { color: var(--error-color); display: block; }
         .alert-msg.success { color: var(--success-color); display: block; }
 
+        /* Payment Modal Styles */
+        .pay-summary-box {
+            background: var(--apple-subtle-bg);
+            border: 1px solid var(--apple-border);
+            border-radius: var(--radius-medium);
+            padding: 14px 16px;
+            margin: 16px 0;
+        }
+
+        .pay-region-tabs {
+            display: flex;
+            gap: 6px;
+            background: var(--apple-subtle-bg);
+            padding: 5px;
+            border-radius: 25px;
+            border: 1px solid var(--apple-border);
+            margin-bottom: 16px;
+        }
+
+        .pay-region-tab {
+            flex: 1;
+            padding: 8px 12px;
+            border: none;
+            background: transparent;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--apple-text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .pay-region-tab.active {
+            background: var(--apple-link);
+            color: var(--on-accent);
+        }
+
+        .pay-methods-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 18px;
+            text-align: right;
+        }
+
+        .pay-method-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 13px 16px;
+            background: var(--apple-subtle-bg);
+            border: 1.5px solid var(--apple-border);
+            border-radius: var(--radius-medium);
+            color: var(--apple-text-primary);
+            font-size: 0.92rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .pay-method-btn:hover, .pay-method-btn.selected {
+            border-color: var(--apple-link);
+            background: var(--apple-card-bg);
+            box-shadow: 0 4px 14px rgba(92, 61, 46, 0.12);
+        }
+
+        .pay-method-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pay-method-left i {
+            color: var(--apple-link);
+            font-size: 1.1rem;
+            width: 22px;
+            text-align: center;
+        }
+
         footer { border-top: 1px solid var(--apple-border); padding: 40px 20px; text-align: center; font-size: 0.88rem; color: var(--apple-text-secondary); background-color: var(--apple-bg); }
         .footer-socials { display: flex; justify-content: center; gap: 16px; margin-bottom: 14px; }
         .footer-socials a { color: var(--apple-text-secondary); text-decoration: none; font-weight: 600; }
 
-        /* ================= إضافات أفق ================= */
-
-        /* إصلاح احتياطي: السماح بالكتابة داخل الحقول على الآيفون رغم منع التحديد في الصفحة */
         input, textarea {
             -webkit-user-select: text;
             user-select: text;
@@ -922,13 +1051,6 @@
 
         .package-price-usd:empty { display: none; }
 
-        .price-pop { animation: pricePop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1); }
-
-        @keyframes pricePop {
-            from { opacity: 0; transform: translateY(8px) scale(0.92); }
-            to { opacity: 1; transform: none; }
-        }
-
         /* --- اللوحات الإعلانية --- */
         .promo-banner {
             position: relative;
@@ -945,45 +1067,6 @@
             box-shadow: 0 18px 40px rgba(58, 37, 27, 0.22);
         }
 
-        /* هالة ذهبية متحركة */
-        .promo-banner::before {
-            content: '';
-            position: absolute;
-            width: 260px;
-            height: 260px;
-            left: -70px;
-            top: -110px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(197, 160, 89, 0.5), transparent 70%);
-            z-index: -1;
-            animation: glowDrift 8s ease-in-out infinite alternate;
-        }
-
-        /* لمعة تمر على اللوحة */
-        .promo-banner::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            width: 35%;
-            background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.13), transparent);
-            transform: translateX(-120%) skewX(-20deg);
-            animation: promoShine 6s ease-in-out infinite;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        @keyframes promoShine {
-            0%, 55% { transform: translateX(-120%) skewX(-20deg); }
-            100% { transform: translateX(330%) skewX(-20deg); }
-        }
-
-        @keyframes glowDrift {
-            from { transform: translate(0, 0) scale(1); }
-            to { transform: translate(40px, 30px) scale(1.15); }
-        }
-
         .promo-icon {
             flex-shrink: 0;
             width: 64px;
@@ -996,12 +1079,6 @@
             color: #3A251B;
             background: linear-gradient(135deg, #EED9A4, #C5A059);
             box-shadow: 0 10px 24px rgba(197, 160, 89, 0.35);
-            animation: floatY 3.6s ease-in-out infinite;
-        }
-
-        @keyframes floatY {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
         }
 
         .promo-content {
@@ -1057,13 +1134,11 @@
             box-shadow: 0 12px 26px rgba(197, 160, 89, 0.45);
         }
 
-        /* نسخة زرقاء للوحات تيليجرام والدعم */
         .promo-banner.tg {
             background: linear-gradient(135deg, #0A3D62 0%, #0B5E8E 55%, #0077B6 100%);
             box-shadow: 0 18px 40px rgba(10, 61, 98, 0.22);
         }
 
-        .promo-banner.tg::before { background: radial-gradient(circle, rgba(41, 182, 246, 0.45), transparent 70%); }
         .promo-banner.tg .promo-icon { background: linear-gradient(135deg, #FFFFFF, #D6EEFB); color: #0077B6; box-shadow: 0 10px 24px rgba(0, 119, 182, 0.35); }
         .promo-banner.tg .promo-kicker { color: #CFEFFF; background: rgba(207, 239, 255, 0.12); border-color: rgba(207, 239, 255, 0.3); }
         .promo-banner.tg .promo-cta { background: #FFFFFF; color: #0A3D62; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18); }
@@ -1110,141 +1185,11 @@
             transition: width 0.35s ease, opacity 0.35s ease, background-color 0.35s ease;
         }
 
-        /* مساحة لمس أكبر للنقاط على الهاتف */
-        .carousel-dot::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            bottom: -10px;
-            left: -5px;
-            right: -5px;
-        }
-
         .carousel-dot.active {
             width: 28px;
             opacity: 1;
             background-color: var(--apple-link);
         }
-
-        @media (max-width: 640px) {
-            .promo-banner {
-                flex-direction: column;
-                text-align: center;
-                padding: 28px 22px;
-            }
-
-            .promo-cta {
-                width: 100%;
-                text-align: center;
-            }
-        }
-
-        /* --- حركات احترافية --- */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(18px); }
-            to { opacity: 1; transform: none; }
-        }
-
-        .hero-logo-wrapper {
-            animation: logoPop 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) both, logoFloat 4s ease-in-out 1s infinite;
-        }
-
-        @keyframes logoPop {
-            from { opacity: 0; transform: scale(0.6) rotate(-8deg); }
-            to { opacity: 1; transform: none; }
-        }
-
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
-
-        .hero-tag { animation: fadeUp 0.7s ease 0.15s both; }
-
-        /* لمعة ذهبية تمر على العنوان الرئيسي */
-        .hero-title {
-            background: linear-gradient(90deg, var(--apple-text-primary) 0%, var(--apple-text-primary) 40%, var(--apple-link) 50%, var(--apple-text-primary) 60%, var(--apple-text-primary) 100%);
-            background-size: 250% 100%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeUp 0.7s ease 0.3s both, titleShine 7s ease-in-out 1.2s infinite;
-        }
-
-        @keyframes titleShine {
-            0% { background-position: 0% 0; }
-            45%, 100% { background-position: 100% 0; }
-        }
-
-        .marquee-wrapper { animation: fadeUp 0.8s ease 0.45s both; }
-        .hero-social-bar { animation: fadeUp 0.8s ease 0.6s both; }
-
-        .social-btn.primary { animation: ctaGlow 2.8s ease-in-out infinite; }
-
-        @keyframes ctaGlow {
-            0%, 100% { box-shadow: 0 6px 16px rgba(92, 61, 46, 0.22); }
-            50% { box-shadow: 0 6px 28px rgba(197, 160, 89, 0.55); }
-        }
-
-        /* لمعة على الأزرار عند المرور */
-        .apple-button {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .apple-button::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            width: 45%;
-            background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
-            transform: translateX(-130%) skewX(-20deg);
-            pointer-events: none;
-        }
-
-        .apple-button:hover::after {
-            transform: translateX(300%) skewX(-20deg);
-            transition: transform 0.75s ease;
-        }
-
-        /* توهج ذهبي حول باقة VIP */
-        .package-card.vip::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            right: -2px;
-            bottom: -2px;
-            left: -2px;
-            border-radius: inherit;
-            pointer-events: none;
-            animation: vipGlow 3.2s ease-in-out infinite;
-        }
-
-        @keyframes vipGlow {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0); }
-            50% { box-shadow: 0 0 0 6px rgba(197, 160, 89, 0.18), 0 0 28px rgba(197, 160, 89, 0.25); }
-        }
-
-        /* ظهور عناصر القائمة الجانبية بالتتابع */
-        .sidebar.active .nav-links li { animation: navIn 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
-        .sidebar.active .nav-links li:nth-child(2) { animation-delay: 0.06s; }
-        .sidebar.active .nav-links li:nth-child(3) { animation-delay: 0.12s; }
-        .sidebar.active .nav-links li:nth-child(4) { animation-delay: 0.18s; }
-
-        @keyframes navIn {
-            from { opacity: 0; transform: translateX(24px); }
-            to { opacity: 1; transform: none; }
-        }
-
-        /* نافذة الكود: دخول ناعم واهتزاز عند الخطأ */
-        .modal-box {
-            transform: translateY(16px) scale(0.96);
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .modal-overlay.active .modal-box { transform: none; }
 
         .modal-box.shake { animation: shake 0.45s ease; }
 
@@ -1254,38 +1199,16 @@
             40%, 80% { transform: translateX(8px); }
         }
 
-        /* ظهور العناصر بنعومة عند التمرير */
-        .js-reveal .section-title:not(.is-visible),
-        .js-reveal .feature-card:not(.is-visible),
-        .js-reveal .faq-item:not(.is-visible),
-        .js-reveal .package-card:not(.is-visible),
-        .js-reveal .info-card:not(.is-visible),
-        .js-reveal .app-card:not(.is-visible),
-        .js-reveal .notice-item:not(.is-visible),
-        .js-reveal .channel-row:not(.is-visible),
-        .js-reveal .promo-banner:not(.promo-slide):not(.is-visible),
-        .js-reveal .promo-carousel-wrap:not(.is-visible),
-        .js-reveal .currency-picker:not(.is-visible) {
-            opacity: 0;
-        }
-
-        .js-reveal .is-visible {
-            animation: revealUp 0.75s cubic-bezier(0.22, 0.61, 0.36, 1) backwards;
-            animation-delay: var(--reveal-delay, 0ms);
-        }
-
-        @keyframes revealUp {
-            from { opacity: 0; transform: translateY(28px); }
-            to { opacity: 1; transform: none; }
-        }
-
-        /* احترام إعداد (تقليل الحركة) في جهاز الزائر */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
+        @media (max-width: 640px) {
+            .hero-title { font-size: 2rem; }
+            .promo-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 28px 22px;
+            }
+            .promo-cta {
+                width: 100%;
+                text-align: center;
             }
         }
     </style>
@@ -1294,13 +1217,13 @@
 
     <header>
         <div class="header-container">
-            <a href="#" class="header-logo" onclick="showSection('homeSection')">
+            <a href="javascript:void(0)" class="header-logo" onclick="showSection('homeSection')">
                 <div class="logo-img-wrapper">
-                    <img src="logo.png" alt="شعار أفق">
+                    <img src="logo.png" alt="أفق" onerror="this.style.display='none'; this.parentElement.innerText='أفق';">
                 </div>
                 <span>منصة أفق</span>
             </a>
-            <button class="menu-btn" onclick="toggleSidebar()">
+            <button type="button" class="menu-btn" onclick="toggleSidebar()">
                 <span>القائمة</span>
                 <span>☰</span>
             </button>
@@ -1312,13 +1235,13 @@
         <div>
             <div class="sidebar-header">
                 <span style="font-weight: 800; font-size: 1.1rem;">تصفح المنصة</span>
-                <button class="close-sidebar" onclick="toggleSidebar()">&times;</button>
+                <button type="button" class="close-sidebar" onclick="toggleSidebar()">&times;</button>
             </div>
             <ul class="nav-links">
-                <li><a href="#" id="navHome" class="active" onclick="showSection('homeSection')"><i class="fa-solid fa-house"></i> الرئيسية</a></li>
-                <li><a href="#" id="navPricing" onclick="showSection('pricingSection')"><i class="fa-solid fa-tags"></i> الباقات والأسعار</a></li>
-                <li><a href="#" id="navDownload" onclick="showSection('downloadSection')"><i class="fa-solid fa-download"></i> تثبيت التطبيقات</a></li>
-                <li><a href="#" id="navAbout" onclick="showSection('aboutSection')"><i class="fa-solid fa-shield-halved"></i> عن الشهادات</a></li>
+                <li><a href="javascript:void(0)" id="navHome" class="active" onclick="showSection('homeSection')"><i class="fa-solid fa-house"></i> الرئيسية</a></li>
+                <li><a href="javascript:void(0)" id="navPricing" onclick="showSection('pricingSection')"><i class="fa-solid fa-tags"></i> الباقات والأسعار</a></li>
+                <li><a href="javascript:void(0)" id="navDownload" onclick="showSection('downloadSection')"><i class="fa-solid fa-download"></i> تثبيت التطبيقات</a></li>
+                <li><a href="javascript:void(0)" id="navAbout" onclick="showSection('aboutSection')"><i class="fa-solid fa-shield-halved"></i> عن الشهادات</a></li>
             </ul>
 
             <div class="sidebar-social-section">
@@ -1340,7 +1263,7 @@
         <div id="homeSection" class="page-section active">
             <section class="hero">
                 <div class="hero-logo-wrapper">
-                    <img src="logo.png" alt="شعار أفق">
+                    <img src="logo.png" alt="أفق" onerror="this.style.display='none'; this.parentElement.innerText='أفق';">
                 </div>
                 <div class="hero-tag">شهادات أبل المدفوعة والمجانية</div>
                 <h1 class="hero-title">خيارك الأفضل لتحميل التطبيقات</h1>
@@ -1401,12 +1324,12 @@
                 </div>
 
                 <div class="hero-social-bar">
-                    <a href="#" onclick="showSection('pricingSection')" class="social-btn primary"><i class="fa-solid fa-crown"></i> عرض الباقات والأسعار</a>
+                    <a href="javascript:void(0)" onclick="showSection('pricingSection')" class="social-btn primary"><i class="fa-solid fa-crown"></i> عرض الباقات والأسعار</a>
                     <a href="https://t.me/cpj_4" target="_blank" class="social-btn secondary"><i class="fa-brands fa-telegram"></i> تواصل مع الإدارة (@cpj_4)</a>
                 </div>
             </section>
 
-            <!-- لوحات إعلانية متحركة: يمكنك تعديل نص أي إعلان من هنا -->
+            <!-- لوحات إعلانية متحركة -->
             <div class="promo-carousel-wrap">
                 <div class="promo-carousel">
                     <div class="carousel-track" id="promoTrack">
@@ -1414,18 +1337,18 @@
                             <div class="promo-icon"><i class="fa-solid fa-crown"></i></div>
                             <div class="promo-content">
                                 <span class="promo-kicker">الأكثر طلباً</span>
-                                <h3>الباقة الماكس VIP</h3>
-                                <p>3 أجهزة + اشتراك IPTV + ضمان المدة كاملة 100%، وتبدأ من 7$ فقط.</p>
+                                <h3>باقات السنة بضمانات مرنة</h3>
+                                <p>اختر مدة الضمان التي تناسبك من شهر واحد حتى 12 شهر كاملة وتبدأ من 5,000 د.ع / 5$ فقط.</p>
                             </div>
-                            <button class="promo-cta" onclick="showSection('pricingSection')">تصفح الباقات</button>
+                            <button type="button" class="promo-cta" onclick="showSection('pricingSection')">تصفح الباقات</button>
                         </div>
 
                         <div class="promo-banner promo-slide">
                             <div class="promo-icon"><i class="fa-solid fa-user-group"></i></div>
                             <div class="promo-content">
                                 <span class="promo-kicker">ادعُ صديقك</span>
-                                <h3>3 أشهر مجاناً بالباقة العادية</h3>
-                                <p>ادعُ صديقاً جديداً للاشتراك في أفق واحصل على 3 أشهر مجانية.</p>
+                                <h3>ضمان إضافي مجاناً</h3>
+                                <p>ادعُ صديقاً جديداً للاشتراك في أفق واحصل على تمديد مجاني لضمان شهادتك.</p>
                             </div>
                             <a class="promo-cta" href="https://t.me/cpj_4" data-tg-text="مرحباً، أرغب بالاستفادة من عرض دعوة صديق" target="_blank">تواصل معنا</a>
                         </div>
@@ -1459,10 +1382,10 @@
                 <div class="grid-cards">
                     <div class="feature-card">
                         <div>
-                            <h3>باقات اشتراك متنوعة</h3>
-                            <p>اختر الباقة المناسبة لك (العادية، بلس، والماكس المميزة مع اشتراك IPTV).</p>
+                            <h3>ضمانات مرنة تناسب ميزانيتك</h3>
+                            <p>اختر مدة الشهادة (سنة كاملة أو 3 أشهر) وحدد فترة الضمان المناسبة لك بكل وضوح.</p>
                         </div>
-                        <button class="apple-button" onclick="showSection('pricingSection')">تصفح الباقات</button>
+                        <button type="button" class="apple-button" onclick="showSection('pricingSection')">تصفح الباقات</button>
                     </div>
 
                     <div class="feature-card">
@@ -1470,13 +1393,13 @@
                             <h3>تثبيت مباشر وسريع</h3>
                             <p>احصل على أحدث أدوات التوقيع (Esign, Scarlet, Ksign) بضغطة زر وبكود تفعيل.</p>
                         </div>
-                        <button class="apple-button" onclick="showSection('downloadSection')">الذهاب للتحميل</button>
+                        <button type="button" class="apple-button" onclick="showSection('downloadSection')">الذهاب للتحميل</button>
                     </div>
 
                     <div class="feature-card">
                         <div>
                             <h3>ضمان واستقرار</h3>
-                            <p>نظام تعويض كامل وفوري عند توقف الشهادة طوال فترة الاشتراك لضمان حقك.</p>
+                            <p>نظام تعويض كامل وفوري عند توقف الشهادة طوال فترة الضمان المختارة لضمان حقك.</p>
                         </div>
                         <a href="https://t.me/cpj_4" target="_blank" class="apple-button" style="background: var(--apple-subtle-bg); color: var(--apple-text-primary); border: 1px solid var(--apple-border);">تواصل للاستفسار</a>
                     </div>
@@ -1503,7 +1426,7 @@
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
-                        نوفر تعويضاً فورياً طوال فترة الضمان المحددة في باقتك (سواء كانت العادية، البلس، أو الماكس) لضمان استمرار عمل تطبيقاتك دون انقطاع.
+                        نوفر تعويضاً فورياً بشهادة جديدة طوال فترة الضمان المحددة في الباقة التي اخترتها (من شهر واحد حتى 12 شهر كاملة) لضمان استمرار عمل تطبيقاتك دون انقطاع.
                     </div>
                 </div>
 
@@ -1522,9 +1445,9 @@
         <!-- PRICING & PACKAGES SECTION -->
         <div id="pricingSection" class="page-section">
             <h2 class="section-title">باقات اشتراك شهادة Apple</h2>
-            <p style="text-align: center; color: var(--apple-text-secondary); margin-bottom: 25px; font-weight: 600;">اختر المدة المناسبة لعرض الأسعار والضمانات الخاصة بكل باقة:</p>
+            <p style="text-align: center; color: var(--apple-text-secondary); margin-bottom: 25px; font-weight: 600;">اختر مدة الشهادة ومدة الضمان المناسبة لك:</p>
 
-            <!-- اختيار الدولة لعرض الأسعار بعملتها (تُختار تلقائياً حسب موقع الزائر) -->
+            <!-- اختيار الدولة لعرض الأسعار بعملتها -->
             <div class="currency-picker">
                 <label for="countrySelect"><i class="fa-solid fa-globe"></i> اعرض الأسعار بعملة دولتك</label>
                 <div class="currency-select-wrap">
@@ -1533,118 +1456,28 @@
                 <div id="currencyNote" class="currency-note"></div>
             </div>
 
-            <!-- Duration Switcher Tabs -->
+            <!-- Duration Switcher Tabs (1 Year & 3 Months Only) -->
             <div class="duration-switcher">
-                <button class="duration-tab active" onclick="setPricingDuration('1year', this)">سنة كاملة</button>
-                <button class="duration-tab" onclick="setPricingDuration('6months', this)">6 أشهر</button>
-                <button class="duration-tab" onclick="setPricingDuration('3months', this)">3 أشهر</button>
+                <button type="button" class="duration-tab active" id="tab1Year" onclick="setPricingDuration('1year', this)">سنة كاملة</button>
+                <button type="button" class="duration-tab" id="tab3Months" onclick="setPricingDuration('3months', this)">3 أشهر</button>
             </div>
 
-            <div class="packages-grid">
-                <!-- Package 1: Normal -->
-                <div class="package-card">
-                    <div class="package-header">
-                        <span class="badge-tag">أساسي</span>
-                        <h3>الباقة العادية</h3>
-                    </div>
-                    <div class="package-price-box">
-                        <div id="priceNormal" class="package-price">$10</div>
-                        <div id="priceUsdNormal" class="package-price-usd"></div>
-                        <div id="periodNormal" class="package-period">1 سنة</div>
-                        <div id="guaranteeNormal" class="package-guarantee">ضمان 3 أشهر مستمرة</div>
-                    </div>
-                    <div>
-                        <p style="font-size: 0.85rem; font-weight: 800; margin-bottom: 6px;">تطبيقات التوقيع المدعومة:</p>
-                        <div class="apps-pills">
-                            <span class="app-pill">Esign</span>
-                            <span class="app-pill">Ksign</span>
-                            <span class="app-pill">Scarlet</span>
-                            <span class="app-pill">Feather</span>
-                            <span class="app-pill">Ofuq</span>
-                        </div>
-                    </div>
-                    <ul class="package-features" style="margin-top: 16px;">
-                        <li><i class="fa-solid fa-circle-check"></i> تعويض فوري عند خلل الشهادة</li>
-                        <li><i class="fa-solid fa-mobile-screen"></i> تتحمل جهاز واحد فقط (1 Device)</li>
-                    </ul>
-                    <a id="btnNormal" href="https://t.me/cpj_4?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D9%8C%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D8%B9%D8%A7%D8%AF%D9%8A%D8%A9%20(%D8%B3%D9%86%D8%A9)" target="_blank" class="apple-button">اشترك الآن</a>
-                </div>
-
-                <!-- Package 2: Plus -->
-                <div class="package-card">
-                    <div class="package-header">
-                        <span class="badge-tag" style="background: rgba(92,61,46,0.1); color: var(--apple-link);">موصى به</span>
-                        <h3>الباقة البلس</h3>
-                    </div>
-                    <div class="package-price-box">
-                        <div id="pricePlus" class="package-price">$15</div>
-                        <div id="priceUsdPlus" class="package-price-usd"></div>
-                        <div id="periodPlus" class="package-period">1 سنة</div>
-                        <div id="guaranteePlus" class="package-guarantee">ضمان 6 أشهر مستمرة</div>
-                    </div>
-                    <div>
-                        <p style="font-size: 0.85rem; font-weight: 800; margin-bottom: 6px;">تطبيقات التوقيع المدعومة:</p>
-                        <div class="apps-pills">
-                            <span class="app-pill">Esign</span>
-                            <span class="app-pill">Ksign</span>
-                            <span class="app-pill">Scarlet</span>
-                            <span class="app-pill">Feather</span>
-                            <span class="app-pill">Ofuq</span>
-                        </div>
-                    </div>
-                    <ul class="package-features" style="margin-top: 16px;">
-                        <li><i class="fa-solid fa-circle-check"></i> تعويض فوري عند خلل الشهادة</li>
-                        <li><i class="fa-solid fa-mobile-screen-button"></i> تتحمل جهازين فقط (2 Devices)</li>
-                    </ul>
-                    <a id="btnPlus" href="https://t.me/cpj_4?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D9%8C%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D8%A8%D9%84%D8%B3%20(%D8%B3%D9%86%D8%A9)" target="_blank" class="apple-button">اشترك الآن</a>
-                </div>
-
-                <!-- Package 3: Max VIP -->
-                <div class="package-card vip">
-                    <div class="vip-badge"><i class="fa-solid fa-crown"></i> VIP الأكثر طلباً</div>
-                    <div class="package-header">
-                        <span class="badge-tag" style="background: rgba(140,90,60,0.15); color: var(--ofoq-accent);">شامل كل المميزات</span>
-                        <h3>الباقة الماكس</h3>
-                    </div>
-                    <div class="package-price-box">
-                        <div id="priceMax" class="package-price" style="color: var(--ofoq-accent);">$22</div>
-                        <div id="priceUsdMax" class="package-price-usd"></div>
-                        <div id="periodMax" class="package-period">1 سنة</div>
-                        <div id="guaranteeMax" class="package-guarantee">ضمان المدة كاملة 100%</div>
-                    </div>
-                    <div>
-                        <p style="font-size: 0.85rem; font-weight: 800; margin-bottom: 6px;">تطبيقات التوقيع المدعومة:</p>
-                        <div class="apps-pills">
-                            <span class="app-pill">Esign</span>
-                            <span class="app-pill">Ksign</span>
-                            <span class="app-pill">Scarlet</span>
-                            <span class="app-pill">Feather</span>
-                            <span class="app-pill">Ofuq</span>
-                        </div>
-                    </div>
-                    <ul class="package-features" style="margin-top: 16px;">
-                        <li><i class="fa-solid fa-circle-check"></i> تعويض فوري طوال مدة الاشتراك</li>
-                        <li><i class="fa-solid fa-mobile-screen-button"></i> تتحمل 3 أجهزة (3 Devices)</li>
-                        <li><i class="fa-solid fa-tv" style="color: var(--ofoq-accent);"></i> اشتراك IPTV طوال مدة الاشتراك مع مميزات عديدة</li>
-                    </ul>
-                    <a id="btnMax" href="https://t.me/cpj_4?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D9%8C%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D9%85%D8%A7%D9%83%D8%B3%20VIP%20(%D8%B3%D9%86%D8%A9%20-%20%D8%B6%D9%85%D8%A7%D9%86%20100%25)" target="_blank" class="apple-button" style="background: var(--ofoq-accent);">اشترك الآن VIP</a>
-                </div>
-            </div>
+            <!-- Dynamic Packages Container -->
+            <div id="packagesGrid" class="packages-grid"></div>
 
             <!-- لوحة إعلانية: الاشتراك السنوي -->
             <div class="promo-banner">
                 <div class="promo-icon"><i class="fa-solid fa-piggy-bank"></i></div>
                 <div class="promo-content">
                     <span class="promo-kicker">نصيحة أفق</span>
-                    <h3>وفّر حتى 50% مع الاشتراك السنوي</h3>
-                    <p>سعر السنة الكاملة أقل من تجديد الباقة كل 3 أشهر، ومعه ضمان أطول.</p>
+                    <h3>وفّر أكثر مع الباقة السنوية</h3>
+                    <p>احصل على شهادة صالحة لمدة سنة كاملة واختر مدة الضمان التي تناسبك من شهر إلى 12 شهر.</p>
                 </div>
-                <button class="promo-cta" onclick="chooseYearly()">اختر سنة كاملة</button>
+                <button type="button" class="promo-cta" onclick="chooseYearly()">اختر سنة كاملة</button>
             </div>
 
             <!-- Offers and Payment Info Grid -->
             <div class="info-grid">
-                <!-- Special Offers -->
                 <div class="info-card">
                     <h3><i class="fa-solid fa-gift"></i> عروض لعملائنا الكرام</h3>
                     <ul class="info-list">
@@ -1654,12 +1487,11 @@
                         </li>
                         <li>
                             <span>دعوة صديق (مشترك جديد)</span>
-                            <span class="badge-tag" style="color: var(--apple-link); font-weight: 800;">3 أشهر مجاناً بالعادية</span>
+                            <span class="badge-tag" style="color: var(--apple-link); font-weight: 800;">تمديد ضمان مجاني</span>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Payment Methods Card (UPDATED TO 4 METHODS) -->
                 <div class="info-card">
                     <h3><i class="fa-solid fa-wallet"></i> طرق الدفع المعتمدة</h3>
 
@@ -1694,7 +1526,7 @@
                     </div>
                     <div class="notice-item">
                         <h4>2. سياسة التعويض</h4>
-                        <p>في حال تم حظر الشهادة بواسطة أبل، تضمن أفق تعويض المشترك فوراً بشهادة جديدة طوال فترة الاشتراك حسب الباقة المختارة.</p>
+                        <p>في حال تم حظر الشهادة بواسطة أبل، تضمن أفق تعويض المشترك فوراً بشهادة جديدة طوال فترة الضمان المختارة في باقتك.</p>
                     </div>
                     <div class="notice-item">
                         <h4>3. جودة التطبيقات</h4>
@@ -1703,7 +1535,6 @@
                 </div>
             </section>
 
-            <!-- لوحة إعلانية: الدعم الفني -->
             <div class="promo-banner tg">
                 <div class="promo-icon"><i class="fa-solid fa-headset"></i></div>
                 <div class="promo-content">
@@ -1725,32 +1556,31 @@
                     <div class="app-icon esign">E</div>
                     <h3>E-Sign</h3>
                     <p>الأداة الأشهر والأفضل لتوقيع وتعديل تطبيقات IPA.</p>
-                    <button class="apple-button" onclick="openCodeModal('E-Sign')">تثبيت E-Sign</button>
+                    <button type="button" class="apple-button" onclick="openCodeModal('E-Sign')">تثبيت E-Sign</button>
                 </div>
 
                 <div class="app-card">
                     <div class="app-icon scarlet">S</div>
                     <h3>Scarlet</h3>
                     <p>أداة جبارة بسلاسة عالية وتصميم عصري لربط الشهادات.</p>
-                    <button class="apple-button" onclick="openCodeModal('Scarlet')">تثبيت Scarlet</button>
+                    <button type="button" class="apple-button" onclick="openCodeModal('Scarlet')">تثبيت Scarlet</button>
                 </div>
 
                 <div class="app-card">
                     <div class="app-icon zsign">Z</div>
                     <h3>ZSign</h3>
                     <p>تطبيق سريع ومستقر لتوقيع التطبيقات مباشرة على الجهاز.</p>
-                    <button class="apple-button" onclick="openCodeModal('ZSign')">تثبيت ZSign</button>
+                    <button type="button" class="apple-button" onclick="openCodeModal('ZSign')">تثبيت ZSign</button>
                 </div>
 
                 <div class="app-card">
                     <div class="app-icon ksign">K</div>
                     <h3>K-Sign</h3>
                     <p>أداة خفيفة وفعالة لتثبيت وإدارة تطبيقات الـ IPA.</p>
-                    <button class="apple-button" onclick="openCodeModal('K-Sign')">تثبيت K-Sign</button>
+                    <button type="button" class="apple-button" onclick="openCodeModal('K-Sign')">تثبيت K-Sign</button>
                 </div>
             </div>
 
-            <!-- لوحة إعلانية: الحصول على كود التفعيل -->
             <div class="promo-banner">
                 <div class="promo-icon"><i class="fa-solid fa-key"></i></div>
                 <div class="promo-content">
@@ -1758,7 +1588,7 @@
                     <h3>احصل على كود التفعيل الخاص بك</h3>
                     <p>اشترك بإحدى باقات أفق واستلم كود الشهادة لتثبيت التطبيقات مباشرة على جهازك.</p>
                 </div>
-                <button class="promo-cta" onclick="showSection('pricingSection')">اشترك الآن</button>
+                <button type="button" class="promo-cta" onclick="showSection('pricingSection')">اشترك الآن</button>
             </div>
 
             <div class="channels-wrapper">
@@ -1803,14 +1633,39 @@
     <!-- Modal Verification Code -->
     <div class="modal-overlay" id="codeModal">
         <div class="modal-box">
-            <button class="close-modal" onclick="closeCodeModal()">&times;</button>
+            <button type="button" class="close-modal" onclick="closeCodeModal()">&times;</button>
             <h3 id="modalAppName" style="font-size: 1.3rem; font-weight:800;">تثبيت التطبيق</h3>
             <p style="font-size: 0.88rem; color: var(--apple-text-secondary); margin-top: 4px;">أدخل كود الشهادة للبدء بالتثبيت:</p>
 
             <input type="text" id="certCodeInput" class="code-input" placeholder="OFUQ-XXXX" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" enterkeyhint="go">
-            <button class="apple-button" id="submitBtn" onclick="validateAndDownload()">تأكيد التثبيت</button>
+            <button type="button" class="apple-button" id="submitBtn" onclick="validateAndDownload()">تأكيد التثبيت</button>
 
             <div id="alertMsg" class="alert-msg"></div>
+        </div>
+    </div>
+
+    <!-- Modal Payment Method Selection -->
+    <div class="modal-overlay" id="paymentModal">
+        <div class="modal-box">
+            <button type="button" class="close-modal" onclick="closePaymentModal()">&times;</button>
+            <h3 style="font-size: 1.3rem; font-weight: 900;">اختر طريقة الدفع</h3>
+            <p id="payRegionAutoNote" style="font-size: 0.82rem; color: var(--apple-text-secondary); margin-top: 4px;"></p>
+
+            <div class="pay-summary-box">
+                <div id="paySelectedTitle" style="font-weight: 900; font-size: 1rem;"></div>
+                <div id="paySelectedPrice" style="font-weight: 900; font-size: 1.35rem; color: var(--apple-link); margin-top: 2px;"></div>
+            </div>
+
+            <div class="pay-region-tabs">
+                <button type="button" class="pay-region-tab" id="payTabIQ" onclick="renderPaymentOptions('IQ')">🇮🇶 داخل العراق</button>
+                <button type="button" class="pay-region-tab" id="payTabINTL" onclick="renderPaymentOptions('INTL')">🌍 خارج العراق</button>
+            </div>
+
+            <div id="payMethodsList" class="pay-methods-list"></div>
+
+            <button type="button" class="apple-button" id="confirmPayBtn" onclick="proceedToTelegramOrder()">
+                <i class="fa-brands fa-telegram"></i> متابعة الاشتراك عبر تيليجرام
+            </button>
         </div>
     </div>
 
@@ -1825,21 +1680,6 @@
 
     <script>
         const WORKER_URL = "https://ufuq.followorfollow1.workers.dev/";
-
-        // ================= SECURITY & ANTI-INSPECTION PROTECTION =================
-        document.addEventListener('contextmenu', e => e.preventDefault());
-
-        document.addEventListener('keydown', e => {
-            if (
-                e.key === 'F12' ||
-                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
-                (e.ctrlKey && e.key === 'U') ||
-                (e.metaKey && e.altKey && (e.key === 'I' || e.key === 'J' || e.key === 'C' || e.key === 'U'))
-            ) {
-                e.preventDefault();
-                return false;
-            }
-        });
 
         // ================= NAVIGATION & APP LOGIC =================
         function toggleSidebar() {
@@ -1872,36 +1712,120 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // ================= PRICING DURATION SWITCHER LOGIC =================
+        // ================= PRICING DATABASE =================
+        const SUPPORTED_APPS = ['Esign', 'Ksign', 'Scarlet', 'Feather', 'Ofuq'];
+
         const pricingDatabase = {
-            '1year': {
-                normal: { price: '$10', period: '1 سنة', guarantee: 'ضمان 3 أشهر مستمرة', text: 'مرحباً، أرغب بالاشتراك في الباقة العادية (سنة - 10$)' },
-                plus: { price: '$15', period: '1 سنة', guarantee: 'ضمان 6 أشهر مستمرة', text: 'مرحباً، أرغب بالاشتراك في الباقة البلس (سنة - 15$)' },
-                max: { price: '$22', period: '1 سنة', guarantee: 'ضمان المدة كاملة 100%', text: 'مرحباً، أرغب بالاشتراك في الباقة الماكس VIP (سنة - 22$ - ضمان 100%)' }
-            },
-            '6months': {
-                normal: { price: '$7', period: '6 أشهر', guarantee: 'ضمان شهرين (2)', text: 'مرحباً، أرغب بالاشتراك في الباقة العادية (6 أشهر - 7$)' },
-                plus: { price: '$8', period: '6 أشهر', guarantee: 'ضمان 4 أشهر', text: 'مرحباً، أرغب بالاشتراك في الباقة البلس (6 أشهر - 8$)' },
-                max: { price: '$14', period: '6 أشهر', guarantee: 'ضمان المدة كاملة 100%', text: 'مرحباً، أرغب بالاشتراك في الباقة الماكس VIP (6 أشهر - 14$ - ضمان 100%)' }
-            },
-            '3months': {
-                normal: { price: '$5', period: '3 أشهر', guarantee: 'ضمان شهر واحد (1)', text: 'مرحباً، أرغب بالاشتراك في الباقة العادية (3 أشهر - 5$)' },
-                plus: { price: '$6', period: '3 أشهر', guarantee: 'ضمان شهرين (2)', text: 'مرحباً، أرغب بالاشتراك في الباقة البلس (3 أشهر - 6$)' },
-                max: { price: '$7', period: '3 أشهر', guarantee: 'ضمان المدة كاملة 100%', text: 'مرحباً، أرغب بالاشتراك في الباقة الماكس VIP (3 أشهر - 7$ - ضمان 100%)' }
-            }
+            '1year': [
+                {
+                    id: '1y_1m',
+                    badge: 'اقتصادية',
+                    title: 'شهادة 1 سنة — ضمان 1 شهر',
+                    iqd: 5000,
+                    usd: 5,
+                    period: 'مدة الشهادة: 1 سنة',
+                    guarantee: 'ضمان 1 شهر مستمر',
+                    vip: false,
+                    features: [
+                        'تعويض فوري عند خلل الشهادة خلال فترة الضمان',
+                        'تثبيت مباشر بدون كمبيوتر أو جيلبريك'
+                    ]
+                },
+                {
+                    id: '1y_2m',
+                    badge: 'بداية ذكية',
+                    title: 'شهادة 1 سنة — ضمان شهرين',
+                    iqd: 10000,
+                    usd: 10,
+                    period: 'مدة الشهادة: 1 سنة',
+                    guarantee: 'ضمان شهرين (2) مستمرة',
+                    vip: false,
+                    features: [
+                        'تعويض فوري عند خلل الشهادة خلال فترة الضمان',
+                        'تثبيت مباشر بدون كمبيوتر أو جيلبريك'
+                    ]
+                },
+                {
+                    id: '1y_3m',
+                    badge: 'متوازنة',
+                    title: 'شهادة 1 سنة — ضمان 3 أشهر',
+                    iqd: 15000,
+                    usd: 15,
+                    period: 'مدة الشهادة: 1 سنة',
+                    guarantee: 'ضمان 3 أشهر مستمرة',
+                    vip: false,
+                    features: [
+                        'تعويض فوري عند خلل الشهادة خلال فترة الضمان',
+                        'تثبيت مباشر بدون كمبيوتر أو جيلبريك'
+                    ]
+                },
+                {
+                    id: '1y_6m',
+                    badge: 'الأكثر اختياراً',
+                    title: 'شهادة 1 سنة — ضمان 6 أشهر',
+                    iqd: 20000,
+                    usd: 20,
+                    period: 'مدة الشهادة: 1 سنة',
+                    guarantee: 'ضمان 6 أشهر مستمرة',
+                    vip: false,
+                    features: [
+                        'تعويض فوري عند خلل الشهادة خلال فترة الضمان',
+                        'تثبيت مباشر بدون كمبيوتر أو جيلبريك'
+                    ]
+                },
+                {
+                    id: '1y_10m',
+                    badge: 'أمان عالي',
+                    title: 'شهادة 1 سنة — ضمان 10 أشهر',
+                    iqd: 25000,
+                    usd: 25,
+                    period: 'مدة الشهادة: 1 سنة',
+                    guarantee: 'ضمان 10 أشهر مستمرة',
+                    vip: false,
+                    features: [
+                        'تعويض فوري عند خلل الشهادة خلال فترة الضمان',
+                        'تثبيت مباشر بدون كمبيوتر أو جيلبريك'
+                    ]
+                },
+                {
+                    id: '1y_12m',
+                    badge: 'شامل كل المميزات',
+                    vipTag: 'VIP الضمان الكامل',
+                    title: 'شهادة 1 سنة — ضمان 12 شهر',
+                    iqd: 30000,
+                    usd: 30,
+                    period: 'مدة الشهادة: 1 سنة',
+                    guarantee: 'ضمان المدة كاملة 100% (12 شهر)',
+                    vip: true,
+                    features: [
+                        'تعويض فوري طوال مدة الاشتراك الكاملة',
+                        'أولوية في التفعيل والدعم الفني المباشر'
+                    ]
+                }
+            ],
+            '3months': [
+                {
+                    id: '3m_max',
+                    badge: 'شامل كل المميزات',
+                    vipTag: 'VIP الباقة الماكس',
+                    title: 'الباقة الماكس (3 أشهر)',
+                    iqd: 7000,
+                    usd: 7,
+                    period: 'مدة الشهادة: 3 أشهر',
+                    guarantee: 'ضمان المدة كاملة 100% (3 أشهر)',
+                    vip: true,
+                    features: [
+                        'تعويض فوري طوال مدة الاشتراك',
+                        'تتحمل 3 أجهزة (3 Devices)',
+                        'اشتراك IPTV طوال مدة الاشتراك مع مميزات عديدة'
+                    ]
+                }
+            ]
         };
 
         // ================= COUNTRY & CURRENCY PRICING =================
-        // سعر صرف الدينار العراقي يحدده صاحب الموقع (لا يتحدّث تلقائياً)
-        const IQD_RATE = 1520;
-        // تقريب أسعار الدينار للأعلى لأقرب 250 دينار (اجعلها 1 لعرض السعر بدون تقريب)
-        const IQD_ROUND_TO = 250;
-
-        // rate: سعر 1 دولار بعملة الدولة (احتياطي، ويتحدّث يومياً من الإنترنت إلا إذا كان fixed)
-        // step: تقريب السعر للأعلى لأقرب رقم مناسب لكل عملة
-        // الدول التي عملتها USD نعرض لها السعر بالدولار لأنه الأكثر استخداماً للدفع الإلكتروني هناك
         const COUNTRIES = [
-            { id: 'IQ', name: 'العراق', flag: '🇮🇶', currency: 'IQD', currencyName: 'دينار عراقي', symbol: 'د.ع', rate: IQD_RATE, step: IQD_ROUND_TO, fixed: true, tz: ['Asia/Baghdad'] },
+            { id: 'IQ', name: 'العراق', flag: '🇮🇶', currency: 'IQD', currencyName: 'دينار عراقي', symbol: 'د.ع', rate: 1, step: 250, fixed: true, tz: ['Asia/Baghdad'] },
             { id: 'SA', name: 'السعودية', flag: '🇸🇦', currency: 'SAR', currencyName: 'ريال سعودي', symbol: 'ر.س', rate: 3.75, step: 1, fixed: true, tz: ['Asia/Riyadh'] },
             { id: 'AE', name: 'الإمارات', flag: '🇦🇪', currency: 'AED', currencyName: 'درهم إماراتي', symbol: 'د.إ', rate: 3.6725, step: 1, fixed: true, tz: ['Asia/Dubai'] },
             { id: 'KW', name: 'الكويت', flag: '🇰🇼', currency: 'KWD', currencyName: 'دينار كويتي', symbol: 'د.ك', rate: 0.307, step: 0.05, tz: ['Asia/Kuwait'] },
@@ -1928,45 +1852,69 @@
         COUNTRIES.forEach(c => { c.fallbackRate = c.rate; });
 
         let currentDuration = '1year';
-        let currentCountry = COUNTRIES[COUNTRIES.length - 1];
+        let currentCountry = COUNTRIES[0];
         let countryAutoDetected = false;
 
-        function formatLocalPrice(usdAmount, country) {
-            if (country.currency === 'USD') return '$' + usdAmount;
+        function formatTierPrice(tier, country) {
+            if (country.id === 'IQ') {
+                return tier.iqd.toLocaleString('en-US') + ' د.ع';
+            }
+            if (country.currency === 'USD') {
+                return '$' + tier.usd;
+            }
             const step = country.step || 1;
-            const rounded = Math.ceil((usdAmount * country.rate) / step - 1e-9) * step;
+            const rounded = Math.ceil((tier.usd * country.rate) / step - 1e-9) * step;
             return rounded.toLocaleString('en-US', { maximumFractionDigits: 2 }) + ' ' + country.symbol;
         }
 
-        function popAnimation(el) {
-            el.classList.remove('price-pop');
-            void el.offsetWidth;
-            el.classList.add('price-pop');
-        }
-
         function renderPrices() {
-            const data = pricingDatabase[currentDuration];
+            const tiers = pricingDatabase[currentDuration] || [];
+            const grid = document.getElementById('packagesGrid');
             const isUsd = currentCountry.currency === 'USD';
 
-            [['normal', 'Normal'], ['plus', 'Plus'], ['max', 'Max']].forEach(([key, suffix]) => {
-                const item = data[key];
-                const usdAmount = Number(item.price.replace(/[^0-9.]/g, ''));
-                const localPrice = formatLocalPrice(usdAmount, currentCountry);
+            grid.classList.toggle('single-card', tiers.length === 1);
 
-                const priceEl = document.getElementById('price' + suffix);
-                priceEl.innerText = localPrice;
-                priceEl.classList.toggle('long', localPrice.length > 11);
-                popAnimation(priceEl);
+            const pillsHtml = SUPPORTED_APPS.map(app => `<span class="app-pill">${app}</span>`).join('');
 
-                // ⁦ و ⁩ يحافظان على ترتيب ($10) داخل النص العربي
-                document.getElementById('priceUsd' + suffix).innerText = isUsd ? '' : 'يعادل ⁦' + item.price + '⁩';
-                document.getElementById('period' + suffix).innerText = item.period;
-                document.getElementById('guarantee' + suffix).innerText = item.guarantee;
+            grid.innerHTML = tiers.map(tier => {
+                const formattedPrice = formatTierPrice(tier, currentCountry);
+                const subPriceText = isUsd ? '' : `يعادل ⁦$${tier.usd}⁩`;
+                const isLongPrice = formattedPrice.length > 11;
 
-                // رسالة تيليجرام تحمل الباقة والسعر ودولة المشترك
-                const message = isUsd ? item.text : `${item.text} — ${currentCountry.name}: ${localPrice}`;
-                document.getElementById('btn' + suffix).href = `https://t.me/cpj_4?text=${encodeURIComponent(message)}`;
-            });
+                const featuresHtml = tier.features.map((feat, idx) => {
+                    const iconClass = tier.vip && idx === tier.features.length - 1 && feat.includes('IPTV')
+                        ? 'fa-solid fa-tv'
+                        : 'fa-solid fa-circle-check';
+                    const iconStyle = iconClass === 'fa-solid fa-tv' ? 'style="color: var(--ofoq-accent);"' : '';
+                    return `<li><i class="${iconClass}" ${iconStyle}></i> ${feat}</li>`;
+                }).join('');
+
+                return `
+                    <div class="package-card ${tier.vip ? 'vip' : ''}">
+                        ${tier.vip ? `<div class="vip-badge"><i class="fa-solid fa-crown"></i> ${tier.vipTag || 'VIP'}</div>` : ''}
+                        <div class="package-header">
+                            <span class="badge-tag" ${tier.vip ? 'style="background: rgba(140,90,60,0.15); color: var(--ofoq-accent);"' : ''}>${tier.badge}</span>
+                            <h3>${tier.title}</h3>
+                        </div>
+                        <div class="package-price-box">
+                            <div class="package-price ${isLongPrice ? 'long' : ''}" ${tier.vip ? 'style="color: var(--ofoq-accent);"' : ''}>${formattedPrice}</div>
+                            <div class="package-price-usd">${subPriceText}</div>
+                            <div class="package-period">${tier.period}</div>
+                            <div class="package-guarantee">${tier.guarantee}</div>
+                        </div>
+                        <div>
+                            <p style="font-size: 0.85rem; font-weight: 800; margin-bottom: 6px;">تطبيقات التوقيع المدعومة:</p>
+                            <div class="apps-pills">${pillsHtml}</div>
+                        </div>
+                        <ul class="package-features" style="margin-top: 16px;">
+                            ${featuresHtml}
+                        </ul>
+                        <button type="button" class="apple-button" ${tier.vip ? 'style="background: var(--ofoq-accent);"' : ''} onclick="openPaymentModal('${tier.id}')">
+                            ${tier.vip ? 'اشترك الآن VIP' : 'اشترك الآن'}
+                        </button>
+                    </div>
+                `;
+            }).join('');
         }
 
         function setPricingDuration(durationKey, clickedTab) {
@@ -1977,7 +1925,7 @@
         }
 
         function chooseYearly() {
-            setPricingDuration('1year', document.querySelector('.duration-tab'));
+            setPricingDuration('1year', document.getElementById('tab1Year'));
             document.querySelector('.duration-switcher').scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
@@ -1989,7 +1937,7 @@
         }
 
         function setCountry(countryId, chosenByUser) {
-            currentCountry = COUNTRIES.find(c => c.id === countryId) || COUNTRIES[COUNTRIES.length - 1];
+            currentCountry = COUNTRIES.find(c => c.id === countryId) || COUNTRIES[0];
             if (chosenByUser) {
                 countryAutoDetected = false;
                 try { localStorage.setItem('ofuq_country', currentCountry.id); } catch (e) {}
@@ -1999,7 +1947,6 @@
             renderPrices();
         }
 
-        // معرفة دولة الزائر من المنطقة الزمنية لجهازه (بدون أي خدمة خارجية)، ثم من لغة الجهاز
         function detectCountry() {
             try {
                 const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
@@ -2013,10 +1960,9 @@
                     if (COUNTRIES.some(c => c.id === region)) return region;
                 }
             } catch (e) {}
-            return 'OTHER';
+            return 'IQ';
         }
 
-        // أسعار الصرف اليومية (مجانية وبدون مفتاح)، مع حفظها في المتصفح 12 ساعة
         const RATES_CACHE_KEY = 'ofuq_rates_v1';
         const RATES_URLS = [
             'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.min.json',
@@ -2027,7 +1973,6 @@
             COUNTRIES.forEach(c => {
                 if (c.fixed || c.currency === 'USD') return;
                 const live = Number(rates[c.currency.toLowerCase()]);
-                // تجاهل أي قيمة غير منطقية مقارنة بالسعر الاحتياطي
                 if (live > c.fallbackRate / 3 && live < c.fallbackRate * 3) c.rate = live;
             });
         }
@@ -2081,6 +2026,87 @@
 
         initCountryPicker();
 
+        // ================= SMART PAYMENT SELECTION MODAL =================
+        const PAYMENT_OPTIONS = {
+            IQ: [
+                { name: 'سوبر كي (Super Key)', icon: 'fa-solid fa-credit-card', note: 'متوفر' },
+                { name: 'ماستر كارد (Mastercard)', icon: 'fa-brands fa-cc-mastercard', note: 'متوفر' },
+                { name: 'زين كاش (Zain Cash)', icon: 'fa-solid fa-wallet', note: 'متوفر' },
+                { name: 'رصيد زين العراق', icon: 'fa-solid fa-sim-card', note: '+2$ رسوم تحويل' }
+            ],
+            INTL: [
+                { name: 'البطاقات البنكية (Visa / Mastercard / Apple Pay)', icon: 'fa-brands fa-apple-pay', note: 'دفع فوري +2$' },
+                { name: 'العملات الرقمية (USDT - Binance)', icon: 'fa-solid fa-coins', note: 'فوري +2$ رسوم' },
+                { name: 'ويسترن يونيون (Western Union)', icon: 'fa-solid fa-money-bill-transfer', note: 'فوري +2$ رسوم' },
+                { name: 'زين كاش (Zain Cash)', icon: 'fa-solid fa-wallet', note: 'متوفر' }
+            ]
+        };
+
+        let activeOrderTier = null;
+        let selectedPaymentMethod = '';
+
+        function openPaymentModal(tierId) {
+            const allTiers = [...pricingDatabase['1year'], ...pricingDatabase['3months']];
+            activeOrderTier = allTiers.find(t => t.id === tierId);
+            if (!activeOrderTier) return;
+
+            const isIraq = currentCountry.id === 'IQ';
+            const formattedPrice = formatTierPrice(activeOrderTier, currentCountry);
+
+            document.getElementById('paySelectedTitle').innerText = activeOrderTier.title;
+            document.getElementById('paySelectedPrice').innerText = isIraq
+                ? `${formattedPrice} (يعادل $${activeOrderTier.usd})`
+                : `${formattedPrice}`;
+
+            document.getElementById('payRegionAutoNote').innerText = isIraq
+                ? 'تم التعرف على موقعك تلقائياً: داخل العراق 🇮🇶'
+                : `تم التعرف على موقعك تلقائياً: خارج العراق (${currentCountry.flag} ${currentCountry.name})`;
+
+            renderPaymentOptions(isIraq ? 'IQ' : 'INTL');
+            document.getElementById('paymentModal').classList.add('active');
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').classList.remove('active');
+        }
+
+        function renderPaymentOptions(regionKey) {
+            document.getElementById('payTabIQ').classList.toggle('active', regionKey === 'IQ');
+            document.getElementById('payTabINTL').classList.toggle('active', regionKey === 'INTL');
+
+            const methods = PAYMENT_OPTIONS[regionKey] || PAYMENT_OPTIONS.IQ;
+            selectedPaymentMethod = methods[0].name;
+
+            const listEl = document.getElementById('payMethodsList');
+            listEl.innerHTML = methods.map((m, idx) => `
+                <button type="button" class="pay-method-btn ${idx === 0 ? 'selected' : ''}" onclick="selectPayMethod(this, '${m.name.replace(/'/g, "\\'")}')">
+                    <span class="pay-method-left">
+                        <i class="${m.icon}"></i>
+                        <span>${m.name}</span>
+                    </span>
+                    <span class="badge-tag">${m.note}</span>
+                </button>
+            `).join('');
+        }
+
+        function selectPayMethod(btnEl, methodName) {
+            document.querySelectorAll('.pay-method-btn').forEach(b => b.classList.remove('selected'));
+            btnEl.classList.add('selected');
+            selectedPaymentMethod = methodName;
+        }
+
+        function proceedToTelegramOrder() {
+            if (!activeOrderTier) return;
+            const formattedPrice = formatTierPrice(activeOrderTier, currentCountry);
+            const message = `مرحباً، أرغب بالاشتراك في منصة أفق:\n• الباقة: ${activeOrderTier.title}\n• السعر: ${formattedPrice} ($${activeOrderTier.usd})\n• الدولة: ${currentCountry.name}\n• طريقة الدفع: ${selectedPaymentMethod}`;
+            window.open(`https://t.me/cpj_4?text=${encodeURIComponent(message)}`, '_blank');
+            closePaymentModal();
+        }
+
+        document.getElementById('paymentModal').addEventListener('click', e => {
+            if (e.target.id === 'paymentModal') closePaymentModal();
+        });
+
         // ================= FAQ ACCORDION INTERACTIVITY =================
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
@@ -2113,7 +2139,7 @@
             const alertMsg = document.getElementById('alertMsg');
             const submitBtn = document.getElementById('submitBtn');
 
-            if (submitBtn.disabled) return; // منع الإرسال المكرر أثناء انتظار السيرفر
+            if (submitBtn.disabled) return;
 
             if (!codeInput) {
                 alertMsg.className = 'alert-msg error';
@@ -2147,7 +2173,6 @@
                         submitBtn.disabled = false;
                     }, 800);
                 } else if (data.success) {
-                    // الكود صحيح لكن رابط هذا التطبيق غير مضاف بعد في السيرفر
                     alertMsg.className = 'alert-msg error';
                     alertMsg.innerText = 'الكود صحيح، لكن رابط تثبيت هذا التطبيق غير جاهز حالياً. تواصل مع الإدارة (@cpj_4).';
                     shakeModal();
@@ -2173,7 +2198,6 @@
             box.classList.add('shake');
         }
 
-        // إغلاق النافذة بالضغط خارجها أو بزر Esc، والتأكيد بزر Enter
         document.getElementById('codeModal').addEventListener('click', e => {
             if (e.target.id === 'codeModal') closeCodeModal();
         });
@@ -2181,6 +2205,7 @@
         document.addEventListener('keydown', e => {
             if (e.key !== 'Escape') return;
             closeCodeModal();
+            closePaymentModal();
             if (document.getElementById('sidebar').classList.contains('active')) toggleSidebar();
         });
 
@@ -2191,8 +2216,7 @@
             }
         });
 
-        // ================= TELEGRAM PREFILLED LINKS (PROMO BANNERS) =================
-        // أي رابط فيه data-tg-text يفتح محادثة @cpj_4 مع رسالة جاهزة
+        // ================= TELEGRAM PREFILLED LINKS =================
         document.querySelectorAll('[data-tg-text]').forEach(link => {
             link.href = 'https://t.me/cpj_4?text=' + encodeURIComponent(link.dataset.tgText);
         });
@@ -2219,7 +2243,6 @@
 
             function goTo(i) {
                 index = (i + slides.length) % slides.length;
-                // الصفحة من اليمين لليسار، فالإعلان التالي يأتي من جهة اليسار
                 track.style.transform = `translateX(${index * 100}%)`;
                 Array.from(dotsWrap.children).forEach((dot, n) => dot.classList.toggle('active', n === index));
             }
@@ -2234,7 +2257,6 @@
                 if (!reduceMotion && !document.hidden) timer = setInterval(() => goTo(index + 1), 5000);
             }
 
-            // السحب بالإصبع على الهاتف
             let startX = null;
             track.addEventListener('touchstart', e => {
                 startX = e.touches[0].clientX;
@@ -2249,7 +2271,6 @@
                 restart();
             }, { passive: true });
 
-            // إيقاف مؤقت عند وضع الماوس على الإعلان (للكمبيوتر فقط)
             if (window.matchMedia('(hover: hover)').matches) {
                 track.parentElement.addEventListener('mouseenter', stop);
                 track.parentElement.addEventListener('mouseleave', restart);
@@ -2261,29 +2282,7 @@
             restart();
         })();
 
-        // ================= SCROLL REVEAL ANIMATIONS =================
-        (function initReveal() {
-            if (!('IntersectionObserver' in window)) return;
-
-            const selector = '.section-title, .feature-card, .faq-item, .package-card, .info-card, .app-card, .notice-item, .channel-row, .promo-banner:not(.promo-slide), .promo-carousel-wrap, .currency-picker';
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                });
-            }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
-
-            document.querySelectorAll(selector).forEach(item => {
-                // تأخير بسيط متتابع للعناصر المتجاورة
-                const siblings = Array.from(item.parentElement.children).filter(el => el.matches(selector));
-                item.style.setProperty('--reveal-delay', (siblings.indexOf(item) % 4) * 90 + 'ms');
-                observer.observe(item);
-            });
-        })();
-
         // ================= HIDE BROKEN MARQUEE ICONS =================
-        // إذا تعطّل تحميل صورة أيقونة في الشريط المتحرك نخفيها بدل ظهور صورة مكسورة
         document.querySelectorAll('.app-badge-icon img').forEach(img => {
             const hideBadge = () => { img.parentElement.style.display = 'none'; };
             if (img.complete && img.naturalWidth === 0) hideBadge();
@@ -2292,3 +2291,4 @@
     </script>
 </body>
 </html>
+
