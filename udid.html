@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>استخراج UDID | منصة أفق</title>
+    <meta name="description" content="استخرج رقم UDID الخاص بآيفونك خلال دقيقة وأرسله لمنصة أفق لتفعيل شهادتك.">
+    <meta name="theme-color" content="#FDFBF7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#12100E" media="(prefers-color-scheme: dark)">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="منصة أفق">
+    <meta property="og:locale" content="ar_IQ">
+    <meta property="og:title" content="استخراج UDID | منصة أفق">
+    <meta property="og:description" content="استخرج رقم UDID الخاص بآيفونك خلال دقيقة وأرسله لمنصة أفق لتفعيل شهادتك.">
+    <meta property="og:image" content="logo.png">
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #FDFBF7;
+            --card: #FFFFFF;
+            --subtle: #F5EFEE;
+            --text: #1A1A1A;
+            --text-2: #5C3D2E;
+            --link: #5C3D2E;
+            --border: #E8E2D5;
+            --accent: #8C5A3C;
+            --on-accent: #FFFFFF;
+            --telegram: #0088cc;
+            --success: #386641;
+            --error: #A33333;
+            --radius-l: 22px;
+            --radius-m: 14px;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #12100E;
+                --card: #1C1815;
+                --subtle: #26211D;
+                --text: #FDFBF7;
+                --text-2: #D4B2A7;
+                --link: #C5A059;
+                --border: rgba(197, 160, 89, 0.2);
+                --accent: #C5A059;
+                --on-accent: #12100E;
+                --telegram: #2997ff;
+                --success: #30d158;
+                --error: #ff453a;
+            }
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: env(safe-area-inset-top) 16px calc(32px + env(safe-area-inset-bottom));
+        }
+
+        .wrap { max-width: 520px; margin: 0 auto; }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 0 8px;
+        }
+        .brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 900; font-size: 1.1rem; }
+        .brand img { width: 38px; height: 38px; border-radius: 10px; }
+        .back { color: var(--link); text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+
+        .hero { text-align: center; padding: 22px 0 18px; }
+        .hero .icon {
+            width: 72px; height: 72px; margin: 0 auto 14px;
+            border-radius: 22px;
+            display: grid; place-items: center;
+            background: var(--subtle);
+            color: var(--accent);
+            font-size: 2rem;
+        }
+        .hero h1 { font-size: 1.55rem; font-weight: 900; line-height: 1.4; }
+        .hero p { color: var(--text-2); font-size: 0.98rem; margin-top: 6px; }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-l);
+            padding: 20px;
+            margin-top: 14px;
+        }
+
+        .steps { list-style: none; counter-reset: step; }
+        .steps li {
+            counter-increment: step;
+            position: relative;
+            padding: 4px 46px 14px 0;
+            font-size: 0.95rem;
+        }
+        .steps li:last-child { padding-bottom: 2px; }
+        .steps li::before {
+            content: counter(step);
+            position: absolute; right: 0; top: 2px;
+            width: 32px; height: 32px; border-radius: 50%;
+            background: var(--accent); color: var(--on-accent);
+            display: grid; place-items: center;
+            font-weight: 900; font-size: 0.95rem;
+        }
+        .steps b { font-weight: 800; }
+
+        .button {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: 100%;
+            padding: 14px 20px;
+            margin-top: 12px;
+            border: none;
+            border-radius: 30px;
+            font-family: inherit; font-weight: 800; font-size: 1.02rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.15s ease, opacity 0.2s ease;
+        }
+        .button:active { transform: scale(0.98); }
+        .button.primary { background: var(--accent); color: var(--on-accent); }
+        .button.telegram { background: var(--telegram); color: #FFFFFF; }
+        .button.secondary { background: var(--subtle); color: var(--text); }
+        .button[aria-disabled="true"] { opacity: 0.45; pointer-events: none; }
+
+        .note {
+            display: flex; gap: 10px; align-items: flex-start;
+            font-size: 0.88rem; color: var(--text-2);
+            margin-top: 12px;
+        }
+        .note i { margin-top: 5px; color: var(--accent); }
+        .note.warn { background: var(--subtle); border-radius: var(--radius-m); padding: 12px 14px; color: var(--text); }
+        .note.warn i { color: var(--error); }
+
+        .udid-label { font-size: 0.85rem; color: var(--text-2); font-weight: 700; }
+        .udid {
+            direction: ltr;
+            font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+            font-size: 1.08rem; font-weight: 700;
+            letter-spacing: 0.02em;
+            word-break: break-all;
+            text-align: center;
+            background: var(--subtle);
+            border-radius: var(--radius-m);
+            padding: 16px 12px;
+            margin-top: 6px;
+            user-select: all;
+            -webkit-user-select: all;
+        }
+        .device { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 12px; }
+        .pill {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--subtle); border-radius: 30px;
+            padding: 4px 12px; font-size: 0.85rem; font-weight: 700;
+        }
+        .pill span { direction: ltr; unicode-bidi: isolate; }
+
+        .done-icon { color: var(--success); }
+        .error-icon { color: var(--error); }
+
+        .hidden { display: none !important; }
+
+        footer { text-align: center; font-size: 0.8rem; color: var(--text-2); margin-top: 26px; }
+        footer a { color: var(--link); font-weight: 700; text-decoration: none; }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <header>
+        <a class="brand" href="index.html"><img src="logo.png" alt="">منصة أفق</a>
+        <a class="back" href="index.html">الرئيسية <i class="fa-solid fa-arrow-left"></i></a>
+    </header>
+
+    <!-- البداية -->
+    <main id="startView">
+        <section class="hero">
+            <div class="icon"><i class="fa-solid fa-fingerprint"></i></div>
+            <h1>استخراج الـ UDID لجهازك</h1>
+            <p>الـ UDID رقم خاص بجهازك نحتاجه حتى نفعّل لك الشهادة. استخراجه ياخذ أقل من دقيقة.</p>
+        </section>
+
+        <div id="notIphone" class="note warn hidden">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+            <div>افتح هذه الصفحة من <b>الآيفون أو الآيباد</b> اللي تريد تفعّل عليه الشهادة، وبمتصفح <b>سفاري</b>.</div>
+        </div>
+        <div id="inApp" class="note warn hidden">
+            <i class="fa-brands fa-safari"></i>
+            <div>فاتح الصفحة من داخل تطبيق. اضغط <b>⋯</b> بالأعلى واختر <b>الفتح في سفاري</b>، لأن ملف الاستخراج ما ينزل إلا بسفاري.</div>
+        </div>
+
+        <div class="card">
+            <ol class="steps">
+                <li>اضغط <b>استخراج الـ UDID</b> بالأسفل، وبعدها اضغط <b>سماح</b>.</li>
+                <li>افتح <b>الإعدادات</b> ← <b>تم تنزيل ملف التعريف</b> ← <b>تثبيت</b>، وأدخل رمز قفل الجهاز.</li>
+                <li>سفاري يرجعك لهذه الصفحة تلقائياً، والـ UDID جاهز ترسله لنا بضغطة.</li>
+            </ol>
+
+            <a id="extractButton" class="button primary" href="#" aria-disabled="true">
+                <i class="fa-solid fa-fingerprint"></i> استخراج الـ UDID
+            </a>
+            <div id="serviceDown" class="note warn hidden">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <div>خدمة الاستخراج ما تستجيب حالياً. جرّب بعد دقائق، أو راسلنا على تيليجرام <a href="https://t.me/cpj_4" dir="ltr" style="color: var(--link); font-weight: 800; unicode-bidi: isolate;">@cpj_4</a>.</div>
+            </div>
+        </div>
+
+        <div class="note">
+            <i class="fa-solid fa-shield-halved"></i>
+            <div>ما يبقى أي ملف على جهازك، وما نحفظ أي بيانات. الـ UDID ما يوصلنا إلا إذا أنت أرسلته.</div>
+        </div>
+        <div class="note">
+            <i class="fa-solid fa-circle-info"></i>
+            <div>إذا كتب الآيفون على الملف <b>«غير موثّق»</b> فهذا طبيعي، كمّل التثبيت.</div>
+        </div>
+    </main>
+
+    <!-- النتيجة -->
+    <main id="resultView" class="hidden">
+        <section class="hero">
+            <div class="icon"><i class="fa-solid fa-circle-check done-icon"></i></div>
+            <h1>تم استخراج الـ UDID</h1>
+            <p>أرسله لنا الآن حتى نفعّل شهادتك على هذا الجهاز.</p>
+        </section>
+
+        <div class="card">
+            <div class="udid-label">الـ UDID الخاص بجهازك</div>
+            <div id="udidValue" class="udid"></div>
+            <div id="deviceInfo" class="device"></div>
+
+            <a id="telegramButton" class="button telegram" href="#" target="_blank" rel="noopener">
+                <i class="fa-brands fa-telegram"></i> أرسل الـ UDID لأفق
+            </a>
+            <button id="copyButton" type="button" class="button secondary">
+                <i class="fa-regular fa-copy"></i> <span>نسخ الـ UDID</span>
+            </button>
+            <button id="shareButton" type="button" class="button secondary hidden">
+                <i class="fa-solid fa-arrow-up-from-bracket"></i> مشاركة بتطبيق ثاني
+            </button>
+        </div>
+
+        <div class="note">
+            <i class="fa-solid fa-circle-info"></i>
+            <div>بعد ما يفتح تيليجرام اضغط <b>إرسال</b> فقط، الرسالة مكتوبة جاهزة.</div>
+        </div>
+        <a class="button secondary" href="index.html">
+            <i class="fa-solid fa-tags"></i> شوف الباقات والأسعار
+        </a>
+    </main>
+
+    <!-- خطأ -->
+    <main id="errorView" class="hidden">
+        <section class="hero">
+            <div class="icon"><i class="fa-solid fa-circle-xmark error-icon"></i></div>
+            <h1>ما وصلنا الـ UDID</h1>
+            <p>صار خلل أثناء الاستخراج. جرّب مرة ثانية، وإذا تكرر راسلنا على تيليجرام.</p>
+        </section>
+        <a class="button primary" href="udid.html"><i class="fa-solid fa-rotate-right"></i> جرّب مرة ثانية</a>
+        <a class="button telegram" href="https://t.me/cpj_4" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i> راسلنا على تيليجرام</a>
+    </main>
+
+    <footer>منصة أفق لخدمات أبل © 2026 · <a href="index.html">الموقع الرئيسي</a></footer>
+</div>
+
+<script>
+    // Cloudflare worker that serves the profile and receives the UDID (cloudflare/udid-worker.js).
+    const WORKER = 'https://ofuq-udid.followorfollow1.workers.dev';
+    const TELEGRAM_USER = 'cpj_4';
+
+    const MODELS = {
+        'iPhone10,1': 'iPhone 8', 'iPhone10,4': 'iPhone 8', 'iPhone10,2': 'iPhone 8 Plus', 'iPhone10,5': 'iPhone 8 Plus',
+        'iPhone10,3': 'iPhone X', 'iPhone10,6': 'iPhone X', 'iPhone11,2': 'iPhone XS', 'iPhone11,4': 'iPhone XS Max',
+        'iPhone11,6': 'iPhone XS Max', 'iPhone11,8': 'iPhone XR', 'iPhone12,1': 'iPhone 11', 'iPhone12,3': 'iPhone 11 Pro',
+        'iPhone12,5': 'iPhone 11 Pro Max', 'iPhone12,8': 'iPhone SE (2)', 'iPhone13,1': 'iPhone 12 mini',
+        'iPhone13,2': 'iPhone 12', 'iPhone13,3': 'iPhone 12 Pro', 'iPhone13,4': 'iPhone 12 Pro Max',
+        'iPhone14,4': 'iPhone 13 mini', 'iPhone14,5': 'iPhone 13', 'iPhone14,2': 'iPhone 13 Pro',
+        'iPhone14,3': 'iPhone 13 Pro Max', 'iPhone14,6': 'iPhone SE (3)', 'iPhone14,7': 'iPhone 14',
+        'iPhone14,8': 'iPhone 14 Plus', 'iPhone15,2': 'iPhone 14 Pro', 'iPhone15,3': 'iPhone 14 Pro Max',
+        'iPhone15,4': 'iPhone 15', 'iPhone15,5': 'iPhone 15 Plus', 'iPhone16,1': 'iPhone 15 Pro',
+        'iPhone16,2': 'iPhone 15 Pro Max', 'iPhone17,3': 'iPhone 16', 'iPhone17,4': 'iPhone 16 Plus',
+        'iPhone17,1': 'iPhone 16 Pro', 'iPhone17,2': 'iPhone 16 Pro Max', 'iPhone17,5': 'iPhone 16e'
+    };
+
+    const $ = id => document.getElementById(id);
+
+    function show(view) {
+        ['startView', 'resultView', 'errorView'].forEach(id => $(id).classList.toggle('hidden', id !== view));
+        window.scrollTo(0, 0);
+    }
+
+    // iOS sends its build number (22B83); the first number gives the iOS version (22 → iOS 18, 23 → iOS 26).
+    function iosVersion(build) {
+        const match = /^(\d+)[A-Z]/.exec(build || '');
+        if (!match) return '';
+        const major = parseInt(match[1], 10);
+        const ios = major >= 23 ? major + 3 : major - 4;
+        return ios >= 10 ? 'iOS ' + ios : '';
+    }
+
+    function pill(icon, text) {
+        const element = document.createElement('div');
+        element.className = 'pill';
+        const i = document.createElement('i');
+        i.className = icon;
+        const span = document.createElement('span');
+        span.textContent = text;
+        element.append(i, span);
+        return element;
+    }
+
+    function showResult(params) {
+        const udid = (params.get('udid') || '').toUpperCase();
+        if (!/^[0-9A-F]{8}-[0-9A-F]{16}$|^[0-9A-F]{40}$/.test(udid)) {
+            show('errorView');
+            return;
+        }
+        $('udidValue').textContent = udid;
+
+        const product = params.get('product') || '';
+        const build = params.get('version') || '';
+        const info = $('deviceInfo');
+        info.replaceChildren();
+        if (product) {
+            const isPad = product.startsWith('iPad');
+            info.append(pill(isPad ? 'fa-solid fa-tablet-screen-button' : 'fa-solid fa-mobile-screen', MODELS[product] || product));
+        }
+        if (build) {
+            const ios = iosVersion(build);
+            info.append(pill('fa-brands fa-apple', ios ? ios + ' (' + build + ')' : build));
+        }
+
+        // Only the UDID goes in the message.
+        const message = 'مرحباً، هذا الـ UDID الخاص بجهازي لتفعيل الشهادة:\n' + udid;
+        $('telegramButton').href = 'https://t.me/' + TELEGRAM_USER + '?text=' + encodeURIComponent(message);
+
+        $('copyButton').onclick = async () => {
+            const label = $('copyButton').querySelector('span');
+            try {
+                await navigator.clipboard.writeText(udid);
+            } catch (error) {
+                const range = document.createRange();
+                range.selectNodeContents($('udidValue'));
+                const selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
+                document.execCommand('copy');
+            }
+            label.textContent = 'تم النسخ ✓';
+            setTimeout(() => { label.textContent = 'نسخ الـ UDID'; }, 2000);
+        };
+
+        if (navigator.share) {
+            $('shareButton').classList.remove('hidden');
+            $('shareButton').onclick = () => navigator.share({ text: message }).catch(() => {});
+        }
+
+        show('resultView');
+    }
+
+    function prepareStart() {
+        const ua = navigator.userAgent;
+        const isIOS = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+        const inApp = /Instagram|FBAN|FBAV|Snapchat|musical_ly|BytedanceWebview|Line\/|Twitter/i.test(ua);
+        $('notIphone').classList.toggle('hidden', isIOS);
+        $('inApp').classList.toggle('hidden', !(isIOS && inApp));
+
+        const button = $('extractButton');
+        button.href = WORKER + '/profile';
+
+        // The button works once the service answers; a slow answer never blocks it for long.
+        const enable = () => button.setAttribute('aria-disabled', 'false');
+        const timer = setTimeout(enable, 4000);
+        fetch(WORKER + '/ping', { cache: 'no-store' })
+            .then(response => {
+                clearTimeout(timer);
+                if (response.ok) {
+                    enable();
+                } else {
+                    $('serviceDown').classList.remove('hidden');
+                }
+            })
+            .catch(() => {
+                clearTimeout(timer);
+                $('serviceDown').classList.remove('hidden');
+            });
+
+        show('startView');
+    }
+
+    function route() {
+        const params = new URLSearchParams(location.hash.slice(1));
+        if (params.has('udid')) {
+            showResult(params);
+        } else if (params.has('error')) {
+            show('errorView');
+        } else {
+            prepareStart();
+        }
+    }
+
+    window.addEventListener('hashchange', route);
+    route();
+</script>
+</body>
+</html>
